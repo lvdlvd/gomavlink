@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"log"
 )
 
 // A Decoder can deserialize Messages from a io.Reader
@@ -75,7 +74,7 @@ func (d *Decoder) Decode() (msg Message, str StreamID, err error) {
 	case 0xFD, 0xFE:
 		// nix
 	default:
-		log.Println("stx", stx)
+		//		log.Println("stx", stx)
 		return nil, 0, ErrMustSync
 	}
 
