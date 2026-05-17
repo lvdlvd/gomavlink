@@ -863,16 +863,16 @@ type Heartbeat struct {
 	CustomMode uint32
 
 	/* Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type. */
-	Type MavType // byte
+	Type MavType `mavlink:"byte"`
 
 	/* Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers. */
-	Autopilot MavAutopilot // byte
+	Autopilot MavAutopilot `mavlink:"byte"`
 
 	/* System mode bitmap. */
-	BaseMode MavModeFlag // byte
+	BaseMode MavModeFlag `mavlink:"byte,bitmask"`
 
 	/* System status flag. */
-	SystemStatus MavState // byte
+	SystemStatus MavState `mavlink:"byte"`
 
 	/* MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version */
 	MavlinkVersion byte
@@ -1022,7 +1022,7 @@ func (m *GlobalPositionInt) UnmarshalV2(buf []byte) []byte {
 /* Version and capability of autopilot software. This should be emitted in response to a request with MAV_CMD_REQUEST_MESSAGE. */
 type AutopilotVersion struct {
 	/* Bitmap of capabilities */
-	Capabilities MavProtocolCapability // uint64
+	Capabilities MavProtocolCapability `mavlink:"uint64,bitmask"`
 
 	/* UID if provided by hardware (see uid2) */
 	Uid uint64

@@ -26,7 +26,7 @@ func NewEncoder(w io.Writer, strId StreamID) *Encoder { return &Encoder{w: w, St
 
 func (e *Encoder) Encode(m Message) error {
 
-	buf := make([]byte, 280)
+	buf := make([]byte, 0, 280)
 	mid := m.ID()
 	switch e.Protocol {
 	case V2:

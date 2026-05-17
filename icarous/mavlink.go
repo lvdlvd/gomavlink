@@ -51,8 +51,7 @@ func Dialect(mid int) mavlink.Message {
 /* ICAROUS heartbeat */
 type IcarousHeartbeat struct {
 	/* See the FMS_STATE enum. */
-	Status IcarousFmsState // byte
-
+	Status IcarousFmsState `mavlink:"byte"`
 }
 
 func (m *IcarousHeartbeat) ID() int        { return 42000 }
@@ -123,20 +122,19 @@ type IcarousKinematicBands struct {
 	Numbands int8
 
 	/* See the TRACK_BAND_TYPES enum. */
-	Type1 IcarousTrackBandTypes // byte
+	Type1 IcarousTrackBandTypes `mavlink:"byte"`
 
 	/* See the TRACK_BAND_TYPES enum. */
-	Type2 IcarousTrackBandTypes // byte
+	Type2 IcarousTrackBandTypes `mavlink:"byte"`
 
 	/* See the TRACK_BAND_TYPES enum. */
-	Type3 IcarousTrackBandTypes // byte
+	Type3 IcarousTrackBandTypes `mavlink:"byte"`
 
 	/* See the TRACK_BAND_TYPES enum. */
-	Type4 IcarousTrackBandTypes // byte
+	Type4 IcarousTrackBandTypes `mavlink:"byte"`
 
 	/* See the TRACK_BAND_TYPES enum. */
-	Type5 IcarousTrackBandTypes // byte
-
+	Type5 IcarousTrackBandTypes `mavlink:"byte"`
 }
 
 func (m *IcarousKinematicBands) ID() int        { return 42001 }

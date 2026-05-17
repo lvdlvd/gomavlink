@@ -5968,16 +5968,16 @@ type Heartbeat struct {
 	CustomMode uint32
 
 	/* Vehicle or component type. For a flight controller component the vehicle type (quadrotor, helicopter, etc.). For other components the component type (e.g. camera, gimbal, etc.). This should be used in preference to component id for identifying the component type. */
-	Type MavType // byte
+	Type MavType `mavlink:"byte"`
 
 	/* Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers. */
-	Autopilot MavAutopilot // byte
+	Autopilot MavAutopilot `mavlink:"byte"`
 
 	/* System mode bitmap. */
-	BaseMode MavModeFlag // byte
+	BaseMode MavModeFlag `mavlink:"byte,bitmask"`
 
 	/* System status flag. */
-	SystemStatus MavState // byte
+	SystemStatus MavState `mavlink:"byte"`
 
 	/* MAVLink version, not writable by user, gets added by protocol because of magic data type: uint8_t_mavlink_version */
 	MavlinkVersion byte
@@ -6045,13 +6045,13 @@ func (m *Heartbeat) UnmarshalV2(buf []byte) []byte {
 /* Sensor and subsystem status information. Provides a compact representation of sensor/subsystem status and a few other basic statistics. */
 type SysStatus struct {
 	/* Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. */
-	OnboardControlSensorsPresent MavSysStatusSensor // uint32
+	OnboardControlSensorsPresent MavSysStatusSensor `mavlink:"uint32,bitmask"`
 
 	/* Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. */
-	OnboardControlSensorsEnabled MavSysStatusSensor // uint32
+	OnboardControlSensorsEnabled MavSysStatusSensor `mavlink:"uint32,bitmask"`
 
 	/* Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy. */
-	OnboardControlSensorsHealth MavSysStatusSensor // uint32
+	OnboardControlSensorsHealth MavSysStatusSensor `mavlink:"uint32,bitmask"`
 
 	/* Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000 */
 	Load uint16
@@ -6084,13 +6084,13 @@ type SysStatus struct {
 	BatteryRemaining int8
 
 	/* Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. */
-	OnboardControlSensorsPresentExtended MavSysStatusSensorExtended // uint32 /*EXTENSION*/
+	OnboardControlSensorsPresentExtended MavSysStatusSensorExtended `mavlink:"uint32,bitmask"` /*EXTENSION*/
 
 	/* Bitmap showing which onboard controllers and sensors are enabled:  Value of 0: not enabled. Value of 1: enabled. */
-	OnboardControlSensorsEnabledExtended MavSysStatusSensorExtended // uint32 /*EXTENSION*/
+	OnboardControlSensorsEnabledExtended MavSysStatusSensorExtended `mavlink:"uint32,bitmask"` /*EXTENSION*/
 
 	/* Bitmap showing which onboard controllers and sensors have an error (or are operational). Value of 0: error. Value of 1: healthy. */
-	OnboardControlSensorsHealthExtended MavSysStatusSensorExtended // uint32 /*EXTENSION*/
+	OnboardControlSensorsHealthExtended MavSysStatusSensorExtended `mavlink:"uint32,bitmask"` /*EXTENSION*/
 
 }
 
@@ -6523,8 +6523,7 @@ type SetMode struct {
 	TargetSystem byte
 
 	/* The new base mode. */
-	BaseMode MavMode // byte
-
+	BaseMode MavMode `mavlink:"byte"`
 }
 
 func (m *SetMode) ID() int        { return 11 }
@@ -6676,8 +6675,7 @@ type ParamValue struct {
 	ParamId [16]byte
 
 	/* Onboard parameter type. */
-	ParamType MavParamType // byte
-
+	ParamType MavParamType `mavlink:"byte"`
 }
 
 func (m *ParamValue) ID() int        { return 22 }
@@ -6743,8 +6741,7 @@ type ParamSet struct {
 	ParamId [16]byte
 
 	/* Onboard parameter type. */
-	ParamType MavParamType // byte
-
+	ParamType MavParamType `mavlink:"byte"`
 }
 
 func (m *ParamSet) ID() int        { return 23 }
@@ -6822,7 +6819,7 @@ type GpsRawInt struct {
 	Cog uint16
 
 	/* GPS fix type. */
-	FixType GpsFixType // byte
+	FixType GpsFixType `mavlink:"byte"`
 
 	/* Number of satellites visible. If unknown, set to UINT8_MAX */
 	SatellitesVisible byte
@@ -7951,7 +7948,7 @@ type MissionRequestPartialList struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8013,7 +8010,7 @@ type MissionWritePartialList struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8087,7 +8084,7 @@ type MissionItem struct {
 	Seq uint16
 
 	/* The scheduled action for the waypoint. */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* System ID */
 	TargetSystem byte
@@ -8096,7 +8093,7 @@ type MissionItem struct {
 	TargetComponent byte
 
 	/* The coordinate system of the waypoint. */
-	Frame MavFrame // byte
+	Frame MavFrame `mavlink:"byte"`
 
 	/* false:0, true:1 */
 	Current byte
@@ -8105,7 +8102,7 @@ type MissionItem struct {
 	Autocontinue byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8202,7 +8199,7 @@ type MissionRequest struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8310,7 +8307,7 @@ type MissionCurrent struct {
 	Total uint16 /*EXTENSION*/
 
 	/* Mission state machine state. MISSION_STATE_UNKNOWN if state reporting not supported. */
-	MissionState MissionState // byte /*EXTENSION*/
+	MissionState MissionState `mavlink:"byte"` /*EXTENSION*/
 
 	/* Vehicle is in a mode that can execute mission items or suspended. 0: Unknown, 1: In mission mode, 2: Suspended (not in mission mode). */
 	MissionMode byte /*EXTENSION*/
@@ -8370,7 +8367,7 @@ type MissionRequestList struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8426,7 +8423,7 @@ type MissionCount struct {
 	OpaqueId uint32 /*EXTENSION*/
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8481,7 +8478,7 @@ type MissionClearAll struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8565,13 +8562,13 @@ type MissionAck struct {
 	TargetComponent byte
 
 	/* Mission result. */
-	Type MavMissionResult // byte
+	Type MavMissionResult `mavlink:"byte"`
 
 	/* Id of new on-vehicle mission, fence, or rally point plan (on upload to vehicle).         The id is calculated and returned by a vehicle when a new plan is uploaded by a GCS.         The only requirement on the id is that it must change when there is any change to the on-vehicle plan type (there is no requirement that the id be globally unique).         0 on download from the vehicle to the GCS (on download the ID is set in MISSION_COUNT).         0 if plan ids are not supported.         The current on-vehicle plan ids are streamed in `MISSION_CURRENT`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded.        */
 	OpaqueId uint32 /*EXTENSION*/
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8829,7 +8826,7 @@ type MissionRequestInt struct {
 	TargetComponent byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -8900,8 +8897,7 @@ type SafetySetAllowedArea struct {
 	TargetComponent byte
 
 	/* Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down. */
-	Frame MavFrame // byte
-
+	Frame MavFrame `mavlink:"byte"`
 }
 
 func (m *SafetySetAllowedArea) ID() int        { return 54 }
@@ -8981,8 +8977,7 @@ type SafetyAllowedArea struct {
 	P2z float32
 
 	/* Coordinate frame. Can be either global, GPS, right-handed with Z axis up or local, right handed, Z axis down. */
-	Frame MavFrame // byte
-
+	Frame MavFrame `mavlink:"byte"`
 }
 
 func (m *SafetyAllowedArea) ID() int        { return 55 }
@@ -9213,8 +9208,7 @@ type GlobalPositionIntCov struct {
 	Covariance [36]float32
 
 	/* Class id of the estimator this estimate originated from. */
-	EstimatorType MavEstimatorType // byte
-
+	EstimatorType MavEstimatorType `mavlink:"byte"`
 }
 
 func (m *GlobalPositionIntCov) ID() int        { return 63 }
@@ -9316,8 +9310,7 @@ type LocalPositionNedCov struct {
 	Covariance [45]float32
 
 	/* Class id of the estimator this estimate originated from. */
-	EstimatorType MavEstimatorType // byte
-
+	EstimatorType MavEstimatorType `mavlink:"byte"`
 }
 
 func (m *LocalPositionNedCov) ID() int        { return 64 }
@@ -9555,7 +9548,7 @@ type RequestDataStream struct {
 	TargetComponent byte
 
 	/* The ID of the requested data stream. */
-	ReqStreamId MavDataStream // byte
+	ReqStreamId MavDataStream `mavlink:"byte"`
 
 	/* 1 to start sending, 0 to stop sending. */
 	StartStop byte
@@ -9611,7 +9604,7 @@ type DataStream struct {
 	MessageRate uint16
 
 	/* The ID of the requested data stream. */
-	StreamId MavDataStream // byte
+	StreamId MavDataStream `mavlink:"byte"`
 
 	/* 1 stream is enabled, 0 stream is stopped. */
 	OnOff byte
@@ -9936,7 +9929,7 @@ type MissionItemInt struct {
 	Seq uint16
 
 	/* The scheduled action for the waypoint. */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* System ID */
 	TargetSystem byte
@@ -9945,7 +9938,7 @@ type MissionItemInt struct {
 	TargetComponent byte
 
 	/* The coordinate system of the waypoint. */
-	Frame MavFrame // byte
+	Frame MavFrame `mavlink:"byte"`
 
 	/* false:0, true:1 */
 	Current byte
@@ -9954,7 +9947,7 @@ type MissionItemInt struct {
 	Autocontinue byte
 
 	/* Mission type. */
-	MissionType MavMissionType // byte /*EXTENSION*/
+	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -10127,7 +10120,7 @@ type CommandInt struct {
 	Z float32
 
 	/* The scheduled action for the mission item. */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* System ID */
 	TargetSystem byte
@@ -10136,7 +10129,7 @@ type CommandInt struct {
 	TargetComponent byte
 
 	/* The coordinate system of the COMMAND. */
-	Frame MavFrame // byte
+	Frame MavFrame `mavlink:"byte"`
 
 	/* Not used. */
 	Current byte
@@ -10241,7 +10234,7 @@ type CommandLong struct {
 	Param7 float32
 
 	/* Command ID (of command to send). */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* System which should execute the command */
 	TargetSystem byte
@@ -10318,10 +10311,10 @@ func (m *CommandLong) UnmarshalV2(buf []byte) []byte {
 /* Report status of a command. Includes feedback whether the command was executed. The command microservice is documented at https://mavlink.io/en/services/command.html */
 type CommandAck struct {
 	/* Command ID (of acknowledged command). */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* Result of command. */
-	Result MavResult // byte
+	Result MavResult `mavlink:"byte"`
 
 	/* Additional result information. Can be set with a command-specific enum containing command-specific error reasons for why the command might be denied. If used, the associated enum must be documented in the corresponding MAV_CMD (this enum should have a 0 value to indicate "unused" or "unknown"). */
 	ResultParam2 int32 /*EXTENSION*/
@@ -10387,7 +10380,7 @@ func (m *CommandAck) UnmarshalV2(buf []byte) []byte {
 /* Cancel a long running command. The target system should respond with a COMMAND_ACK to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html */
 type CommandCancel struct {
 	/* Command ID (of command to cancel). */
-	Command MavCmd // uint16
+	Command MavCmd `mavlink:"uint16"`
 
 	/* System executing long running command. Should not be broadcast (0). */
 	TargetSystem byte
@@ -10531,7 +10524,7 @@ type SetAttitudeTarget struct {
 	TargetComponent byte
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask AttitudeTargetTypemask // byte
+	TypeMask AttitudeTargetTypemask `mavlink:"byte,bitmask"`
 
 	/* 3D thrust setpoint in the body NED frame, normalized to -1 .. 1 */
 	ThrustBody [3]float32 /*EXTENSION*/
@@ -10625,8 +10618,7 @@ type AttitudeTarget struct {
 	Thrust float32
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask AttitudeTargetTypemask // byte
-
+	TypeMask AttitudeTargetTypemask `mavlink:"byte,bitmask"`
 }
 
 func (m *AttitudeTarget) ID() int        { return 83 }
@@ -10722,7 +10714,7 @@ type SetPositionTargetLocalNed struct {
 	YawRate float32
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask PositionTargetTypemask // uint16
+	TypeMask PositionTargetTypemask `mavlink:"uint16,bitmask"`
 
 	/* System ID */
 	TargetSystem byte
@@ -10731,8 +10723,7 @@ type SetPositionTargetLocalNed struct {
 	TargetComponent byte
 
 	/* Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9 */
-	CoordinateFrame MavFrame // byte
-
+	CoordinateFrame MavFrame `mavlink:"byte"`
 }
 
 func (m *SetPositionTargetLocalNed) ID() int        { return 84 }
@@ -10855,11 +10846,10 @@ type PositionTargetLocalNed struct {
 	YawRate float32
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask PositionTargetTypemask // uint16
+	TypeMask PositionTargetTypemask `mavlink:"uint16,bitmask"`
 
 	/* Valid options are: MAV_FRAME_LOCAL_NED = 1, MAV_FRAME_LOCAL_OFFSET_NED = 7, MAV_FRAME_BODY_NED = 8, MAV_FRAME_BODY_OFFSET_NED = 9 */
-	CoordinateFrame MavFrame // byte
-
+	CoordinateFrame MavFrame `mavlink:"byte"`
 }
 
 func (m *PositionTargetLocalNed) ID() int        { return 85 }
@@ -10976,7 +10966,7 @@ type SetPositionTargetGlobalInt struct {
 	YawRate float32
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask PositionTargetTypemask // uint16
+	TypeMask PositionTargetTypemask `mavlink:"uint16,bitmask"`
 
 	/* System ID */
 	TargetSystem byte
@@ -10985,8 +10975,7 @@ type SetPositionTargetGlobalInt struct {
 	TargetComponent byte
 
 	/* Valid options are: MAV_FRAME_GLOBAL = 0, MAV_FRAME_GLOBAL_RELATIVE_ALT = 3, MAV_FRAME_GLOBAL_TERRAIN_ALT = 10 (MAV_FRAME_GLOBAL_INT, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT are allowed synonyms, but have been deprecated) */
-	CoordinateFrame MavFrame // byte
-
+	CoordinateFrame MavFrame `mavlink:"byte"`
 }
 
 func (m *SetPositionTargetGlobalInt) ID() int        { return 86 }
@@ -11109,11 +11098,10 @@ type PositionTargetGlobalInt struct {
 	YawRate float32
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
-	TypeMask PositionTargetTypemask // uint16
+	TypeMask PositionTargetTypemask `mavlink:"uint16,bitmask"`
 
 	/* Valid options are: MAV_FRAME_GLOBAL = 0, MAV_FRAME_GLOBAL_RELATIVE_ALT = 3, MAV_FRAME_GLOBAL_TERRAIN_ALT = 10 (MAV_FRAME_GLOBAL_INT, MAV_FRAME_GLOBAL_RELATIVE_ALT_INT, MAV_FRAME_GLOBAL_TERRAIN_ALT_INT are allowed synonyms, but have been deprecated) */
-	CoordinateFrame MavFrame // byte
-
+	CoordinateFrame MavFrame `mavlink:"byte"`
 }
 
 func (m *PositionTargetGlobalInt) ID() int        { return 87 }
@@ -11415,7 +11403,7 @@ type HilControls struct {
 	Aux4 float32
 
 	/* System mode. */
-	Mode MavMode // byte
+	Mode MavMode `mavlink:"byte"`
 
 	/* Navigation mode (MAV_NAV_MODE) */
 	NavMode byte
@@ -11601,14 +11589,13 @@ type HilActuatorControls struct {
 	TimeUsec uint64
 
 	/* Flags bitmask. */
-	Flags HilActuatorControlsFlags // uint64
+	Flags HilActuatorControlsFlags `mavlink:"uint64,bitmask"`
 
 	/* Control outputs -1 .. 1. Channel assignment depends on the simulated hardware. */
 	Controls [16]float32
 
 	/* System mode. Includes arming state. */
-	Mode MavModeFlag // byte
-
+	Mode MavModeFlag `mavlink:"byte,bitmask"`
 }
 
 func (m *HilActuatorControls) ID() int        { return 93 }
@@ -12109,7 +12096,7 @@ type HighresImu struct {
 	Temperature float32
 
 	/* Bitmap for fields that have updated since last message */
-	FieldsUpdated HighresImuUpdatedFlags // uint16
+	FieldsUpdated HighresImuUpdatedFlags `mavlink:"uint16,bitmask"`
 
 	/* Id. Ids are numbered from 0 and map to IMUs numbered from 1 (e.g. IMU1 will have a message with id=0) */
 	Id byte /*EXTENSION*/
@@ -12337,7 +12324,7 @@ type HilSensor struct {
 	Temperature float32
 
 	/* Bitmap for fields that have updated since last message */
-	FieldsUpdated HilSensorUpdatedFlags // uint32
+	FieldsUpdated HilSensorUpdatedFlags `mavlink:"uint32,bitmask"`
 
 	/* Sensor ID (zero indexed). Used for multiple sensor inputs */
 	Id byte /*EXTENSION*/
@@ -13631,7 +13618,7 @@ type Gps2Raw struct {
 	Cog uint16
 
 	/* GPS fix type. */
-	FixType GpsFixType // byte
+	FixType GpsFixType `mavlink:"byte"`
 
 	/* Number of satellites visible. If unknown, set to UINT8_MAX */
 	SatellitesVisible byte
@@ -13745,8 +13732,7 @@ type PowerStatus struct {
 	Vservo uint16
 
 	/* Bitmap of power supply status flags. */
-	Flags MavPowerStatus // uint16
-
+	Flags MavPowerStatus `mavlink:"uint16,bitmask"`
 }
 
 func (m *PowerStatus) ID() int        { return 125 }
@@ -13796,10 +13782,10 @@ type SerialControl struct {
 	Timeout uint16
 
 	/* Serial control device type. */
-	Device SerialControlDev // byte
+	Device SerialControlDev `mavlink:"byte"`
 
 	/* Bitmap of serial control flags. */
-	Flags SerialControlFlag // byte
+	Flags SerialControlFlag `mavlink:"byte,bitmask"`
 
 	/* how many bytes in this transfer */
 	Count byte
@@ -13913,8 +13899,7 @@ type GpsRtk struct {
 	Nsats byte
 
 	/* Coordinate system of baseline */
-	BaselineCoordsType RtkBaselineCoordinateSystem // byte
-
+	BaselineCoordsType RtkBaselineCoordinateSystem `mavlink:"byte"`
 }
 
 func (m *GpsRtk) ID() int        { return 127 }
@@ -14024,8 +14009,7 @@ type Gps2Rtk struct {
 	Nsats byte
 
 	/* Coordinate system of baseline */
-	BaselineCoordsType RtkBaselineCoordinateSystem // byte
-
+	BaselineCoordsType RtkBaselineCoordinateSystem `mavlink:"byte"`
 }
 
 func (m *Gps2Rtk) ID() int        { return 128 }
@@ -14205,7 +14189,7 @@ type DataTransmissionHandshake struct {
 	Packets uint16
 
 	/* Type of requested/acknowledged data. */
-	Type MavlinkDataStreamType // byte
+	Type MavlinkDataStreamType `mavlink:"byte"`
 
 	/* Payload size per packet (normally 253 byte, see DATA field size in message ENCAPSULATED_DATA) (set on ACK only). */
 	Payload byte
@@ -14323,13 +14307,13 @@ type DistanceSensor struct {
 	CurrentDistance uint16
 
 	/* Type of distance sensor. */
-	Type MavDistanceSensor // byte
+	Type MavDistanceSensor `mavlink:"byte"`
 
 	/* Onboard ID of the sensor */
 	Id byte
 
 	/* Direction the sensor faces. downward-facing: ROTATION_PITCH_270, upward-facing: ROTATION_PITCH_90, backward-facing: ROTATION_PITCH_180, forward-facing: ROTATION_NONE, left-facing: ROTATION_YAW_90, right-facing: ROTATION_YAW_270 */
-	Orientation MavSensorOrientation // byte
+	Orientation MavSensorOrientation `mavlink:"byte"`
 
 	/* Measurement variance. Max standard deviation is 6cm. UINT8_MAX if unknown. */
 	Covariance byte
@@ -15354,10 +15338,10 @@ type BatteryStatus struct {
 	Id byte
 
 	/* Function of the battery */
-	BatteryFunction MavBatteryFunction // byte
+	BatteryFunction MavBatteryFunction `mavlink:"byte"`
 
 	/* Type (chemistry) of the battery */
-	Type MavBatteryType // byte
+	Type MavBatteryType `mavlink:"byte"`
 
 	/* Remaining battery energy. Values: [0-100], -1: autopilot does not estimate the remaining battery. */
 	BatteryRemaining int8
@@ -15366,16 +15350,16 @@ type BatteryStatus struct {
 	TimeRemaining int32 /*EXTENSION*/
 
 	/* Fault/health indications. These should be set when charge_state is MAV_BATTERY_CHARGE_STATE_FAILED or MAV_BATTERY_CHARGE_STATE_UNHEALTHY (if not, fault reporting is not supported). */
-	FaultBitmask MavBatteryFault // uint32 /*EXTENSION*/
+	FaultBitmask MavBatteryFault `mavlink:"uint32,bitmask"` /*EXTENSION*/
 
 	/* Battery voltages for cells 11 to 14. Cells above the valid cell count for this battery should have a value of 0, where zero indicates not supported (note, this is different than for the voltages field and allows empty byte truncation). If the measured value is 0 then 1 should be sent instead. */
 	VoltagesExt [4]uint16 /*EXTENSION*/
 
 	/* State for extent of discharge, provided by autopilot for warning or external reactions */
-	ChargeState MavBatteryChargeState // byte /*EXTENSION*/
+	ChargeState MavBatteryChargeState `mavlink:"byte"` /*EXTENSION*/
 
 	/* Battery mode. Default (0) is that battery mode reporting is not supported or battery is in normal-use mode. */
-	Mode MavBatteryMode // byte /*EXTENSION*/
+	Mode MavBatteryMode `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -15472,7 +15456,7 @@ func (m *BatteryStatus) UnmarshalV2(buf []byte) []byte {
 /* Version and capability of autopilot software. This should be emitted in response to a request with MAV_CMD_REQUEST_MESSAGE. */
 type AutopilotVersion struct {
 	/* Bitmap of capabilities */
-	Capabilities MavProtocolCapability // uint64
+	Capabilities MavProtocolCapability `mavlink:"uint64,bitmask"`
 
 	/* UID if provided by hardware (see uid2) */
 	Uid uint64
@@ -15613,7 +15597,7 @@ type LandingTarget struct {
 	TargetNum byte
 
 	/* Coordinate frame used for following fields. */
-	Frame MavFrame // byte
+	Frame MavFrame `mavlink:"byte"`
 
 	/* X Position of the landing target in MAV_FRAME */
 	X float32 /*EXTENSION*/
@@ -15628,10 +15612,10 @@ type LandingTarget struct {
 	Q [4]float32 /*EXTENSION*/
 
 	/* Type of landing target */
-	Type LandingTargetType // byte /*EXTENSION*/
+	Type LandingTargetType `mavlink:"byte"` /*EXTENSION*/
 
 	/* Position fields (x, y, z, q, type) contain valid target position information (MAV_BOOL_FALSE: invalid values). Values not equal to 0 or 1 are invalid. */
-	PositionValid MavBool // byte /*EXTENSION*/
+	PositionValid MavBool `mavlink:"byte,bitmask"` /*EXTENSION*/
 
 }
 
@@ -16160,10 +16144,10 @@ type FenceStatus struct {
 	BreachStatus byte
 
 	/* Last breach type. */
-	BreachType FenceBreach // byte
+	BreachType FenceBreach `mavlink:"byte"`
 
 	/* Active action to prevent fence breach */
-	BreachMitigation FenceMitigate // byte /*EXTENSION*/
+	BreachMitigation FenceMitigate `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -17899,7 +17883,7 @@ type MagCalReport struct {
 	CalMask byte
 
 	/* Calibration Status. */
-	CalStatus MagCalStatus // byte
+	CalStatus MagCalStatus `mavlink:"byte"`
 
 	/* 0=requires a MAV_CMD_DO_ACCEPT_MAG_CAL, 1=saved to parameters. */
 	Autosaved byte
@@ -17911,10 +17895,10 @@ type MagCalReport struct {
 	ScaleFactor float32 /*EXTENSION*/
 
 	/* orientation before calibration. */
-	OldOrientation MavSensorOrientation // byte /*EXTENSION*/
+	OldOrientation MavSensorOrientation `mavlink:"byte"` /*EXTENSION*/
 
 	/* orientation after calibration. */
-	NewOrientation MavSensorOrientation // byte /*EXTENSION*/
+	NewOrientation MavSensorOrientation `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -18176,8 +18160,7 @@ type EstimatorStatus struct {
 	PosVertAccuracy float32
 
 	/* Bitmap indicating which EKF outputs are valid. */
-	Flags EstimatorStatusFlags // uint16
-
+	Flags EstimatorStatusFlags `mavlink:"uint16,bitmask"`
 }
 
 func (m *EstimatorStatus) ID() int        { return 230 }
@@ -18363,7 +18346,7 @@ type GpsInput struct {
 	VertAccuracy float32
 
 	/* Bitmap indicating which GPS input flags fields to ignore.  All other fields must be provided. */
-	IgnoreFlags GpsInputIgnoreFlags // uint16
+	IgnoreFlags GpsInputIgnoreFlags `mavlink:"uint16,bitmask"`
 
 	/* GPS week number */
 	TimeWeek uint16
@@ -18550,10 +18533,10 @@ type HighLatency struct {
 	WpDistance uint16
 
 	/* Bitmap of enabled system modes. */
-	BaseMode MavModeFlag // byte
+	BaseMode MavModeFlag `mavlink:"byte,bitmask"`
 
 	/* The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown. */
-	LandedState MavLandedState // byte
+	LandedState MavLandedState `mavlink:"byte"`
 
 	/* throttle (percentage) */
 	Throttle int8
@@ -18574,7 +18557,7 @@ type HighLatency struct {
 	GpsNsat byte
 
 	/* GPS Fix type. */
-	GpsFixType GpsFixType // byte
+	GpsFixType GpsFixType `mavlink:"byte"`
 
 	/* Remaining battery (percentage) */
 	BatteryRemaining byte
@@ -18728,13 +18711,13 @@ type HighLatency2 struct {
 	WpNum uint16
 
 	/* Bitmap of failure flags. */
-	FailureFlags HlFailureFlag // uint16
+	FailureFlags HlFailureFlag `mavlink:"uint16,bitmask"`
 
 	/* Type of the MAV (quadrotor, helicopter, etc.) */
-	Type MavType // byte
+	Type MavType `mavlink:"byte"`
 
 	/* Autopilot type / class. Use MAV_AUTOPILOT_INVALID for components that are not flight controllers. */
-	Autopilot MavAutopilot // byte
+	Autopilot MavAutopilot `mavlink:"byte"`
 
 	/* Heading */
 	Heading byte
@@ -19218,11 +19201,10 @@ func (m *MessageInterval) UnmarshalV2(buf []byte) []byte {
 /* Provides state for additional features */
 type ExtendedSysState struct {
 	/* The VTOL state if applicable. Is set to MAV_VTOL_STATE_UNDEFINED if UAV is not in VTOL configuration. */
-	VtolState MavVtolState // byte
+	VtolState MavVtolState `mavlink:"byte"`
 
 	/* The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown. */
-	LandedState MavLandedState // byte
-
+	LandedState MavLandedState `mavlink:"byte"`
 }
 
 func (m *ExtendedSysState) ID() int        { return 245 }
@@ -19288,19 +19270,19 @@ type AdsbVehicle struct {
 	VerVelocity int16
 
 	/* Bitmap to indicate various statuses including valid data fields */
-	Flags AdsbFlags // uint16
+	Flags AdsbFlags `mavlink:"uint16,bitmask"`
 
 	/* Squawk code. Note that the code is in decimal: e.g. 7700 (general emergency) is encoded as binary 0b0001_1110_0001_0100, not(!) as 0b0000_111_111_000_000 */
 	Squawk uint16
 
 	/* ADSB altitude type. */
-	AltitudeType AdsbAltitudeType // byte
+	AltitudeType AdsbAltitudeType `mavlink:"byte"`
 
 	/* The callsign, 8+null */
 	Callsign [9]byte
 
 	/* ADSB emitter type. */
-	EmitterType AdsbEmitterType // byte
+	EmitterType AdsbEmitterType `mavlink:"byte"`
 
 	/* Time since last communication from the remote vehicle, in seconds. */
 	Tslc byte
@@ -19401,14 +19383,13 @@ type Collision struct {
 	HorizontalMinimumDelta float32
 
 	/* Collision data source */
-	Src MavCollisionSrc // byte
+	Src MavCollisionSrc `mavlink:"byte"`
 
 	/* Action that is being taken to avoid this collision */
-	Action MavCollisionAction // byte
+	Action MavCollisionAction `mavlink:"byte"`
 
 	/* How concerned the aircraft is about this collision */
-	ThreatLevel MavCollisionThreatLevel // byte
-
+	ThreatLevel MavCollisionThreatLevel `mavlink:"byte"`
 }
 
 func (m *Collision) ID() int        { return 247 }
@@ -19752,7 +19733,7 @@ func (m *NamedValueInt) UnmarshalV2(buf []byte) []byte {
 /* Status text message. These messages are printed in yellow in the COMM console of QGroundControl. WARNING: They consume quite some bandwidth, so use only for important status and error messages. If implemented wisely, these messages are buffered on the MCU and sent only at a limited rate (e.g. 10 Hz). */
 type Statustext struct {
 	/* Severity of status. Relies on the definitions within RFC-5424. */
-	Severity MavSeverity // byte
+	Severity MavSeverity `mavlink:"byte"`
 
 	/* Status text message, without null termination character. UTF-8 encoded. */
 	Text [50]byte
@@ -20034,7 +20015,7 @@ type CameraInformation struct {
 	SensorSizeV float32
 
 	/* Bitmap of camera capability flags. */
-	Flags CameraCapFlags // uint32
+	Flags CameraCapFlags `mavlink:"uint32,bitmask"`
 
 	/* Horizontal image resolution. Use 0 if not known. */
 	ResolutionH uint16
@@ -20155,7 +20136,7 @@ type CameraSettings struct {
 	TimeBootMs uint32
 
 	/* Camera mode */
-	ModeId CameraMode // byte
+	ModeId CameraMode `mavlink:"byte"`
 
 	/* Current zoom level as a percentage of the full range (0.0 to 100.0, NaN if not known) */
 	Zoomlevel float32 /*EXTENSION*/
@@ -20236,16 +20217,16 @@ type StorageInformation struct {
 	StorageCount byte
 
 	/* Status of storage */
-	Status StorageStatus // byte
+	Status StorageStatus `mavlink:"byte"`
 
 	/* Type of storage */
-	Type StorageType // byte /*EXTENSION*/
+	Type StorageType `mavlink:"byte"` /*EXTENSION*/
 
 	/* Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user. */
 	Name [32]byte /*EXTENSION*/
 
 	/* Flags indicating whether this instance is preferred storage for photos, videos, etc.         Note: Implementations should initially set the flags on the system-default storage id used for saving media (if possible/supported).         This setting can then be overridden using MAV_CMD_SET_STORAGE_USAGE.         If the media usage flags are not set, a GCS may assume storage ID 1 is the default storage for all media types. */
-	StorageUsage StorageUsageFlag // byte /*EXTENSION*/
+	StorageUsage StorageUsageFlag `mavlink:"byte,bitmask"` /*EXTENSION*/
 
 }
 
@@ -20428,7 +20409,7 @@ type CameraImageCaptured struct {
 	CameraId byte
 
 	/* Image was captured successfully (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. */
-	CaptureResult MavBool // int8
+	CaptureResult MavBool `mavlink:"int8,bitmask"`
 
 	/* URL of image taken. Either local storage or http://foo.jpg if camera provides an HTTP interface. */
 	FileUrl [205]byte
@@ -20811,7 +20792,7 @@ type VideoStreamInformation struct {
 	Bitrate uint32
 
 	/* Bitmap of stream status flags. */
-	Flags VideoStreamStatusFlags // uint16
+	Flags VideoStreamStatusFlags `mavlink:"uint16,bitmask"`
 
 	/* Horizontal resolution. */
 	ResolutionH uint16
@@ -20832,7 +20813,7 @@ type VideoStreamInformation struct {
 	Count byte
 
 	/* Type of stream. */
-	Type VideoStreamType // byte
+	Type VideoStreamType `mavlink:"byte"`
 
 	/* Stream name. */
 	Name [32]byte
@@ -20841,7 +20822,7 @@ type VideoStreamInformation struct {
 	Uri [160]byte
 
 	/* Encoding of stream. */
-	Encoding VideoStreamEncoding // byte /*EXTENSION*/
+	Encoding VideoStreamEncoding `mavlink:"byte"` /*EXTENSION*/
 
 	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
 	CameraDeviceId byte /*EXTENSION*/
@@ -20942,7 +20923,7 @@ type VideoStreamStatus struct {
 	Bitrate uint32
 
 	/* Bitmap of stream status flags */
-	Flags VideoStreamStatusFlags // uint16
+	Flags VideoStreamStatusFlags `mavlink:"uint16,bitmask"`
 
 	/* Horizontal resolution */
 	ResolutionH uint16
@@ -21141,13 +21122,13 @@ type CameraTrackingImageStatus struct {
 	RecBottomY float32
 
 	/* Current tracking status */
-	TrackingStatus CameraTrackingStatusFlags // byte
+	TrackingStatus CameraTrackingStatusFlags `mavlink:"byte,bitmask"`
 
 	/* Current tracking mode */
-	TrackingMode CameraTrackingMode // byte
+	TrackingMode CameraTrackingMode `mavlink:"byte"`
 
 	/* Defines location of target data */
-	TargetData CameraTrackingTargetData // byte
+	TargetData CameraTrackingTargetData `mavlink:"byte,bitmask"`
 
 	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
 	CameraDeviceId byte /*EXTENSION*/
@@ -21262,7 +21243,7 @@ type CameraTrackingGeoStatus struct {
 	HdgAcc float32
 
 	/* Current tracking status */
-	TrackingStatus CameraTrackingStatusFlags // byte
+	TrackingStatus CameraTrackingStatusFlags `mavlink:"byte,bitmask"`
 
 	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
 	CameraDeviceId byte /*EXTENSION*/
@@ -21427,7 +21408,7 @@ type GimbalManagerInformation struct {
 	TimeBootMs uint32
 
 	/* Bitmap of gimbal capability flags. */
-	CapFlags GimbalManagerCapFlags // uint32
+	CapFlags GimbalManagerCapFlags `mavlink:"uint32,bitmask"`
 
 	/* Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left) */
 	RollMin float32
@@ -21513,7 +21494,7 @@ type GimbalManagerStatus struct {
 	TimeBootMs uint32
 
 	/* High level gimbal manager flags currently applied. */
-	Flags GimbalManagerFlags // uint32
+	Flags GimbalManagerFlags `mavlink:"uint32,bitmask"`
 
 	/* Gimbal device ID that this gimbal manager is responsible for. Component ID of gimbal device (or 1-6 for non-MAVLink gimbal). */
 	GimbalDeviceId byte
@@ -21584,7 +21565,7 @@ func (m *GimbalManagerStatus) UnmarshalV2(buf []byte) []byte {
 /* High level message to control a gimbal's attitude. This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case. */
 type GimbalManagerSetAttitude struct {
 	/* High level gimbal manager flags to use. */
-	Flags GimbalManagerFlags // uint32
+	Flags GimbalManagerFlags `mavlink:"uint32,bitmask"`
 
 	/* Quaternion components, w, x, y, z (1 0 0 0 is the null-rotation, the frame is depends on whether the flag GIMBAL_MANAGER_FLAGS_YAW_LOCK is set) */
 	Q [4]float32
@@ -21698,7 +21679,7 @@ type GimbalDeviceInformation struct {
 	YawMax float32
 
 	/* Bitmap of gimbal capability flags. */
-	CapFlags GimbalDeviceCapFlags // uint16
+	CapFlags GimbalDeviceCapFlags `mavlink:"uint16,bitmask"`
 
 	/* Bitmap for use for gimbal-specific capability flags. */
 	CustomCapFlags uint16
@@ -21713,7 +21694,7 @@ type GimbalDeviceInformation struct {
 	CustomName [32]byte
 
 	/* Extended bitmap of gimbal capability flags (32 bit). For backwards compatibility, the lower 16 bits should also be set in cap_flags. Ground stations should prefer this field if non-zero. */
-	CapFlags2 GimbalDeviceCapFlags // uint32 /*EXTENSION*/
+	CapFlags2 GimbalDeviceCapFlags `mavlink:"uint32,bitmask"` /*EXTENSION*/
 
 	/* This field is to be used if the gimbal manager and the gimbal device are the same component and hence have the same component ID. This field is then set to a number between 1-6. If the component ID is separate, this field is not required and must be set to 0. */
 	GimbalDeviceId byte /*EXTENSION*/
@@ -21829,7 +21810,7 @@ type GimbalDeviceSetAttitude struct {
 	AngularVelocityZ float32
 
 	/* Low level gimbal flags. */
-	Flags GimbalDeviceFlags // uint16
+	Flags GimbalDeviceFlags `mavlink:"uint16,bitmask"`
 
 	/* System ID */
 	TargetSystem byte
@@ -21910,10 +21891,10 @@ type GimbalDeviceAttitudeStatus struct {
 	AngularVelocityZ float32
 
 	/* Failure flags (0 for no failure) */
-	FailureFlags GimbalDeviceErrorFlags // uint32
+	FailureFlags GimbalDeviceErrorFlags `mavlink:"uint32,bitmask"`
 
 	/* Current gimbal flags set. */
-	Flags GimbalDeviceFlags // uint16
+	Flags GimbalDeviceFlags `mavlink:"uint16,bitmask"`
 
 	/* System ID */
 	TargetSystem byte
@@ -22029,7 +22010,7 @@ type AutopilotStateForGimbalDevice struct {
 	FeedForwardAngularVelocityZ float32
 
 	/* Bitmap indicating which estimator outputs are valid. */
-	EstimatorStatus EstimatorStatusFlags // uint16
+	EstimatorStatus EstimatorStatusFlags `mavlink:"uint16,bitmask"`
 
 	/* System ID */
 	TargetSystem byte
@@ -22038,7 +22019,7 @@ type AutopilotStateForGimbalDevice struct {
 	TargetComponent byte
 
 	/* The landed state. Is set to MAV_LANDED_STATE_UNDEFINED if landed state is unknown. */
-	LandedState MavLandedState // byte
+	LandedState MavLandedState `mavlink:"byte"`
 
 	/* Z component of angular velocity in NED (North, East, Down). NaN if unknown. */
 	AngularVelocityZ float32 /*EXTENSION*/
@@ -22123,7 +22104,7 @@ func (m *AutopilotStateForGimbalDevice) UnmarshalV2(buf []byte) []byte {
 /* Set gimbal manager pitch and yaw angles (high rate message). This message is to be sent to the gimbal manager (e.g. from a ground station) and will be ignored by gimbal devices. Angles and rates can be set to NaN according to use case. Use MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW for low-rate adjustments that require confirmation. */
 type GimbalManagerSetPitchyaw struct {
 	/* High level gimbal manager flags to use. */
-	Flags GimbalManagerFlags // uint32
+	Flags GimbalManagerFlags `mavlink:"uint32,bitmask"`
 
 	/* Pitch angle (positive: up, negative: down, NaN to be ignored). */
 	Pitch float32
@@ -22203,7 +22184,7 @@ func (m *GimbalManagerSetPitchyaw) UnmarshalV2(buf []byte) []byte {
 /* High level message to control a gimbal manually. The angles or angular rates are unitless; the actual rates will depend on internal gimbal manager settings/configuration (e.g. set by parameters). This message is to be sent to the gimbal manager (e.g. from a ground station). Angles and rates can be set to NaN according to use case. */
 type GimbalManagerSetManualControl struct {
 	/* High level gimbal manager flags. */
-	Flags GimbalManagerFlags // uint32
+	Flags GimbalManagerFlags `mavlink:"uint32,bitmask"`
 
 	/* Pitch angle unitless (-1..1, positive: up, negative: down, NaN to be ignored). */
 	Pitch float32
@@ -22292,7 +22273,7 @@ type EscInfo struct {
 	Counter uint16
 
 	/* Bitmap of ESC failure flags. */
-	FailureFlags [4]EscFailureFlags // [4]uint16
+	FailureFlags [4]EscFailureFlags `mavlink:"[4]uint16,bitmask"`
 
 	/* Temperature of each ESC. INT16_MAX: if data not supplied by ESC. */
 	Temperature [4]int16
@@ -22304,7 +22285,7 @@ type EscInfo struct {
 	Count byte
 
 	/* Connection type protocol for all ESC. */
-	ConnectionType EscConnectionType // byte
+	ConnectionType EscConnectionType `mavlink:"byte"`
 
 	/* Information regarding online/offline status of each ESC. */
 	Info byte
@@ -22467,8 +22448,7 @@ type Airspeed struct {
 	Id byte
 
 	/* Airspeed sensor flags. */
-	Flags AirspeedSensorFlags // byte
-
+	Flags AirspeedSensorFlags `mavlink:"byte,bitmask"`
 }
 
 func (m *Airspeed) ID() int        { return 295 }
@@ -22551,11 +22531,10 @@ type GlobalPositionSensor struct {
 	Id byte
 
 	/* Source of position/estimate (such as GNSS, estimator, etc.) */
-	Source GlobalPositionSrc // byte
+	Source GlobalPositionSrc `mavlink:"byte"`
 
 	/* Status flags */
-	Flags GlobalPositionFlags // byte
-
+	Flags GlobalPositionFlags `mavlink:"byte,bitmask"`
 }
 
 func (m *GlobalPositionSensor) ID() int        { return 296 }
@@ -22639,10 +22618,10 @@ type WifiConfigAp struct {
 	Password [64]byte
 
 	/* WiFi Mode. */
-	Mode WifiConfigApMode // int8 /*EXTENSION*/
+	Mode WifiConfigApMode `mavlink:"int8"` /*EXTENSION*/
 
 	/* Message acceptance response (sent back to GS). */
-	Response WifiConfigApResponse // int8 /*EXTENSION*/
+	Response WifiConfigApResponse `mavlink:"int8"` /*EXTENSION*/
 
 }
 
@@ -22793,16 +22772,16 @@ type AisVessel struct {
 	Tslc uint16
 
 	/* Bitmask to indicate various statuses including valid data fields */
-	Flags AisFlags // uint16
+	Flags AisFlags `mavlink:"uint16,bitmask"`
 
 	/* Turn rate, 0.1 degrees per second */
 	TurnRate int8
 
 	/* Navigational status */
-	NavigationalStatus AisNavStatus // byte
+	NavigationalStatus AisNavStatus `mavlink:"byte"`
 
 	/* Type of vessels */
-	Type AisType // byte
+	Type AisType `mavlink:"byte"`
 
 	/* Distance from lat/lon location to port side */
 	DimensionPort byte
@@ -22925,10 +22904,10 @@ type UavcanNodeStatus struct {
 	VendorSpecificStatusCode uint16
 
 	/* Generalized node health status. */
-	Health UavcanNodeHealth // byte
+	Health UavcanNodeHealth `mavlink:"byte"`
 
 	/* Generalized operating mode. */
-	Mode UavcanNodeMode // byte
+	Mode UavcanNodeMode `mavlink:"byte"`
 
 	/* Not used currently. */
 	SubMode byte
@@ -23186,8 +23165,7 @@ type ParamExtValue struct {
 	ParamValue [128]byte
 
 	/* Parameter type. */
-	ParamType MavParamExtType // byte
-
+	ParamType MavParamExtType `mavlink:"byte"`
 }
 
 func (m *ParamExtValue) ID() int        { return 322 }
@@ -23257,8 +23235,7 @@ type ParamExtSet struct {
 	ParamValue [128]byte
 
 	/* Parameter type. */
-	ParamType MavParamExtType // byte
-
+	ParamType MavParamExtType `mavlink:"byte"`
 }
 
 func (m *ParamExtSet) ID() int        { return 323 }
@@ -23322,11 +23299,10 @@ type ParamExtAck struct {
 	ParamValue [128]byte
 
 	/* Parameter type. */
-	ParamType MavParamExtType // byte
+	ParamType MavParamExtType `mavlink:"byte"`
 
 	/* Result code. */
-	ParamResult ParamAck // byte
-
+	ParamResult ParamAck `mavlink:"byte"`
 }
 
 func (m *ParamExtAck) ID() int        { return 324 }
@@ -23397,7 +23373,7 @@ type ObstacleDistance struct {
 	MaxDistance uint16
 
 	/* Class id of the distance sensor type. */
-	SensorType MavDistanceSensor // byte
+	SensorType MavDistanceSensor `mavlink:"byte"`
 
 	/* Angular width in degrees of each array element. Increment direction is clockwise. This field is ignored if increment_f is non-zero. */
 	Increment byte
@@ -23409,7 +23385,7 @@ type ObstacleDistance struct {
 	AngleOffset float32 /*EXTENSION*/
 
 	/* Coordinate frame of reference for the yaw rotation and offset of the sensor data. Defaults to MAV_FRAME_GLOBAL, which is north aligned. For body-mounted sensors use MAV_FRAME_BODY_FRD, which is vehicle front aligned. */
-	Frame MavFrame // byte /*EXTENSION*/
+	Frame MavFrame `mavlink:"byte"` /*EXTENSION*/
 
 }
 
@@ -23516,16 +23492,16 @@ type Odometry struct {
 	VelocityCovariance [21]float32
 
 	/* Coordinate frame of reference for the pose data. */
-	FrameId MavFrame // byte
+	FrameId MavFrame `mavlink:"byte"`
 
 	/* Coordinate frame of reference for the velocity in free space (twist) data. */
-	ChildFrameId MavFrame // byte
+	ChildFrameId MavFrame `mavlink:"byte"`
 
 	/* Estimate reset counter. This should be incremented when the estimate resets in any of the dimensions (position, velocity, attitude, angular speed). This is designed to be used when e.g an external SLAM system detects a loop-closure and the estimate jumps. */
 	ResetCounter byte /*EXTENSION*/
 
 	/* Type of estimator that is providing the odometry. */
-	EstimatorType MavEstimatorType // byte /*EXTENSION*/
+	EstimatorType MavEstimatorType `mavlink:"byte"` /*EXTENSION*/
 
 	/* Optional odometry quality metric as a percentage. -1 = odometry has failed, 0 = unknown/unset quality, 1 = worst quality, 100 = best quality */
 	Quality int8 /*EXTENSION*/
@@ -23671,7 +23647,7 @@ type TrajectoryRepresentationWaypoints struct {
 	VelYaw [5]float32
 
 	/* MAV_CMD command id of waypoint, set to UINT16_MAX if not being used. */
-	Command [5]MavCmd // [5]uint16
+	Command [5]MavCmd `mavlink:"[5]uint16"`
 
 	/* Number of valid points (up-to 5 waypoints are possible) */
 	ValidPoints byte
@@ -23898,13 +23874,13 @@ type CellularStatus struct {
 	Lac uint16
 
 	/* Cellular modem status */
-	Status CellularStatusFlag // byte
+	Status CellularStatusFlag `mavlink:"byte"`
 
 	/* Failure reason when status in in CELLULAR_STATUS_FLAG_FAILED */
-	FailureReason CellularNetworkFailedReason // byte
+	FailureReason CellularNetworkFailedReason `mavlink:"byte"`
 
 	/* Cellular network radio type: gsm, cdma, lte... */
-	Type CellularNetworkRadioType // byte
+	Type CellularNetworkRadioType `mavlink:"byte"`
 
 	/* Signal quality in percent. If unknown, set to UINT8_MAX */
 	Quality byte
@@ -24068,8 +24044,7 @@ type CellularConfig struct {
 	Roaming byte
 
 	/* Message acceptance response (sent back to GS). */
-	Response CellularConfigResponse // byte
-
+	Response CellularConfigResponse `mavlink:"byte"`
 }
 
 func (m *CellularConfig) ID() int        { return 336 }
@@ -24232,11 +24207,10 @@ type UtmGlobalPosition struct {
 	UasId [18]byte
 
 	/* Flight state */
-	FlightState UtmFlightState // byte
+	FlightState UtmFlightState `mavlink:"byte"`
 
 	/* Bitwise OR combination of the data available flags. */
-	Flags UtmDataAvailFlags // byte
-
+	Flags UtmDataAvailFlags `mavlink:"byte,bitmask"`
 }
 
 func (m *UtmGlobalPosition) ID() int        { return 340 }
@@ -24345,8 +24319,7 @@ type ParamError struct {
 	ParamId [16]byte
 
 	/* Error being returned to client. */
-	Error MavParamError // byte
-
+	Error MavParamError `mavlink:"byte"`
 }
 
 func (m *ParamError) ID() int        { return 345 }
@@ -24475,8 +24448,7 @@ type OrbitExecutionStatus struct {
 	Z float32
 
 	/* The coordinate system of the fields: x, y, z. */
-	Frame MavFrame // byte
-
+	Frame MavFrame `mavlink:"byte"`
 }
 
 func (m *OrbitExecutionStatus) ID() int        { return 360 }
@@ -24550,8 +24522,7 @@ type FigureEightExecutionStatus struct {
 	Z float32
 
 	/* The coordinate system of the fields: x, y, z. */
-	Frame MavFrame // byte
-
+	Frame MavFrame `mavlink:"byte"`
 }
 
 func (m *FigureEightExecutionStatus) ID() int        { return 361 }
@@ -24634,10 +24605,10 @@ type SmartBatteryInfo struct {
 	Id byte
 
 	/* Function of the battery */
-	BatteryFunction MavBatteryFunction // byte
+	BatteryFunction MavBatteryFunction `mavlink:"byte"`
 
 	/* Type (chemistry) of the battery */
-	Type MavBatteryType // byte
+	Type MavBatteryType `mavlink:"byte"`
 
 	/* Serial number in ASCII characters, 0 terminated. All 0: field not provided. */
 	SerialNumber [16]byte
@@ -24771,7 +24742,7 @@ type FuelStatus struct {
 	Temperature float32
 
 	/* Fuel type. Defines units for fuel capacity and consumption fields above. */
-	FuelType MavFuelType // uint32
+	FuelType MavFuelType `mavlink:"uint32"`
 
 	/* Fuel ID. Must match ID of other messages for same fuel system, such as BATTERY_STATUS_V2. */
 	Id byte
@@ -24875,10 +24846,10 @@ type BatteryInfo struct {
 	Id byte
 
 	/* Function of the battery. */
-	BatteryFunction MavBatteryFunction // byte
+	BatteryFunction MavBatteryFunction `mavlink:"byte"`
 
 	/* Type (chemistry) of the battery. */
-	Type MavBatteryType // byte
+	Type MavBatteryType `mavlink:"byte"`
 
 	/* State of Health (SOH) estimate. Typically 100% at the time of manufacture and will decrease over time and use. -1: field not provided. */
 	StateOfHealth byte
@@ -25004,7 +24975,7 @@ func (m *BatteryInfo) UnmarshalV2(buf []byte) []byte {
 /* Telemetry of power generation system. Alternator or mechanical generator. */
 type GeneratorStatus struct {
 	/* Status flags. */
-	Status MavGeneratorStatusFlag // uint64
+	Status MavGeneratorStatusFlag `mavlink:"uint64,bitmask"`
 
 	/* Current into/out of battery. Positive for out. Negative for in. NaN: field not provided. */
 	BatteryCurrent float32
@@ -25256,7 +25227,7 @@ func (m *TimeEstimateToTarget) UnmarshalV2(buf []byte) []byte {
 /* Message for transporting "arbitrary" variable-length data from one component to another (broadcast is not forbidden, but discouraged). The encoding of the data is usually extension specific, i.e. determined by the source, and is usually not documented as part of the MAVLink specification. */
 type Tunnel struct {
 	/* A code that identifies the content of the payload (0 for unknown, which is the default). If this code is less than 32768, it is a 'registered' payload type and the corresponding code should be added to the MAV_TUNNEL_PAYLOAD_TYPE enum. Software creators can register blocks of types as needed. Codes greater than 32767 are considered local experiments and should not be checked in to any widely distributed codebase. */
-	PayloadType MavTunnelPayloadType // uint16
+	PayloadType MavTunnelPayloadType `mavlink:"uint16"`
 
 	/* System ID (can be 0 for broadcast, but this is discouraged) */
 	TargetSystem byte
@@ -25470,7 +25441,7 @@ type CanFilterModify struct {
 	Bus byte
 
 	/* what operation to perform on the filter list. See CAN_FILTER_OP enum. */
-	Operation CanFilterOp // byte
+	Operation CanFilterOp `mavlink:"byte"`
 
 	/* number of IDs in filter list */
 	NumIds byte
@@ -25590,7 +25561,7 @@ type OnboardComputerStatus struct {
 	TemperatureCore [8]int8
 
 	/* Bitmap of status flags. */
-	StatusFlags ComputerStatusFlags // uint16 /*EXTENSION*/
+	StatusFlags ComputerStatusFlags `mavlink:"uint16,bitmask"` /*EXTENSION*/
 
 }
 
@@ -25810,7 +25781,7 @@ func (m *ComponentInformation) UnmarshalV2(buf []byte) []byte {
 /* Basic component information data. Should be requested using MAV_CMD_REQUEST_MESSAGE on startup, or when required. */
 type ComponentInformationBasic struct {
 	/* Component capability flags */
-	Capabilities MavProtocolCapability // uint64
+	Capabilities MavProtocolCapability `mavlink:"uint64,bitmask"`
 
 	/* Timestamp (time since system boot). */
 	TimeBootMs uint32
@@ -25960,7 +25931,7 @@ func (m *ComponentMetadata) UnmarshalV2(buf []byte) []byte {
 /* Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE. */
 type PlayTuneV2 struct {
 	/* Tune format */
-	Format TuneFormat // uint32
+	Format TuneFormat `mavlink:"uint32"`
 
 	/* System ID */
 	TargetSystem byte
@@ -26020,7 +25991,7 @@ func (m *PlayTuneV2) UnmarshalV2(buf []byte) []byte {
 /* Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE. */
 type SupportedTunes struct {
 	/* Bitfield of supported tune formats. */
-	Format TuneFormat // uint32
+	Format TuneFormat `mavlink:"uint32"`
 
 	/* System ID */
 	TargetSystem byte
@@ -26147,8 +26118,7 @@ type CurrentEventSequence struct {
 	Sequence uint16
 
 	/* Flag bitset. */
-	Flags MavEventCurrentSequenceFlags // byte
-
+	Flags MavEventCurrentSequenceFlags `mavlink:"byte,bitmask"`
 }
 
 func (m *CurrentEventSequence) ID() int        { return 411 }
@@ -26253,8 +26223,7 @@ type ResponseEventError struct {
 	TargetComponent byte
 
 	/* Error reason. */
-	Reason MavEventErrorReason // byte
-
+	Reason MavEventErrorReason `mavlink:"byte"`
 }
 
 func (m *ResponseEventError) ID() int        { return 413 }
@@ -26307,7 +26276,7 @@ type AvailableModes struct {
 	CustomMode uint32
 
 	/* Mode properties. */
-	Properties MavModeProperty // uint32
+	Properties MavModeProperty `mavlink:"uint32,bitmask"`
 
 	/* The total number of available modes for the current vehicle type. */
 	NumberModes byte
@@ -26316,7 +26285,7 @@ type AvailableModes struct {
 	ModeIndex byte
 
 	/* Standard mode. */
-	StandardMode MavStandardMode // byte
+	StandardMode MavStandardMode `mavlink:"byte"`
 
 	/* Name of custom mode, with null termination character. Should be omitted for standard modes. */
 	ModeName [35]byte
@@ -26386,8 +26355,7 @@ type CurrentMode struct {
 	IntendedCustomMode uint32
 
 	/* Standard mode. */
-	StandardMode MavStandardMode // byte
-
+	StandardMode MavStandardMode `mavlink:"byte"`
 }
 
 func (m *CurrentMode) ID() int        { return 436 }
@@ -26468,7 +26436,7 @@ type IlluminatorStatus struct {
 	UptimeMs uint32
 
 	/* Errors */
-	ErrorStatus IlluminatorErrorFlags // uint32
+	ErrorStatus IlluminatorErrorFlags `mavlink:"uint32,bitmask"`
 
 	/* Illuminator brightness */
 	Brightness float32
@@ -26492,11 +26460,10 @@ type IlluminatorStatus struct {
 	Enable byte
 
 	/* Supported illuminator modes */
-	ModeBitmask IlluminatorMode // byte
+	ModeBitmask IlluminatorMode `mavlink:"byte"`
 
 	/* Illuminator mode */
-	Mode IlluminatorMode // byte
-
+	Mode IlluminatorMode `mavlink:"byte"`
 }
 
 func (m *IlluminatorStatus) ID() int        { return 440 }
@@ -26640,7 +26607,7 @@ type WinchStatus struct {
 	Current float32
 
 	/* Status flags */
-	Status MavWinchStatusFlag // uint32
+	Status MavWinchStatusFlag `mavlink:"uint32,bitmask"`
 
 	/* Temperature of the motor. INT16_MAX if unknown */
 	Temperature int16
@@ -26711,10 +26678,10 @@ type OpenDroneIdBasicId struct {
 	IdOrMac [20]byte
 
 	/* Indicates the format for the uas_id field of this message. */
-	IdType MavOdidIdType // byte
+	IdType MavOdidIdType `mavlink:"byte"`
 
 	/* Indicates the type of UA (Unmanned Aircraft). */
-	UaType MavOdidUaType // byte
+	UaType MavOdidUaType `mavlink:"byte"`
 
 	/* UAS (Unmanned Aircraft System) ID following the format specified by id_type. Shall be filled with nulls in the unused portion of the field. */
 	UasId [20]byte
@@ -26818,26 +26785,25 @@ type OpenDroneIdLocation struct {
 	IdOrMac [20]byte
 
 	/* Indicates whether the unmanned aircraft is on the ground or in the air. */
-	Status MavOdidStatus // byte
+	Status MavOdidStatus `mavlink:"byte"`
 
 	/* Indicates the reference point for the height field. */
-	HeightReference MavOdidHeightRef // byte
+	HeightReference MavOdidHeightRef `mavlink:"byte"`
 
 	/* The accuracy of the horizontal position. */
-	HorizontalAccuracy MavOdidHorAcc // byte
+	HorizontalAccuracy MavOdidHorAcc `mavlink:"byte"`
 
 	/* The accuracy of the vertical position. */
-	VerticalAccuracy MavOdidVerAcc // byte
+	VerticalAccuracy MavOdidVerAcc `mavlink:"byte"`
 
 	/* The accuracy of the barometric altitude. */
-	BarometerAccuracy MavOdidVerAcc // byte
+	BarometerAccuracy MavOdidVerAcc `mavlink:"byte"`
 
 	/* The accuracy of the horizontal and vertical speed. */
-	SpeedAccuracy MavOdidSpeedAcc // byte
+	SpeedAccuracy MavOdidSpeedAcc `mavlink:"byte"`
 
 	/* The accuracy of the timestamps. */
-	TimestampAccuracy MavOdidTimeAcc // byte
-
+	TimestampAccuracy MavOdidTimeAcc `mavlink:"byte"`
 }
 
 func (m *OpenDroneIdLocation) ID() int        { return 12901 }
@@ -26969,7 +26935,7 @@ type OpenDroneIdAuthentication struct {
 	IdOrMac [20]byte
 
 	/* Indicates the type of authentication. */
-	AuthenticationType MavOdidAuthType // byte
+	AuthenticationType MavOdidAuthType `mavlink:"byte"`
 
 	/* Allowed range is 0 - 15. */
 	DataPage byte
@@ -27060,7 +27026,7 @@ type OpenDroneIdSelfId struct {
 	IdOrMac [20]byte
 
 	/* Indicates the type of the description field. */
-	DescriptionType MavOdidDescType // byte
+	DescriptionType MavOdidDescType `mavlink:"byte"`
 
 	/* Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field. */
 	Description [23]byte
@@ -27154,17 +27120,16 @@ type OpenDroneIdSystem struct {
 	IdOrMac [20]byte
 
 	/* Specifies the operator location type. */
-	OperatorLocationType MavOdidOperatorLocationType // byte
+	OperatorLocationType MavOdidOperatorLocationType `mavlink:"byte"`
 
 	/* Specifies the classification type of the UA. */
-	ClassificationType MavOdidClassificationType // byte
+	ClassificationType MavOdidClassificationType `mavlink:"byte"`
 
 	/* When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the category of the UA. */
-	CategoryEu MavOdidCategoryEu // byte
+	CategoryEu MavOdidCategoryEu `mavlink:"byte"`
 
 	/* When classification_type is MAV_ODID_CLASSIFICATION_TYPE_EU, specifies the class of the UA. */
-	ClassEu MavOdidClassEu // byte
-
+	ClassEu MavOdidClassEu `mavlink:"byte"`
 }
 
 func (m *OpenDroneIdSystem) ID() int        { return 12904 }
@@ -27269,7 +27234,7 @@ type OpenDroneIdOperatorId struct {
 	IdOrMac [20]byte
 
 	/* Indicates the type of the operator_id field. */
-	OperatorIdType MavOdidOperatorIdType // byte
+	OperatorIdType MavOdidOperatorIdType `mavlink:"byte"`
 
 	/* Text description or numeric value expressed as ASCII characters. Shall be filled with nulls in the unused portion of the field. */
 	OperatorId [20]byte
@@ -27402,7 +27367,7 @@ func (m *OpenDroneIdMessagePack) UnmarshalV2(buf []byte) []byte {
 /* Transmitter (remote ID system) is enabled and ready to start sending location and other required information. This is streamed by transmitter. A flight controller uses it as a condition to arm. */
 type OpenDroneIdArmStatus struct {
 	/* Status level indicating if arming is allowed. */
-	Status MavOdidArmStatus // byte
+	Status MavOdidArmStatus `mavlink:"byte"`
 
 	/* Text error message, should be empty if status is good to arm. Fill with nulls in unused portion. */
 	Error [50]byte
