@@ -1,6 +1,6 @@
-package mavlink
+package gomavlink
 
-//lifted from
+// lifted from
 // https://github.com/mavlink/c_library_v2/blob/master/checksum.h#L25
 // https://play.golang.org/p/ycYYW7bMChP
 type crc16x25 uint16

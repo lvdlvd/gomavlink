@@ -1,4 +1,4 @@
-package mavlink
+package gomavlink
 
 import "fmt"
 
@@ -36,5 +36,7 @@ func (s StreamID) SysID() uint8 { return uint8(s >> 16) }
 func (s StreamID) CompID() uint8 { return uint8(s >> 8) }
 
 // LinkID allows for system/components to send the same message over different links.
-func (s StreamID) LinkID() uint8  { return uint8(s) }
-func (s StreamID) String() string { return fmt.Sprintf("(%d.%d.%d)", s.SysID(), s.CompID(), s.LinkID()) }
+func (s StreamID) LinkID() uint8 { return uint8(s) }
+func (s StreamID) String() string {
+	return fmt.Sprintf("(%d.%d.%d)", s.SysID(), s.CompID(), s.LinkID())
+}

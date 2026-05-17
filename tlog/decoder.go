@@ -8,8 +8,8 @@ import (
 	"io"
 	"time"
 
-	mavlink "github.com/daedaleanai/gomavlink"
-	"github.com/daedaleanai/gomavlink/ardupilotmega"
+	mavlink "github.com/lvdlvd/gomavlink"
+	"github.com/lvdlvd/gomavlink/ardupilotmega"
 )
 
 // A Decoder decodes the (big endian microseconds(?) since unix epoch, ardupilot mavlink message) pairs of a tlog file.

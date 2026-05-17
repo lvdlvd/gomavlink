@@ -1,4 +1,4 @@
-package mavlink
+package gomavlink
 
 import (
 	"fmt"
