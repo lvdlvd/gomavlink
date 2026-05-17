@@ -1,7 +1,8 @@
-// +build ignore
+//go:build ignore
 
 // Usage:
-//    go run tlog/dump.go < ~/Downloads/flight.tlog 2>&1 | less
+//
+//	go run tlog/dump.go < ~/Downloads/flight.tlog 2>&1 | less
 package main
 
 import (
@@ -10,7 +11,7 @@ import (
 	"log"
 	"os"
 
-	tlog "../tlog"
+	"github.com/lvdlvd/gomavlink/tlog"
 )
 
 func main() {
