@@ -9,7 +9,7 @@ import (
 	mavlink "github.com/lvdlvd/gomavlink"
 )
 
-//go:generate stringer -output strings.go -type=MavAutopilot,MavType,MavModeFlag,MavModeFlagDecodePosition,MavState,MavComponent,MavBool,MavProtocolCapability,FirmwareVersionType,HlFailureFlag,MavGoto,MavMode,MavSysStatusSensor,MavSysStatusSensorExtended,MavFrame,MavlinkDataStreamType,FenceBreach,FenceMitigate,FenceType,MavMountMode,GimbalDeviceCapFlags,GimbalManagerCapFlags,GimbalDeviceFlags,GimbalManagerFlags,GimbalDeviceErrorFlags,GripperActions,WinchActions,UavcanNodeHealth,UavcanNodeMode,EscConnectionType,EscFailureFlags,StorageStatus,StorageType,StorageUsageFlag,OrbitYawBehaviour,WifiConfigApResponse,CellularConfigResponse,WifiConfigApMode,CompMetadataType,ActuatorConfiguration,ActuatorOutputFunction,AutotuneAxis,PreflightStorageParameterAction,PreflightStorageMissionAction,RebootShutdownAction,RebootShutdownConditions,PreflightCalibrationMagnetometer,PreflightCalibrationAccelerometer,NavTakeoffFlags,MavCmd,MavDataStream,MavRoi,MavParamType,MavParamError,MavParamExtType,MavResult,MavMissionResult,MavSeverity,MavPowerStatus,SerialControlDev,SerialControlFlag,MavDistanceSensor,MavSensorOrientation,MavMissionType,MavEstimatorType,MavBatteryType,MavBatteryFunction,MavBatteryChargeState,MavBatteryMode,MavBatteryFault,MavFuelType,MavGeneratorStatusFlag,MavVtolState,MavLandedState,AdsbAltitudeType,AdsbEmitterType,AdsbFlags,MavDoRepositionFlags,SpeedType,EstimatorStatusFlags,MotorTestOrder,MotorTestThrottleType,GpsInputIgnoreFlags,MavCollisionAction,MavCollisionThreatLevel,MavCollisionSrc,GpsFixType,RtkBaselineCoordinateSystem,LandingTargetType,VtolTransitionHeading,CameraCapFlags,VideoStreamStatusFlags,VideoStreamType,VideoStreamEncoding,CameraTrackingStatusFlags,CameraTrackingMode,CameraTrackingTargetData,CameraZoomType,SetFocusType,CameraSource,ParamAck,CameraMode,MavArmAuthDeniedReason,RcType,RcSubType,EngineControlOptions,PositionTargetTypemask,AttitudeTargetTypemask,UtmFlightState,UtmDataAvailFlags,CellularStatusFlag,CellularNetworkFailedReason,CellularNetworkRadioType,PrecisionLandMode,ParachuteAction,MavTunnelPayloadType,MavOdidIdType,MavOdidUaType,MavOdidStatus,MavOdidHeightRef,MavOdidHorAcc,MavOdidVerAcc,MavOdidSpeedAcc,MavOdidTimeAcc,MavOdidAuthType,MavOdidDescType,MavOdidOperatorLocationType,MavOdidClassificationType,MavOdidCategoryEu,MavOdidClassEu,MavOdidOperatorIdType,MavOdidArmStatus,TuneFormat,AisType,AisNavStatus,AisFlags,FailureUnit,FailureType,NavVtolLandOptions,MavWinchStatusFlag,MagCalStatus,MavEventErrorReason,MavEventCurrentSequenceFlags,HilSensorUpdatedFlags,HighresImuUpdatedFlags,CanFilterOp,MavFtpErr,MavFtpOpcode,MissionState,SafetySwitchState,IlluminatorMode,IlluminatorErrorFlags,MavStandardMode,MavModeProperty,HilActuatorControlsFlags,ComputerStatusFlags,AirspeedSensorFlags,GlobalPositionSrc,GlobalPositionFlags
+//go:generate stringer -output strings.go -type=MavAutopilot,MavType,MavModeFlag,MavModeFlagDecodePosition,MavState,MavComponent,MavBool,MavProtocolCapability,FirmwareVersionType,HlFailureFlag,MavGoto,MavMode,MavSysStatusSensor,MavSysStatusSensorExtended,MavFrame,MavlinkDataStreamType,FenceBreach,FenceMitigate,FenceType,MavMountMode,GimbalDeviceCapFlags,GimbalManagerCapFlags,GimbalDeviceFlags,GimbalManagerFlags,GimbalDeviceErrorFlags,GripperActions,WinchActions,UavcanNodeHealth,UavcanNodeMode,StorageStatus,StorageType,StorageUsageFlag,OrbitYawBehaviour,ActuatorConfiguration,ActuatorOutputFunction,AutotuneAxis,PreflightStorageParameterAction,PreflightStorageMissionAction,RebootShutdownAction,RebootShutdownConditions,PreflightCalibrationMagnetometer,PreflightCalibrationAccelerometer,NavTakeoffFlags,MavCmd,MavDataStream,MavRoi,MavParamType,MavParamError,MavParamExtType,MavResult,MavMissionResult,MavSeverity,MavPowerStatus,SerialControlDev,SerialControlFlag,MavDistanceSensor,MavSensorOrientation,MavMissionType,MavEstimatorType,MavBatteryType,MavBatteryFunction,MavBatteryChargeState,MavBatteryMode,MavBatteryFault,MavGeneratorStatusFlag,MavVtolState,MavLandedState,AdsbAltitudeType,AdsbEmitterType,AdsbFlags,MavDoRepositionFlags,SpeedType,EstimatorStatusFlags,MotorTestOrder,MotorTestThrottleType,GpsInputIgnoreFlags,MavCollisionAction,MavCollisionThreatLevel,MavCollisionSrc,GpsFixType,RtkBaselineCoordinateSystem,LandingTargetType,VtolTransitionHeading,CameraCapFlags,VideoStreamStatusFlags,VideoStreamType,VideoStreamEncoding,CameraTrackingStatusFlags,CameraTrackingMode,CameraTrackingTargetData,CameraZoomType,SetFocusType,CameraSource,ParamAck,CameraMode,MavArmAuthDeniedReason,RcType,RcSubType,EngineControlOptions,PositionTargetTypemask,AttitudeTargetTypemask,UtmFlightState,UtmDataAvailFlags,PrecisionLandMode,ParachuteAction,MavTunnelPayloadType,MavOdidIdType,MavOdidUaType,MavOdidStatus,MavOdidHeightRef,MavOdidHorAcc,MavOdidVerAcc,MavOdidSpeedAcc,MavOdidTimeAcc,MavOdidAuthType,MavOdidDescType,MavOdidOperatorLocationType,MavOdidClassificationType,MavOdidCategoryEu,MavOdidClassEu,MavOdidOperatorIdType,MavOdidArmStatus,AisType,AisNavStatus,AisFlags,FailureUnit,FailureType,NavVtolLandOptions,MavWinchStatusFlag,MagCalStatus,HilSensorUpdatedFlags,HighresImuUpdatedFlags,CanFilterOp,MavFtpErr,MavFtpOpcode,MissionState,SafetySwitchState,IlluminatorMode,IlluminatorErrorFlags,MavStandardMode,HilActuatorControlsFlags,ComputerStatusFlags,AirspeedSensorFlags
 
 /* Micro air vehicle / autopilot classes. This identifies the individual model. */
 type MavAutopilot uint32
@@ -140,23 +140,23 @@ const (
 	/* Onboard companion controller */
 	MAV_TYPE_ONBOARD_CONTROLLER MavType = 18
 
-	/* Two-rotor Tailsitter VTOL that additionally uses control surfaces in vertical operation. Note, value previously named MAV_TYPE_VTOL_DUOROTOR. */
-	MAV_TYPE_VTOL_TAILSITTER_DUOROTOR MavType = 19
+	/* Two-rotor VTOL using control surfaces in vertical operation in addition. Tailsitter. */
+	MAV_TYPE_VTOL_DUOROTOR MavType = 19
 
-	/* Quad-rotor Tailsitter VTOL using a V-shaped quad config in vertical operation. Note: value previously named MAV_TYPE_VTOL_QUADROTOR. */
-	MAV_TYPE_VTOL_TAILSITTER_QUADROTOR MavType = 20
+	/* Quad-rotor VTOL using a V-shaped quad config in vertical operation. Tailsitter. */
+	MAV_TYPE_VTOL_QUADROTOR MavType = 20
 
-	/* Tiltrotor VTOL. Fuselage and wings stay (nominally) horizontal in all flight phases. It able to tilt (some) rotors to provide thrust in cruise flight. */
+	/* Tiltrotor VTOL */
 	MAV_TYPE_VTOL_TILTROTOR MavType = 21
 
-	/* VTOL with separate fixed rotors for hover and cruise flight. Fuselage and wings stay (nominally) horizontal in all flight phases. */
-	MAV_TYPE_VTOL_FIXEDROTOR MavType = 22
+	/* VTOL reserved 2 */
+	MAV_TYPE_VTOL_RESERVED2 MavType = 22
 
-	/* Tailsitter VTOL. Fuselage and wings orientation changes depending on flight phase: vertical for hover, horizontal for cruise. Use more specific VTOL MAV_TYPE_VTOL_TAILSITTER_DUOROTOR or MAV_TYPE_VTOL_TAILSITTER_QUADROTOR if appropriate. */
-	MAV_TYPE_VTOL_TAILSITTER MavType = 23
+	/* VTOL reserved 3 */
+	MAV_TYPE_VTOL_RESERVED3 MavType = 23
 
-	/* Tiltwing VTOL. Fuselage stays horizontal in all flight phases. The whole wing, along with any attached engine, can tilt between vertical and horizontal mode. */
-	MAV_TYPE_VTOL_TILTWING MavType = 24
+	/* VTOL reserved 4 */
+	MAV_TYPE_VTOL_RESERVED4 MavType = 24
 
 	/* VTOL reserved 5 */
 	MAV_TYPE_VTOL_RESERVED5 MavType = 25
@@ -229,9 +229,6 @@ const (
 
 	/* Gripper */
 	MAV_TYPE_GRIPPER MavType = 48
-
-	/* Radio */
-	MAV_TYPE_RADIO MavType = 49
 )
 
 /* These flags encode the MAV mode, see MAV_MODE enum for useful combinations. */
@@ -259,7 +256,7 @@ const (
 	/* 0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations. */
 	MAV_MODE_FLAG_TEST_ENABLED MavModeFlag = 2
 
-	/* 0b00000001 system-specific custom mode is enabled. When using this flag to enable a custom mode all other flags should be ignored. */
+	/* 0b00000001 Reserved for future use. */
 	MAV_MODE_FLAG_CUSTOM_MODE_ENABLED MavModeFlag = 1
 )
 
@@ -323,7 +320,7 @@ const (
 	MAV_STATE_FLIGHT_TERMINATION MavState = 8
 )
 
-/* Legacy component ID values for particular types of hardware/software that might make up a MAVLink system (autopilot, cameras, servos, avoidance systems etc.).                Components are not required or expected to use IDs with names that correspond to their type or function, but may choose to do so.         Using an ID that matches the type may slightly reduce the chances of component id clashes, as, for historical reasons, it is less likely to be used by some other type of component.         System integration will still need to ensure that all components have unique IDs.          Component IDs are used for addressing messages to a particular component within a system.         A component can use any unique ID between 1 and 255 (MAV_COMP_ID_ALL value is the broadcast address, used to send to all components).                  Historically component ID were also used for identifying the type of component.         New code must not use component IDs to infer the component type, but instead check the MAV_TYPE in the HEARTBEAT message!        */
+/* Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).       Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded. */
 type MavComponent uint32
 
 const (
@@ -575,15 +572,6 @@ const (
 
 	/* Camera #6. */
 	MAV_COMP_ID_CAMERA6 MavComponent = 105
-
-	/* Radio #1. */
-	MAV_COMP_ID_RADIO MavComponent = 110
-
-	/* Radio #2. */
-	MAV_COMP_ID_RADIO2 MavComponent = 111
-
-	/* Radio #3. */
-	MAV_COMP_ID_RADIO3 MavComponent = 112
 
 	/* Servo #1. */
 	MAV_COMP_ID_SERVO1 MavComponent = 140
@@ -1515,55 +1503,6 @@ const (
 	UAVCAN_NODE_MODE_OFFLINE UavcanNodeMode = 7
 )
 
-/* Indicates the ESC connection type. */
-type EscConnectionType uint32
-
-const (
-	/* Traditional PPM ESC. */
-	ESC_CONNECTION_TYPE_PPM EscConnectionType = 0
-
-	/* Serial Bus connected ESC. */
-	ESC_CONNECTION_TYPE_SERIAL EscConnectionType = 1
-
-	/* One Shot PPM ESC. */
-	ESC_CONNECTION_TYPE_ONESHOT EscConnectionType = 2
-
-	/* I2C ESC. */
-	ESC_CONNECTION_TYPE_I2C EscConnectionType = 3
-
-	/* CAN-Bus ESC. */
-	ESC_CONNECTION_TYPE_CAN EscConnectionType = 4
-
-	/* DShot ESC. */
-	ESC_CONNECTION_TYPE_DSHOT EscConnectionType = 5
-)
-
-/* Flags to report ESC failures. */
-type EscFailureFlags uint32
-
-const (
-	/* Over current failure. */
-	ESC_FAILURE_OVER_CURRENT EscFailureFlags = 1
-
-	/* Over voltage failure. */
-	ESC_FAILURE_OVER_VOLTAGE EscFailureFlags = 2
-
-	/* Over temperature failure. */
-	ESC_FAILURE_OVER_TEMPERATURE EscFailureFlags = 4
-
-	/* Over RPM failure. */
-	ESC_FAILURE_OVER_RPM EscFailureFlags = 8
-
-	/* Inconsistent command failure i.e. out of bounds. */
-	ESC_FAILURE_INCONSISTENT_CMD EscFailureFlags = 16
-
-	/* Motor stuck failure. */
-	ESC_FAILURE_MOTOR_STUCK EscFailureFlags = 32
-
-	/* Generic ESC failure. */
-	ESC_FAILURE_GENERIC EscFailureFlags = 64
-)
-
 /* Flags to indicate the status of camera storage. */
 type StorageStatus uint32
 
@@ -1651,89 +1590,6 @@ const (
 
 	/* Vehicle uses current yaw behaviour (unchanged). The vehicle-default yaw behaviour is used if this value is specified when orbit is first commanded. */
 	ORBIT_YAW_BEHAVIOUR_UNCHANGED OrbitYawBehaviour = 5
-)
-
-/* Possible responses from a WIFI_CONFIG_AP message. */
-type WifiConfigApResponse uint32
-
-const (
-	/* Undefined response. Likely an indicative of a system that doesn't support this request. */
-	WIFI_CONFIG_AP_RESPONSE_UNDEFINED WifiConfigApResponse = 0
-
-	/* Changes accepted. */
-	WIFI_CONFIG_AP_RESPONSE_ACCEPTED WifiConfigApResponse = 1
-
-	/* Changes rejected. */
-	WIFI_CONFIG_AP_RESPONSE_REJECTED WifiConfigApResponse = 2
-
-	/* Invalid Mode. */
-	WIFI_CONFIG_AP_RESPONSE_MODE_ERROR WifiConfigApResponse = 3
-
-	/* Invalid SSID. */
-	WIFI_CONFIG_AP_RESPONSE_SSID_ERROR WifiConfigApResponse = 4
-
-	/* Invalid Password. */
-	WIFI_CONFIG_AP_RESPONSE_PASSWORD_ERROR WifiConfigApResponse = 5
-)
-
-/* Possible responses from a CELLULAR_CONFIG message. */
-type CellularConfigResponse uint32
-
-const (
-	/* Changes accepted. */
-	CELLULAR_CONFIG_RESPONSE_ACCEPTED CellularConfigResponse = 0
-
-	/* Invalid APN. */
-	CELLULAR_CONFIG_RESPONSE_APN_ERROR CellularConfigResponse = 1
-
-	/* Invalid PIN. */
-	CELLULAR_CONFIG_RESPONSE_PIN_ERROR CellularConfigResponse = 2
-
-	/* Changes rejected. */
-	CELLULAR_CONFIG_RESPONSE_REJECTED CellularConfigResponse = 3
-
-	/* PUK is required to unblock SIM card. */
-	CELLULAR_CONFIG_BLOCKED_PUK_REQUIRED CellularConfigResponse = 4
-)
-
-/* WiFi Mode. */
-type WifiConfigApMode uint32
-
-const (
-	/* WiFi mode is undefined. */
-	WIFI_CONFIG_AP_MODE_UNDEFINED WifiConfigApMode = 0
-
-	/* WiFi configured as an access point. */
-	WIFI_CONFIG_AP_MODE_AP WifiConfigApMode = 1
-
-	/* WiFi configured as a station connected to an existing local WiFi network. */
-	WIFI_CONFIG_AP_MODE_STATION WifiConfigApMode = 2
-
-	/* WiFi disabled. */
-	WIFI_CONFIG_AP_MODE_DISABLED WifiConfigApMode = 3
-)
-
-/* Supported component metadata types. These are used in the "general" metadata file returned by COMPONENT_METADATA to provide information about supported metadata types. The types are not used directly in MAVLink messages. */
-type CompMetadataType uint32
-
-const (
-	/* General information about the component. General metadata includes information about other metadata types supported by the component. Files of this type must be supported, and must be downloadable from vehicle using a MAVLink FTP URI. */
-	COMP_METADATA_TYPE_GENERAL CompMetadataType = 0
-
-	/* Parameter meta data. */
-	COMP_METADATA_TYPE_PARAMETER CompMetadataType = 1
-
-	/* Meta data that specifies which commands and command parameters the vehicle supports. (WIP) */
-	COMP_METADATA_TYPE_COMMANDS CompMetadataType = 2
-
-	/* Meta data that specifies external non-MAVLink peripherals. */
-	COMP_METADATA_TYPE_PERIPHERALS CompMetadataType = 3
-
-	/* Meta data for the events interface. */
-	COMP_METADATA_TYPE_EVENTS CompMetadataType = 4
-
-	/* Meta data for actuator configuration (motors, servos and vehicle geometry) and testing. */
-	COMP_METADATA_TYPE_ACTUATORS CompMetadataType = 5
 )
 
 /* Actuator configuration, used to change a setting on an actuator. Component information metadata can be used to know which outputs support which commands. */
@@ -1999,7 +1855,7 @@ const (
 	/* Loiter around this waypoint for X turns */
 	MAV_CMD_NAV_LOITER_TURNS MavCmd = 18
 
-	/* Loiter at the specified latitude, longitude and altitude for a certain amount of time. Multicopter vehicles stop at the point (within a vehicle-specific acceptance radius). Forward-only moving vehicles (e.g. fixed-wing) circle the point with the specified radius/direction. If the Heading Required parameter (2) is non-zero forward moving aircraft will only leave the loiter circle once heading towards the next waypoint. */
+	/* Loiter around this waypoint for X seconds */
 	MAV_CMD_NAV_LOITER_TIME MavCmd = 19
 
 	/* Return to launch location */
@@ -2110,7 +1966,7 @@ const (
 	/* Cycle a between its nominal setting and a desired PWM for a desired number of cycles with a desired period. */
 	MAV_CMD_DO_REPEAT_SERVO MavCmd = 184
 
-	/* Terminate flight immediately.           Flight termination immediately and irreversibly terminates the current flight, returning the vehicle to ground.           The vehicle will ignore RC or other input until it has been power-cycled.           Termination may trigger safety measures, including: disabling motors and deployment of parachute on multicopters, and setting flight surfaces to initiate a landing pattern on fixed-wing).           On multicopters without a parachute it may trigger a crash landing.           Support for this command can be tested using the protocol bit: MAV_PROTOCOL_CAPABILITY_FLIGHT_TERMINATION.           Support for this command can also be tested by sending the command with param1=0 (< 0.5); the ACK should be either MAV_RESULT_FAILED or MAV_RESULT_UNSUPPORTED.          */
+	/* Terminate flight immediately */
 	MAV_CMD_DO_FLIGHTTERMINATION MavCmd = 185
 
 	/* Change altitude set point. */
@@ -2140,16 +1996,16 @@ const (
 	/* Set moving direction to forward or reverse. */
 	MAV_CMD_DO_SET_REVERSE MavCmd = 194
 
-	/* Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal is not to react to this message. */
+	/* Sets the region of interest (ROI) to a location. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. */
 	MAV_CMD_DO_SET_ROI_LOCATION MavCmd = 195
 
-	/* Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. */
+	/* Sets the region of interest (ROI) to be toward next waypoint, with optional pitch/roll/yaw offset. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. */
 	MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET MavCmd = 196
 
-	/* Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. After this command the gimbal manager should go back to manual input if available, and otherwise assume a neutral position. */
+	/* Cancels any previous ROI command returning the vehicle/sensors to default flight characteristics. This can then be used by the vehicle's control system to control the vehicle attitude and the attitude of various sensors such as cameras. */
 	MAV_CMD_DO_SET_ROI_NONE MavCmd = 197
 
-	/* Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. This command can be sent to a gimbal manager but not to a gimbal device. A gimbal device is not to react to this message. */
+	/* Mount tracks system with specified system ID. Determination of target vehicle position may be done with GLOBAL_POSITION_INT or any other means. */
 	MAV_CMD_DO_SET_ROI_SYSID MavCmd = 198
 
 	/* Control onboard camera system. */
@@ -2209,7 +2065,7 @@ const (
 	/* Control vehicle engine. This is interpreted by the vehicles engine controller to change the target engine state. It is intended for vehicles with internal combustion engines */
 	MAV_CMD_DO_ENGINE_CONTROL MavCmd = 223
 
-	/*            Set the mission item with sequence number seq as the current item and emit MISSION_CURRENT (whether or not the mission number changed).           If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.    Note that mission jump repeat counters are not reset unless param2 is set (see MAV_CMD_DO_JUMP param2).            This command may trigger a mission state-machine change on some systems: for example from MISSION_STATE_NOT_STARTED or MISSION_STATE_PAUSED to MISSION_STATE_ACTIVE.           If the system is in mission mode, on those systems this command might therefore start, restart or resume the mission.           If the system is not in mission mode this command must not trigger a switch to mission mode.            The mission may be "reset" using param2.           Resetting sets jump counters to initial values (to reset counters without changing the current mission item set the param1 to `-1`).           Resetting also explicitly changes a mission state of MISSION_STATE_COMPLETE to MISSION_STATE_PAUSED or MISSION_STATE_ACTIVE, potentially allowing it to resume when it is (next) in a mission mode.     The command will ACK with MAV_RESULT_FAILED if the sequence number is out of range (including if there is no mission item).          */
+	/* Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between). */
 	MAV_CMD_DO_SET_MISSION_CURRENT MavCmd = 224
 
 	/* NOP - This command is only used to mark the upper limit of the DO commands in the enumeration */
@@ -2269,7 +2125,7 @@ const (
 	/* Starts receiver pairing. */
 	MAV_CMD_START_RX_PAIR MavCmd = 500
 
-	/*            Request the interval between messages for a particular MAVLink message ID.           The receiver should ACK the command and then emit its response in a MESSAGE_INTERVAL message.          */
+	/* Request the interval between messages for a particular MAVLink message ID. The receiver should ACK the command and then emit its response in a MESSAGE_INTERVAL message. */
 	MAV_CMD_GET_MESSAGE_INTERVAL MavCmd = 510
 
 	/* Set the interval between messages for a particular MAVLink message ID. This interface replaces REQUEST_DATA_STREAM. */
@@ -2388,7 +2244,7 @@ const (
 	/* Request VTOL transition */
 	MAV_CMD_DO_VTOL_TRANSITION MavCmd = 3000
 
-	/* Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.   If approved the COMMAND_ACK message progress field should be set with period of time that this authorization is valid in seconds.   If the authorization is denied COMMAND_ACK.result_param2 should be set with one of the reasons in MAV_ARM_AUTH_DENIED_REASON.          */
+	/* Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.   If approved the COMMAND_ACK message progress field should be set with period of time that this authorization is valid in seconds.   If the authorization is denied COMMAND_ACK.result_param2 should be set with one of the reasons in ARM_AUTH_DENIED_REASON.          */
 	MAV_CMD_ARM_AUTHORIZATION_REQUEST MavCmd = 3001
 
 	/* This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.                    */
@@ -2487,7 +2343,7 @@ const (
 	/* User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item. */
 	MAV_CMD_USER_5 MavCmd = 31014
 
-	/* Request forwarding of CAN packets from the given CAN bus to this component via this MAVLink channel. CAN Frames are sent using CAN_FRAME and CANFD_FRAME messages */
+	/* Request forwarding of CAN packets from the given CAN bus to this component via this mavlink channel. CAN Frames are sent using CAN_FRAME and CANFD_FRAME messages */
 	MAV_CMD_CAN_FORWARD MavCmd = 32000
 )
 
@@ -2599,15 +2455,6 @@ const (
 
 	/* Parameter is read-only */
 	MAV_PARAM_ERROR_READ_ONLY MavParamError = 5
-
-	/* Parameter data type (MAV_PARAM_TYPE) is not supported by flight stack (at all) */
-	MAV_PARAM_ERROR_TYPE_UNSUPPORTED MavParamError = 6
-
-	/* Parameter type does not match expected type */
-	MAV_PARAM_ERROR_TYPE_MISMATCH MavParamError = 7
-
-	/* Parameter exists but reading failed */
-	MAV_PARAM_ERROR_READ_FAIL MavParamError = 8
 )
 
 /* Specifies the datatype of a MAVLink extended parameter. */
@@ -2667,23 +2514,14 @@ const (
 	/* Command is valid, but execution has failed. This is used to indicate any non-temporary or unexpected problem, i.e. any problem that must be fixed before the command can succeed/be retried. For example, attempting to write a file when out of memory, attempting to arm when sensors are not calibrated, etc. */
 	MAV_RESULT_FAILED MavResult = 4
 
-	/* Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. */
+	/* Command is valid and is being executed. This will be followed by further progress updates, i.e. the component may send further COMMAND_ACK messages with result MAV_RESULT_IN_PROGRESS (at a rate decided by the implementation), and must terminate by sending a COMMAND_ACK message with final result of the operation. The COMMAND_ACK.progress field can be used to indicate the progress of the operation. There is no need for the sender to retry the command, but if done during execution, the component will return MAV_RESULT_IN_PROGRESS with an updated progress. */
 	MAV_RESULT_IN_PROGRESS MavResult = 5
-
-	/* Command has been cancelled (as a result of receiving a COMMAND_CANCEL message). */
-	MAV_RESULT_CANCELLED MavResult = 6
 
 	/* Command is only accepted when sent as a COMMAND_LONG. */
 	MAV_RESULT_COMMAND_LONG_ONLY MavResult = 7
 
 	/* Command is only accepted when sent as a COMMAND_INT. */
 	MAV_RESULT_COMMAND_INT_ONLY MavResult = 8
-
-	/* Command is invalid because a frame is required and the specified frame is not supported. */
-	MAV_RESULT_COMMAND_UNSUPPORTED_MAV_FRAME MavResult = 9
-
-	/* Command has been rejected because source system is not in control of the target system/component. */
-	MAV_RESULT_NOT_IN_CONTROL MavResult = 10
 )
 
 /* Result of mission operation (in a MISSION_ACK message). */
@@ -3174,20 +3012,6 @@ const (
 
 	/* Battery is not compatible due to cell configuration (e.g. 5s1p when vehicle requires 6s). */
 	BATTERY_FAULT_INCOMPATIBLE_CELLS_CONFIGURATION MavBatteryFault = 256
-)
-
-/* Fuel types for use in FUEL_TYPE. Fuel types specify the units for the maximum, available and consumed fuel, and for the flow rates. */
-type MavFuelType uint32
-
-const (
-	/* Not specified. Fuel levels are normalized (i.e. maximum is 1, and other levels are relative to 1). */
-	MAV_FUEL_TYPE_UNKNOWN MavFuelType = 0
-
-	/* A generic liquid fuel. Fuel levels are in millilitres (ml). Fuel rates are in millilitres/second. */
-	MAV_FUEL_TYPE_LIQUID MavFuelType = 1
-
-	/* A gas tank. Fuel levels are in kilo-Pascal (kPa), and flow rates are in milliliters per second (ml/s). */
-	MAV_FUEL_TYPE_GAS MavFuelType = 2
 )
 
 /* Flags to report status/failure cases for a power generator (used in GENERATOR_STATUS). Note that FAULTS are conditions that cause the generator to fail. Warnings are conditions that require attention before the next use (they indicate the system is not operating properly). */
@@ -3878,7 +3702,6 @@ const (
 	CAMERA_MODE_IMAGE_SURVEY CameraMode = 2
 )
 
-/* Reasons for denying an authorization request made with MAV_CMD_ARM_AUTHORIZATION_REQUEST. If the COMMAND_ACK result is MAV_RESULT_DENIED, this is used to set the reason in the result_param2 field. */
 type MavArmAuthDeniedReason uint32
 
 const (
@@ -3988,9 +3811,6 @@ const (
 	/* Ignore body yaw rate */
 	ATTITUDE_TARGET_TYPEMASK_BODY_YAW_RATE_IGNORE AttitudeTargetTypemask = 4
 
-	/* Use 3D body thrust setpoint instead of throttle */
-	ATTITUDE_TARGET_TYPEMASK_THRUST_BODY_SET AttitudeTargetTypemask = 32
-
 	/* Ignore throttle */
 	ATTITUDE_TARGET_TYPEMASK_THROTTLE_IGNORE AttitudeTargetTypemask = 64
 
@@ -4045,82 +3865,6 @@ const (
 
 	/* The fields next_lat, next_lon and next_alt contain valid data. */
 	UTM_DATA_AVAIL_FLAGS_NEXT_WAYPOINT_AVAILABLE UtmDataAvailFlags = 128
-)
-
-/* These flags encode the cellular network status */
-type CellularStatusFlag uint32
-
-const (
-	/* State unknown or not reportable. */
-	CELLULAR_STATUS_FLAG_UNKNOWN CellularStatusFlag = 0
-
-	/* Modem is unusable */
-	CELLULAR_STATUS_FLAG_FAILED CellularStatusFlag = 1
-
-	/* Modem is being initialized */
-	CELLULAR_STATUS_FLAG_INITIALIZING CellularStatusFlag = 2
-
-	/* Modem is locked */
-	CELLULAR_STATUS_FLAG_LOCKED CellularStatusFlag = 3
-
-	/* Modem is not enabled and is powered down */
-	CELLULAR_STATUS_FLAG_DISABLED CellularStatusFlag = 4
-
-	/* Modem is currently transitioning to the CELLULAR_STATUS_FLAG_DISABLED state */
-	CELLULAR_STATUS_FLAG_DISABLING CellularStatusFlag = 5
-
-	/* Modem is currently transitioning to the CELLULAR_STATUS_FLAG_ENABLED state */
-	CELLULAR_STATUS_FLAG_ENABLING CellularStatusFlag = 6
-
-	/* Modem is enabled and powered on but not registered with a network provider and not available for data connections */
-	CELLULAR_STATUS_FLAG_ENABLED CellularStatusFlag = 7
-
-	/* Modem is searching for a network provider to register */
-	CELLULAR_STATUS_FLAG_SEARCHING CellularStatusFlag = 8
-
-	/* Modem is registered with a network provider, and data connections and messaging may be available for use */
-	CELLULAR_STATUS_FLAG_REGISTERED CellularStatusFlag = 9
-
-	/* Modem is disconnecting and deactivating the last active packet data bearer. This state will not be entered if more than one packet data bearer is active and one of the active bearers is deactivated */
-	CELLULAR_STATUS_FLAG_DISCONNECTING CellularStatusFlag = 10
-
-	/* Modem is activating and connecting the first packet data bearer. Subsequent bearer activations when another bearer is already active do not cause this state to be entered */
-	CELLULAR_STATUS_FLAG_CONNECTING CellularStatusFlag = 11
-
-	/* One or more packet data bearers is active and connected */
-	CELLULAR_STATUS_FLAG_CONNECTED CellularStatusFlag = 12
-)
-
-/* These flags are used to diagnose the failure state of CELLULAR_STATUS */
-type CellularNetworkFailedReason uint32
-
-const (
-	/* No error */
-	CELLULAR_NETWORK_FAILED_REASON_NONE CellularNetworkFailedReason = 0
-
-	/* Error state is unknown */
-	CELLULAR_NETWORK_FAILED_REASON_UNKNOWN CellularNetworkFailedReason = 1
-
-	/* SIM is required for the modem but missing */
-	CELLULAR_NETWORK_FAILED_REASON_SIM_MISSING CellularNetworkFailedReason = 2
-
-	/* SIM is available, but not usable for connection */
-	CELLULAR_NETWORK_FAILED_REASON_SIM_ERROR CellularNetworkFailedReason = 3
-)
-
-/* Cellular network radio type */
-type CellularNetworkRadioType uint32
-
-const (
-	CELLULAR_NETWORK_RADIO_TYPE_NONE CellularNetworkRadioType = 0
-
-	CELLULAR_NETWORK_RADIO_TYPE_GSM CellularNetworkRadioType = 1
-
-	CELLULAR_NETWORK_RADIO_TYPE_CDMA CellularNetworkRadioType = 2
-
-	CELLULAR_NETWORK_RADIO_TYPE_WCDMA CellularNetworkRadioType = 3
-
-	CELLULAR_NETWORK_RADIO_TYPE_LTE CellularNetworkRadioType = 4
 )
 
 /* Precision land modes (used in MAV_CMD_NAV_LAND). */
@@ -4555,17 +4299,6 @@ const (
 	MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC MavOdidArmStatus = 1
 )
 
-/* Tune formats (used for vehicle buzzer/tone generation). */
-type TuneFormat uint32
-
-const (
-	/* Format is QBasic 1.1 Play: https://www.qbasic.net/en/reference/qb11/Statement/PLAY-006.htm. */
-	TUNE_FORMAT_QBASIC1_1 TuneFormat = 1
-
-	/* Format is Modern Music Markup Language (MML): https://en.wikipedia.org/wiki/Music_Macro_Language#Modern_MML. */
-	TUNE_FORMAT_MML_MODERN TuneFormat = 2
-)
-
 /* Type of AIS vessel, enum duplicated from AIS standard, https://gpsd.gitlab.io/gpsd/AIVDM.html */
 type AisType uint32
 
@@ -4823,42 +4556,37 @@ const (
 type AisFlags uint32
 
 const (
-	/* 1 = High (Position accuracy less than or equal to 10m), 0 = Low (position accuracy greater than 10m). */
+	/* 1 = Position accuracy less than 10m, 0 = position accuracy greater than 10m. */
 	AIS_FLAGS_POSITION_ACCURACY AisFlags = 1
 
-	/* The COG field contains valid data */
 	AIS_FLAGS_VALID_COG AisFlags = 2
 
-	/* The velocity field contains valid data */
 	AIS_FLAGS_VALID_VELOCITY AisFlags = 4
 
 	/* 1 = Velocity over 52.5765m/s (102.2 knots) */
 	AIS_FLAGS_HIGH_VELOCITY AisFlags = 8
 
-	/* The turn_rate field contains valid data */
 	AIS_FLAGS_VALID_TURN_RATE AisFlags = 16
 
-	/* Only the sign of the returned turn_rate value is valid. The actual turn rate is either greater than 5deg/30s or less than -5deg/30s. */
+	/* Only the sign of the returned turn rate value is valid, either greater than 5deg/30s or less than -5deg/30s */
 	AIS_FLAGS_TURN_RATE_SIGN_ONLY AisFlags = 32
 
 	AIS_FLAGS_VALID_DIMENSIONS AisFlags = 64
 
-	/* Distance to bow is greater than or equal to 511m */
+	/* Distance to bow is larger than 511m */
 	AIS_FLAGS_LARGE_BOW_DIMENSION AisFlags = 128
 
-	/* Distance to stern is greater than or equal to 511m */
+	/* Distance to stern is larger than 511m */
 	AIS_FLAGS_LARGE_STERN_DIMENSION AisFlags = 256
 
-	/* Distance to port side is greater than or equal to 63m */
+	/* Distance to port side is larger than 63m */
 	AIS_FLAGS_LARGE_PORT_DIMENSION AisFlags = 512
 
-	/* Distance to starboard side is greater than or equal to 63m */
+	/* Distance to starboard side is larger than 63m */
 	AIS_FLAGS_LARGE_STARBOARD_DIMENSION AisFlags = 1024
 
-	/* The callsign field contains valid data */
 	AIS_FLAGS_VALID_CALLSIGN AisFlags = 2048
 
-	/* The name field contains valid data */
 	AIS_FLAGS_VALID_NAME AisFlags = 4096
 )
 
@@ -4946,44 +4674,14 @@ const (
 	/* Winch is healthy */
 	MAV_WINCH_STATUS_HEALTHY MavWinchStatusFlag = 1
 
-	/* Winch line is fully retracted */
+	/* Winch thread is fully retracted */
 	MAV_WINCH_STATUS_FULLY_RETRACTED MavWinchStatusFlag = 2
 
 	/* Winch motor is moving */
 	MAV_WINCH_STATUS_MOVING MavWinchStatusFlag = 4
 
-	/* Winch clutch is engaged allowing motor to move freely. */
+	/* Winch clutch is engaged allowing motor to move freely */
 	MAV_WINCH_STATUS_CLUTCH_ENGAGED MavWinchStatusFlag = 8
-
-	/* Winch is locked by locking mechanism. */
-	MAV_WINCH_STATUS_LOCKED MavWinchStatusFlag = 16
-
-	/* Winch is gravity dropping payload. */
-	MAV_WINCH_STATUS_DROPPING MavWinchStatusFlag = 32
-
-	/* Winch is arresting payload descent. */
-	MAV_WINCH_STATUS_ARRESTING MavWinchStatusFlag = 64
-
-	/* Winch is using torque measurements to sense the ground. */
-	MAV_WINCH_STATUS_GROUND_SENSE MavWinchStatusFlag = 128
-
-	/* Winch is returning to the fully retracted position. */
-	MAV_WINCH_STATUS_RETRACTING MavWinchStatusFlag = 256
-
-	/* Winch is redelivering the payload. This is a failover state if the line tension goes above a threshold during RETRACTING. */
-	MAV_WINCH_STATUS_REDELIVER MavWinchStatusFlag = 512
-
-	/* Winch is abandoning the line and possibly payload. Winch unspools the entire calculated line length. This is a failover state from REDELIVER if the number of attempts exceeds a threshold. */
-	MAV_WINCH_STATUS_ABANDON_LINE MavWinchStatusFlag = 1024
-
-	/* Winch is engaging the locking mechanism. */
-	MAV_WINCH_STATUS_LOCKING MavWinchStatusFlag = 2048
-
-	/* Winch is spooling on line. */
-	MAV_WINCH_STATUS_LOAD_LINE MavWinchStatusFlag = 4096
-
-	/* Winch is loading a payload. */
-	MAV_WINCH_STATUS_LOAD_PAYLOAD MavWinchStatusFlag = 8192
 )
 
 type MagCalStatus uint32
@@ -5004,22 +4702,6 @@ const (
 	MAG_CAL_BAD_ORIENTATION MagCalStatus = 6
 
 	MAG_CAL_BAD_RADIUS MagCalStatus = 7
-)
-
-/* Reason for an event error response. */
-type MavEventErrorReason uint32
-
-const (
-	/* The requested event is not available (anymore). */
-	MAV_EVENT_ERROR_REASON_UNAVAILABLE MavEventErrorReason = 0
-)
-
-/* Flags for CURRENT_EVENT_SEQUENCE. */
-type MavEventCurrentSequenceFlags uint32
-
-const (
-	/* A sequence reset has happened (e.g. vehicle reboot). */
-	MAV_EVENT_CURRENT_SEQUENCE_FLAGS_RESET MavEventCurrentSequenceFlags = 1
 )
 
 /* Flags in the HIL_SENSOR message indicate which fields have updated since the last message */
@@ -5123,7 +4805,7 @@ const (
 	CAN_FILTER_REMOVE CanFilterOp = 2
 )
 
-/* MAV FTP error codes (may be used in FILE_TRANSFER_PROTOCOL). See https://mavlink.io/en/services/ftp.html. */
+/* MAV FTP error codes (https://mavlink.io/en/services/ftp.html) */
 type MavFtpErr uint32
 
 const (
@@ -5161,7 +4843,7 @@ const (
 	MAV_FTP_ERR_FILENOTFOUND MavFtpErr = 10
 )
 
-/* MAV FTP opcodes (may be used in FILE_TRANSFER_PROTOCOL). See https://mavlink.io/en/services/ftp.html. */
+/* MAV FTP opcodes: https://mavlink.io/en/services/ftp.html */
 type MavFtpOpcode uint32
 
 const (
@@ -5314,20 +4996,6 @@ const (
 	MAV_STANDARD_MODE_TAKEOFF MavStandardMode = 8
 )
 
-/* Mode properties.        */
-type MavModeProperty uint32
-
-const (
-	/* If set, this mode is an advanced mode.           For example a rate-controlled manual mode might be advanced, whereas a position-controlled manual mode is not.           A GCS can optionally use this flag to configure the UI for its intended users.          */
-	MAV_MODE_PROPERTY_ADVANCED MavModeProperty = 1
-
-	/* If set, this mode should not be added to the list of selectable modes.           The mode might still be selected by the FC directly (for example as part of a failsafe).          */
-	MAV_MODE_PROPERTY_NOT_USER_SELECTABLE MavModeProperty = 2
-
-	/* If set, this mode is automatically controlled (it may use but does not require a manual controller).           If unset the mode is a assumed to require user input (be a manual mode).          */
-	MAV_MODE_PROPERTY_AUTO_MODE MavModeProperty = 4
-)
-
 /* Flags used in HIL_ACTUATOR_CONTROLS message. */
 type HilActuatorControlsFlags uint32
 
@@ -5364,46 +5032,6 @@ const (
 	AIRSPEED_SENSOR_USING AirspeedSensorFlags = 2
 )
 
-/* Source for GLOBAL_POSITION measurement or estimate. */
-type GlobalPositionSrc uint32
-
-const (
-	/* Source is unknown or not one of the listed types. */
-	GLOBAL_POSITION_SRC_UNKNOWN GlobalPositionSrc = 0
-
-	/* Global Navigation Satellite System (e.g.: GPS, Galileo, Glonass, BeiDou). */
-	GLOBAL_POSITION_SRC_GNSS GlobalPositionSrc = 1
-
-	/* Vision system (e.g.: map matching). */
-	GLOBAL_POSITION_SRC_VISION GlobalPositionSrc = 2
-
-	/* A pseudo-satellite system using transceiver beacons to perform GNSS-like positioning. */
-	GLOBAL_POSITION_SRC_PSEUDOLITES GlobalPositionSrc = 3
-
-	/* Terrain referenced navigation. */
-	GLOBAL_POSITION_SRC_TERRAIN GlobalPositionSrc = 4
-
-	/* Magnetic positioning. */
-	GLOBAL_POSITION_SRC_MAGNETIC GlobalPositionSrc = 5
-
-	/* Estimated position based on various sensors (eg. a Kalman Filter). */
-	GLOBAL_POSITION_SRC_ESTIMATOR GlobalPositionSrc = 6
-
-	/* Low Earth Orbit satellite-based positioning (e.g.: Starlink, Xona PULSAR). */
-	GLOBAL_POSITION_SRC_LEO GlobalPositionSrc = 7
-)
-
-/* Status flags for GLOBAL_POSITION */
-type GlobalPositionFlags uint32
-
-const (
-	/* Unhealthy sensor/estimator. */
-	GLOBAL_POSITION_UNHEALTHY GlobalPositionFlags = 1
-
-	/* True if the data originates from or is consumed by the primary estimator. */
-	GLOBAL_POSITION_PRIMARY GlobalPositionFlags = 2
-)
-
 // The Dialect factory function constructs the proper empty message given the message ID.
 func Dialect(mid int) mavlink.Message {
 	switch mid {
@@ -5421,8 +5049,6 @@ func Dialect(mid int) mavlink.Message {
 		return &ChangeOperatorControlAck{}
 	case 7:
 		return &AuthKey{}
-	case 8:
-		return &LinkNodeStatus{}
 	case 11:
 		return &SetMode{}
 	case 20:
@@ -5521,8 +5147,6 @@ func Dialect(mid int) mavlink.Message {
 		return &CommandLong{}
 	case 77:
 		return &CommandAck{}
-	case 80:
-		return &CommandCancel{}
 	case 81:
 		return &ManualSetpoint{}
 	case 82:
@@ -5747,18 +5371,10 @@ func Dialect(mid int) mavlink.Message {
 		return &GimbalManagerSetPitchyaw{}
 	case 288:
 		return &GimbalManagerSetManualControl{}
-	case 290:
-		return &EscInfo{}
-	case 291:
-		return &EscStatus{}
 	case 295:
 		return &Airspeed{}
-	case 296:
-		return &GlobalPositionSensor{}
 	case 299:
 		return &WifiConfigAp{}
-	case 300:
-		return &ProtocolVersion{}
 	case 301:
 		return &AisVessel{}
 	case 310:
@@ -5783,12 +5399,8 @@ func Dialect(mid int) mavlink.Message {
 		return &TrajectoryRepresentationWaypoints{}
 	case 333:
 		return &TrajectoryRepresentationBezier{}
-	case 334:
-		return &CellularStatus{}
 	case 335:
 		return &IsbdLinkStatus{}
-	case 336:
-		return &CellularConfig{}
 	case 339:
 		return &RawRpm{}
 	case 340:
@@ -5799,22 +5411,14 @@ func Dialect(mid int) mavlink.Message {
 		return &DebugFloatArray{}
 	case 360:
 		return &OrbitExecutionStatus{}
-	case 361:
-		return &FigureEightExecutionStatus{}
 	case 370:
 		return &SmartBatteryInfo{}
-	case 371:
-		return &FuelStatus{}
-	case 372:
-		return &BatteryInfo{}
 	case 373:
 		return &GeneratorStatus{}
 	case 375:
 		return &ActuatorOutputStatus{}
 	case 376:
 		return &RelayStatus{}
-	case 380:
-		return &TimeEstimateToTarget{}
 	case 385:
 		return &Tunnel{}
 	case 386:
@@ -5825,32 +5429,6 @@ func Dialect(mid int) mavlink.Message {
 		return &CanFilterModify{}
 	case 390:
 		return &OnboardComputerStatus{}
-	case 395:
-		return &ComponentInformation{}
-	case 396:
-		return &ComponentInformationBasic{}
-	case 397:
-		return &ComponentMetadata{}
-	case 400:
-		return &PlayTuneV2{}
-	case 401:
-		return &SupportedTunes{}
-	case 410:
-		return &Event{}
-	case 411:
-		return &CurrentEventSequence{}
-	case 412:
-		return &RequestEvent{}
-	case 413:
-		return &ResponseEventError{}
-	case 435:
-		return &AvailableModes{}
-	case 436:
-		return &CurrentMode{}
-	case 437:
-		return &AvailableModesMonitor{}
-	case 440:
-		return &IlluminatorStatus{}
 	case 9000:
 		return &WheelDistance{}
 	case 9005:
@@ -6348,100 +5926,6 @@ func (m *AuthKey) UnmarshalV1(buf []byte) []byte {
 }
 
 func (m *AuthKey) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Status generated in each node in the communication chain and injected into MAVLink stream. */
-type LinkNodeStatus struct {
-	/* Timestamp (time since system boot). */
-	Timestamp uint64
-
-	/* Transmit rate */
-	TxRate uint32
-
-	/* Receive rate */
-	RxRate uint32
-
-	/* Messages sent */
-	MessagesSent uint32
-
-	/* Messages received (estimated from counting seq) */
-	MessagesReceived uint32
-
-	/* Messages lost (estimated from counting seq) */
-	MessagesLost uint32
-
-	/* Number of bytes that could not be parsed correctly. */
-	RxParseErr uint16
-
-	/* Transmit buffer overflows. This number wraps around as it reaches UINT16_MAX */
-	TxOverflows uint16
-
-	/* Receive buffer overflows. This number wraps around as it reaches UINT16_MAX */
-	RxOverflows uint16
-
-	/* Remaining free transmit buffer space */
-	TxBuf byte
-
-	/* Remaining free receive buffer space */
-	RxBuf byte
-}
-
-func (m *LinkNodeStatus) ID() int        { return 8 }
-func (m *LinkNodeStatus) CRCExtra() byte { return 117 }
-
-func (m *LinkNodeStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, (m.Timestamp))
-	buf = marshalUint32(buf, (m.TxRate))
-	buf = marshalUint32(buf, (m.RxRate))
-	buf = marshalUint32(buf, (m.MessagesSent))
-	buf = marshalUint32(buf, (m.MessagesReceived))
-	buf = marshalUint32(buf, (m.MessagesLost))
-	buf = marshalUint16(buf, (m.RxParseErr))
-	buf = marshalUint16(buf, (m.TxOverflows))
-	buf = marshalUint16(buf, (m.RxOverflows))
-	buf = marshalByte(buf, (m.TxBuf))
-	buf = marshalByte(buf, (m.RxBuf))
-
-	return buf
-}
-
-func (m *LinkNodeStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *LinkNodeStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Timestamp = unmarshalUint64(buf)
-
-	buf, m.TxRate = unmarshalUint32(buf)
-
-	buf, m.RxRate = unmarshalUint32(buf)
-
-	buf, m.MessagesSent = unmarshalUint32(buf)
-
-	buf, m.MessagesReceived = unmarshalUint32(buf)
-
-	buf, m.MessagesLost = unmarshalUint32(buf)
-
-	buf, m.RxParseErr = unmarshalUint16(buf)
-
-	buf, m.TxOverflows = unmarshalUint16(buf)
-
-	buf, m.RxOverflows = unmarshalUint16(buf)
-
-	buf, m.TxBuf = unmarshalByte(buf)
-
-	buf, m.RxBuf = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *LinkNodeStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 
 	return buf
@@ -7026,7 +6510,7 @@ func (m *ScaledImu) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging. */
+/* The RAW IMU readings for a 9DOF sensor, which is identified by the id (default IMU1). This message should always contain the true raw values without any scaling to allow data capture and system debugging. On ArduPilot platforms, this message is identical to SCALED_IMU. By default, only RAW_IMU is sent via telemetry for historical reasons, SCALED_IMU can be requested. */
 type RawImu struct {
 	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. */
 	TimeUsec uint64
@@ -7675,7 +7159,7 @@ type RcChannelsRaw struct {
 	/* Servo output port (set of 8 outputs = 1 port). Flight stacks running on Pixhawk should use: 0 = MAIN, 1 = AUX. */
 	Port byte
 
-	/* Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown. */
+	/* Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown. */
 	Rssi byte
 }
 
@@ -7990,7 +7474,7 @@ func (m *MissionWritePartialList) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Message encoding a mission item.         This message is emitted to announce the presence of a mission item and to set a mission item on the system.         The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html. */
+/* Message encoding a mission item. This message is emitted to announce                 the presence of a mission item and to set a mission item on the system. The mission item can be either in x, y, z meters (type: LOCAL) or x:lat, y:lon, z:altitude. Local frame is Z-down, right handed (NED), global frame is Z-up, right handed (ENU). NaN may be used to indicate an optional/default value (e.g. to use the system's current latitude or yaw rather than a specific value). See also https://mavlink.io/en/services/mission.html. */
 type MissionItem struct {
 	/* PARAM1, see MAV_CMD enum */
 	Param1 float32
@@ -8227,15 +7711,6 @@ type MissionCurrent struct {
 	/* Sequence */
 	Seq uint16
 
-	/* Id of current on-vehicle mission plan, or 0 if IDs are not supported or there is no mission loaded. GCS can use this to track changes to the mission plan type. The same value is returned on mission upload (in the MISSION_ACK). */
-	MissionId uint32 /*EXTENSION*/
-
-	/* Id of current on-vehicle fence plan, or 0 if IDs are not supported or there is no fence loaded. GCS can use this to track changes to the fence plan type. The same value is returned on fence upload (in the MISSION_ACK). */
-	FenceId uint32 /*EXTENSION*/
-
-	/* Id of current on-vehicle rally point plan, or 0 if IDs are not supported or there are no rally points loaded. GCS can use this to track changes to the rally point plan type. The same value is returned on rally point upload (in the MISSION_ACK). */
-	RallyPointsId uint32 /*EXTENSION*/
-
 	/* Total number of mission items on vehicle (on last item, sequence == total). If the autopilot stores its home location as part of the mission this will be excluded from the total. 0: Not supported, UINT16_MAX if no mission is present on the vehicle. */
 	Total uint16 /*EXTENSION*/
 
@@ -8258,9 +7733,6 @@ func (m *MissionCurrent) MarshalV1(buf []byte) []byte {
 
 func (m *MissionCurrent) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalUint32(buf, (m.MissionId))
-	buf = marshalUint32(buf, (m.FenceId))
-	buf = marshalUint32(buf, (m.RallyPointsId))
 	buf = marshalUint16(buf, (m.Total))
 	buf = marshalByte(buf, byte(m.MissionState))
 	buf = marshalByte(buf, (m.MissionMode))
@@ -8277,9 +7749,6 @@ func (m *MissionCurrent) UnmarshalV1(buf []byte) []byte {
 
 func (m *MissionCurrent) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.MissionId = unmarshalUint32(buf)
-	buf, m.FenceId = unmarshalUint32(buf)
-	buf, m.RallyPointsId = unmarshalUint32(buf)
 	buf, m.Total = unmarshalUint16(buf)
 	{
 		var v byte
@@ -8352,9 +7821,6 @@ type MissionCount struct {
 	/* Component ID */
 	TargetComponent byte
 
-	/* Id of current on-vehicle mission, fence, or rally point plan (on download from vehicle).         This field is used when downloading a plan from a vehicle to a GCS.         0 on upload to the vehicle from GCS.         0 if plan ids are not supported.         The current on-vehicle plan ids are streamed in `MISSION_CURRENT`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded.         The ids are recalculated by the vehicle when any part of the on-vehicle plan changes (when a new plan is uploaded, the vehicle returns the new id to the GCS in MISSION_ACK).        */
-	OpaqueId uint32 /*EXTENSION*/
-
 	/* Mission type. */
 	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
@@ -8373,7 +7839,6 @@ func (m *MissionCount) MarshalV1(buf []byte) []byte {
 
 func (m *MissionCount) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalUint32(buf, (m.OpaqueId))
 	buf = marshalByte(buf, byte(m.MissionType))
 
 	return buf
@@ -8392,7 +7857,6 @@ func (m *MissionCount) UnmarshalV1(buf []byte) []byte {
 
 func (m *MissionCount) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.OpaqueId = unmarshalUint32(buf)
 	{
 		var v byte
 		buf, v = unmarshalByte(buf)
@@ -8497,9 +7961,6 @@ type MissionAck struct {
 	/* Mission result. */
 	Type MavMissionResult `mavlink:"byte"`
 
-	/* Id of new on-vehicle mission, fence, or rally point plan (on upload to vehicle).         The id is calculated and returned by a vehicle when a new plan is uploaded by a GCS.         The only requirement on the id is that it must change when there is any change to the on-vehicle plan type (there is no requirement that the id be globally unique).         0 on download from the vehicle to the GCS (on download the ID is set in MISSION_COUNT).         0 if plan ids are not supported.         The current on-vehicle plan ids are streamed in `MISSION_CURRENT`, allowing a GCS to determine if any part of the plan has changed and needs to be re-uploaded.        */
-	OpaqueId uint32 /*EXTENSION*/
-
 	/* Mission type. */
 	MissionType MavMissionType `mavlink:"byte"` /*EXTENSION*/
 
@@ -8518,7 +7979,6 @@ func (m *MissionAck) MarshalV1(buf []byte) []byte {
 
 func (m *MissionAck) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalUint32(buf, (m.OpaqueId))
 	buf = marshalByte(buf, byte(m.MissionType))
 
 	return buf
@@ -8541,7 +8001,6 @@ func (m *MissionAck) UnmarshalV1(buf []byte) []byte {
 
 func (m *MissionAck) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.OpaqueId = unmarshalUint32(buf)
 	{
 		var v byte
 		buf, v = unmarshalByte(buf)
@@ -9377,7 +8836,7 @@ type RcChannels struct {
 	/* Total number of RC channels being received. This can be larger than 18, indicating that more channels are available but not given in this message. This value should be 0 when no RC channels are available. */
 	Chancount byte
 
-	/* Receive signal strength indicator in device-dependent units/scale. Values: [0-254], UINT8_MAX: invalid/unknown. */
+	/* Receive signal strength indicator in device-dependent units/scale. Values: [0-254], 255: invalid/unknown. */
 	Rssi byte
 }
 
@@ -9581,7 +9040,7 @@ func (m *DataStream) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Manual (joystick) control message.         This message represents movement axes and button using standard joystick axes nomenclature. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask. For more information see https://mavlink.io/en/services/manual_control.html */
+/* This message provides an API for manually controlling the vehicle using standard joystick axes nomenclature, along with a joystick-like input device. Unused axes can be disabled and buttons states are transmitted as individual on/off bits of a bitmask */
 type ManualControl struct {
 	/* X-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to forward(1000)-backward(-1000) movement on a joystick and the pitch of a vehicle. */
 	X int16
@@ -9592,10 +9051,10 @@ type ManualControl struct {
 	/* Z-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to a separate slider movement with maximum being 1000 and minimum being -1000 on a joystick and the thrust of a vehicle. Positive values are positive thrust, negative values are negative thrust. */
 	Z int16
 
-	/* R-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to a twisting of the joystick, with clockwise being 1000 and counter-clockwise being -1000, and the yaw of a vehicle. */
+	/* R-axis, normalized to the range [-1000,1000]. A value of INT16_MAX indicates that this axis is invalid. Generally corresponds to a twisting of the joystick, with counter-clockwise being 1000 and clockwise being -1000, and the yaw of a vehicle. */
 	R int16
 
-	/* A bitfield corresponding to the joystick buttons' 0-15 current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1. */
+	/* A bitfield corresponding to the joystick buttons' current state, 1 for pressed, 0 for released. The lowest bit corresponds to Button 1. */
 	Buttons uint16
 
 	/* The system to be controlled. */
@@ -10029,7 +9488,7 @@ func (m *VfrHud) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Send a command with up to seven parameters to the MAV, where params 5 and 6 are integers and the other values are floats. This is preferred over COMMAND_LONG as it allows the MAV_FRAME to be specified for interpreting positional information, such as altitude. COMMAND_INT is also preferred when sending latitude and longitude data in params 5 and 6, as it allows for greater precision. Param 5 and 6 encode positional data as scaled integers, where the scaling depends on the actual command value. NaN or INT32_MAX may be used in float/integer params (respectively) to indicate optional/default values (e.g. to use the component's current latitude, yaw rather than a specific value). The command microservice is documented at https://mavlink.io/en/services/command.html */
+/* Message encoding a command with parameters as scaled integers. Scaling depends on the actual command value. The command microservice is documented at https://mavlink.io/en/services/command.html */
 type CommandInt struct {
 	/* PARAM1, see MAV_CMD enum */
 	Param1 float32
@@ -10249,16 +9708,16 @@ type CommandAck struct {
 	/* Result of command. */
 	Result MavResult `mavlink:"byte"`
 
-	/* Additional result information. Can be set with a command-specific enum containing command-specific error reasons for why the command might be denied. If used, the associated enum must be documented in the corresponding MAV_CMD (this enum should have a 0 value to indicate "unused" or "unknown"). */
+	/* Additional parameter of the result, example: which parameter of MAV_CMD_NAV_WAYPOINT caused it to be denied. */
 	ResultParam2 int32 /*EXTENSION*/
 
-	/* The progress percentage when result is MAV_RESULT_IN_PROGRESS. Values: [0-100], or UINT8_MAX if the progress is unknown. */
+	/* Also used as result_param1, it can be set with a enum containing the errors reasons of why the command was denied or the progress percentage or 255 if unknown the progress when result is MAV_RESULT_IN_PROGRESS. */
 	Progress byte /*EXTENSION*/
 
-	/* System ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement. */
+	/* System which requested the command to be executed */
 	TargetSystem byte /*EXTENSION*/
 
-	/* Component ID of the target recipient. This is the ID of the system that sent the command for which this COMMAND_ACK is an acknowledgement. */
+	/* Component which requested the command to be executed */
 	TargetComponent byte /*EXTENSION*/
 
 }
@@ -10306,56 +9765,6 @@ func (m *CommandAck) UnmarshalV2(buf []byte) []byte {
 	buf, m.Progress = unmarshalByte(buf)
 	buf, m.TargetSystem = unmarshalByte(buf)
 	buf, m.TargetComponent = unmarshalByte(buf)
-
-	return buf
-}
-
-/* Cancel a long running command. The target system should respond with a COMMAND_ACK to the original command with result=MAV_RESULT_CANCELLED if the long running process was cancelled. If it has already completed, the cancel action can be ignored. The cancel action can be retried until some sort of acknowledgement to the original command has been received. The command microservice is documented at https://mavlink.io/en/services/command.html */
-type CommandCancel struct {
-	/* Command ID (of command to cancel). */
-	Command MavCmd `mavlink:"uint16"`
-
-	/* System executing long running command. Should not be broadcast (0). */
-	TargetSystem byte
-
-	/* Component executing long running command. */
-	TargetComponent byte
-}
-
-func (m *CommandCancel) ID() int        { return 80 }
-func (m *CommandCancel) CRCExtra() byte { return 14 }
-
-func (m *CommandCancel) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, uint16(m.Command))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-
-	return buf
-}
-
-func (m *CommandCancel) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *CommandCancel) UnmarshalV1(buf []byte) []byte {
-
-	{
-		var v uint16
-		buf, v = unmarshalUint16(buf)
-		m.Command = MavCmd(v)
-	}
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *CommandCancel) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
 
 	return buf
 }
@@ -10435,7 +9844,7 @@ type SetAttitudeTarget struct {
 	/* Timestamp (time since system boot). */
 	TimeBootMs uint32
 
-	/* Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0) from MAV_FRAME_LOCAL_NED to MAV_FRAME_BODY_FRD */
+	/* Attitude quaternion (w, x, y, z order, zero-rotation is 1, 0, 0, 0) */
 	Q [4]float32
 
 	/* Body roll rate */
@@ -10458,10 +9867,6 @@ type SetAttitudeTarget struct {
 
 	/* Bitmap to indicate which dimensions should be ignored by the vehicle. */
 	TypeMask AttitudeTargetTypemask `mavlink:"byte,bitmask"`
-
-	/* 3D thrust setpoint in the body NED frame, normalized to -1 .. 1 */
-	ThrustBody [3]float32 /*EXTENSION*/
-
 }
 
 func (m *SetAttitudeTarget) ID() int        { return 82 }
@@ -10485,9 +9890,6 @@ func (m *SetAttitudeTarget) MarshalV1(buf []byte) []byte {
 
 func (m *SetAttitudeTarget) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	for _, v := range m.ThrustBody {
-		buf = marshalFloat32(buf, (v))
-	}
 
 	return buf
 }
@@ -10523,9 +9925,6 @@ func (m *SetAttitudeTarget) UnmarshalV1(buf []byte) []byte {
 
 func (m *SetAttitudeTarget) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	for i, _ := range m.ThrustBody {
-		buf, m.ThrustBody[i] = unmarshalFloat32(buf)
-	}
 
 	return buf
 }
@@ -11594,10 +10993,10 @@ type OpticalFlow struct {
 	/* Ground distance. Positive value: distance known. Negative value: Unknown distance */
 	GroundDistance float32
 
-	/* Flow in x-sensor direction */
+	/* Flow rate around X-axis (deprecated; use flow_rate_x) */
 	FlowX int16
 
-	/* Flow in y-sensor direction */
+	/* Flow rate around Y-axis (deprecated; use flow_rate_y) */
 	FlowY int16
 
 	/* Sensor ID */
@@ -12586,7 +11985,7 @@ type FileTransferProtocol struct {
 	/* Component ID (0 for broadcast) */
 	TargetComponent byte
 
-	/* Variable length payload. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html. The length is defined by the remaining message length when subtracting the header and other fields. See also MAV_FTP_OPCODE and MAV_FTP_ERR. */
+	/* Variable length payload. The length is defined by the remaining message length when subtracting the header and other fields. The content/format of this block is defined in https://mavlink.io/en/services/ftp.html. */
 	Payload [251]byte
 }
 
@@ -12638,13 +12037,6 @@ type Timesync struct {
 
 	/* Time sync timestamp 2. Timestamp of syncing component (mirrored in response). */
 	Ts1 int64
-
-	/* Target system id. Request: 0 (broadcast) or id of specific system. Response must contain system id of the requesting component. */
-	TargetSystem byte /*EXTENSION*/
-
-	/* Target component id. Request: 0 (broadcast) or id of specific component. Response must contain component id of the requesting component. */
-	TargetComponent byte /*EXTENSION*/
-
 }
 
 func (m *Timesync) ID() int        { return 111 }
@@ -12659,8 +12051,6 @@ func (m *Timesync) MarshalV1(buf []byte) []byte {
 
 func (m *Timesync) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
 
 	return buf
 }
@@ -12676,8 +12066,6 @@ func (m *Timesync) UnmarshalV1(buf []byte) []byte {
 
 func (m *Timesync) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.TargetSystem = unmarshalByte(buf)
-	buf, m.TargetComponent = unmarshalByte(buf)
 
 	return buf
 }
@@ -13725,13 +13113,6 @@ type SerialControl struct {
 
 	/* serial data */
 	Data [70]byte
-
-	/* System ID */
-	TargetSystem byte /*EXTENSION*/
-
-	/* Component ID */
-	TargetComponent byte /*EXTENSION*/
-
 }
 
 func (m *SerialControl) ID() int        { return 126 }
@@ -13752,8 +13133,6 @@ func (m *SerialControl) MarshalV1(buf []byte) []byte {
 
 func (m *SerialControl) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
 
 	return buf
 }
@@ -13787,8 +13166,6 @@ func (m *SerialControl) UnmarshalV1(buf []byte) []byte {
 
 func (m *SerialControl) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.TargetSystem = unmarshalByte(buf)
-	buf, m.TargetComponent = unmarshalByte(buf)
 
 	return buf
 }
@@ -15017,7 +14394,7 @@ type FollowTarget struct {
 	/* linear target acceleration (0,0,0) for unknown */
 	Acc [3]float32
 
-	/* (0 0 0 0 for unknown) */
+	/* (1 0 0 0 for unknown) */
 	AttitudeQ [4]float32
 
 	/* (0 0 0 for unknown) */
@@ -15250,7 +14627,7 @@ func (m *ControlSystemState) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Battery information. Updates GCS with flight controller battery status. Smart batteries also use this message, but may additionally send BATTERY_INFO. */
+/* Battery information */
 type BatteryStatus struct {
 	/* Consumed charge, -1: autopilot does not provide consumption estimate */
 	CurrentConsumed int32
@@ -16600,7 +15977,7 @@ type HighLatency2 struct {
 	/* Maximum error vertical position since last message */
 	Epv byte
 
-	/* Air temperature */
+	/* Air temperature from airspeed sensor */
 	TemperatureAir int8
 
 	/* Maximum climb rate magnitude since last message */
@@ -16807,7 +16184,7 @@ func (m *Vibration) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/*          Contains the home position.         The home position is the default position that the system will return to and land on.         The position must be set automatically by the system during the takeoff, and may also be explicitly set using MAV_CMD_DO_SET_HOME.         The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface.         Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach.         The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.         Note: this message can be requested by sending the MAV_CMD_REQUEST_MESSAGE with param1=242.        */
+/* This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitly set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector. */
 type HomePosition struct {
 	/* Latitude (WGS84) */
 	Latitude int32
@@ -16818,16 +16195,16 @@ type HomePosition struct {
 	/* Altitude (MSL). Positive for up. */
 	Altitude int32
 
-	/* Local X position of this position in the local coordinate frame (NED) */
+	/* Local X position of this position in the local coordinate frame */
 	X float32
 
-	/* Local Y position of this position in the local coordinate frame (NED) */
+	/* Local Y position of this position in the local coordinate frame */
 	Y float32
 
-	/* Local Z position of this position in the local coordinate frame (NED: positive "down") */
+	/* Local Z position of this position in the local coordinate frame */
 	Z float32
 
-	/*          Quaternion indicating world-to-surface-normal and heading transformation of the takeoff position.         Used to indicate the heading and slope of the ground.         All fields should be set to NaN if an accurate quaternion for both heading and surface slope cannot be supplied.        */
+	/* World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground */
 	Q [4]float32
 
 	/* Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone. */
@@ -17009,7 +16386,7 @@ func (m *SetHomePosition) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/*          The interval between messages for a particular MAVLink message ID.         This message is sent in response to the MAV_CMD_REQUEST_MESSAGE command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required).         This interface replaces DATA_STREAM. */
+/*          The interval between messages for a particular MAVLink message ID.         This message is sent in response to the MAV_CMD_REQUEST_MESSAGE command with param1=244 (this message) and param2=message_id (the id of the message for which the interval is required).  It may also be sent in response to MAV_CMD_GET_MESSAGE_INTERVAL.  This interface replaces DATA_STREAM. */
 type MessageInterval struct {
 	/* The interval between two messages. A value of -1 indicates this stream is disabled, 0 indicates it is not available, &gt; 0 indicates the interval at which it is sent. */
 	IntervalUs int32
@@ -17108,7 +16485,7 @@ type AdsbVehicle struct {
 	/* Longitude */
 	Lon int32
 
-	/* Altitude (ASL) */
+	/* Altitude(ASL) */
 	Altitude int32
 
 	/* Course over ground */
@@ -17135,7 +16512,7 @@ type AdsbVehicle struct {
 	/* ADSB emitter type. */
 	EmitterType AdsbEmitterType `mavlink:"byte"`
 
-	/* Time since last communication from the remote vehicle, in seconds. */
+	/* Time since last communication in seconds */
 	Tslc byte
 }
 
@@ -17853,7 +17230,7 @@ type CameraInformation struct {
 	/* Timestamp (time since system boot). */
 	TimeBootMs uint32
 
-	/* Version of the camera firmware, encoded as: `(Dev &amp; 0xff) &lt;&lt; 24 + (Patch &amp; 0xff) &lt;&lt; 16 + (Minor &amp; 0xff) &lt;&lt; 8 + (Major &amp; 0xff)`. Use 0 if not known. */
+	/* Version of the camera firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff). Use 0 if not known. */
 	FirmwareVersion uint32
 
 	/* Focal length. Use NaN if not known. */
@@ -17892,9 +17269,6 @@ type CameraInformation struct {
 	/* Gimbal id of a gimbal associated with this camera. This is the component id of the gimbal device, or 1-6 for non mavlink gimbals. Use 0 if no gimbal is associated with the camera. */
 	GimbalDeviceId byte /*EXTENSION*/
 
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraInformation) ID() int        { return 259 }
@@ -17927,7 +17301,6 @@ func (m *CameraInformation) MarshalV1(buf []byte) []byte {
 func (m *CameraInformation) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
 	buf = marshalByte(buf, (m.GimbalDeviceId))
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -17976,7 +17349,6 @@ func (m *CameraInformation) UnmarshalV1(buf []byte) []byte {
 func (m *CameraInformation) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 	buf, m.GimbalDeviceId = unmarshalByte(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -17995,9 +17367,6 @@ type CameraSettings struct {
 	/* Current focus level as a percentage of the full range (0.0 to 100.0, NaN if not known) */
 	Focuslevel float32 /*EXTENSION*/
 
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraSettings) ID() int        { return 260 }
@@ -18014,7 +17383,6 @@ func (m *CameraSettings) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
 	buf = marshalFloat32(buf, (m.Zoomlevel))
 	buf = marshalFloat32(buf, (m.Focuslevel))
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -18036,7 +17404,6 @@ func (m *CameraSettings) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 	buf, m.Zoomlevel = unmarshalFloat32(buf)
 	buf, m.Focuslevel = unmarshalFloat32(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -18076,9 +17443,6 @@ type StorageInformation struct {
 	/* Textual storage name to be used in UI (microSD 1, Internal Memory, etc.) This is a NULL terminated string. If it is exactly 32 characters long, add a terminating NULL. If this string is empty, the generic type is shown to the user. */
 	Name [32]byte /*EXTENSION*/
 
-	/* Flags indicating whether this instance is preferred storage for photos, videos, etc.         Note: Implementations should initially set the flags on the system-default storage id used for saving media (if possible/supported).         This setting can then be overridden using MAV_CMD_SET_STORAGE_USAGE.         If the media usage flags are not set, a GCS may assume storage ID 1 is the default storage for all media types. */
-	StorageUsage StorageUsageFlag `mavlink:"byte,bitmask"` /*EXTENSION*/
-
 }
 
 func (m *StorageInformation) ID() int        { return 261 }
@@ -18104,7 +17468,6 @@ func (m *StorageInformation) MarshalV2(buf []byte) []byte {
 	for _, v := range m.Name {
 		buf = marshalByte(buf, (v))
 	}
-	buf = marshalByte(buf, byte(m.StorageUsage))
 
 	return buf
 }
@@ -18146,11 +17509,6 @@ func (m *StorageInformation) UnmarshalV2(buf []byte) []byte {
 	for i, _ := range m.Name {
 		buf, m.Name[i] = unmarshalByte(buf)
 	}
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.StorageUsage = StorageUsageFlag(v)
-	}
 
 	return buf
 }
@@ -18178,9 +17536,6 @@ type CameraCaptureStatus struct {
 	/* Total number of images captured ('forever', or until reset using MAV_CMD_STORAGE_FORMAT). */
 	ImageCount int32 /*EXTENSION*/
 
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraCaptureStatus) ID() int        { return 262 }
@@ -18200,7 +17555,6 @@ func (m *CameraCaptureStatus) MarshalV1(buf []byte) []byte {
 func (m *CameraCaptureStatus) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
 	buf = marshalInt32(buf, (m.ImageCount))
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -18225,12 +17579,11 @@ func (m *CameraCaptureStatus) UnmarshalV1(buf []byte) []byte {
 func (m *CameraCaptureStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 	buf, m.ImageCount = unmarshalInt32(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
 
-/* Information about a captured image. This is emitted every time a message is captured.         MAV_CMD_REQUEST_MESSAGE can be used to (re)request this message for a specific sequence number or range of sequence numbers:         MAV_CMD_REQUEST_MESSAGE.param2 indicates the sequence number the first image to send, or set to -1 to send the message for all sequence numbers.         MAV_CMD_REQUEST_MESSAGE.param3 is used to specify a range of messages to send:         set to 0 (default) to send just the the message for the sequence number in param 2,         set to -1 to send the message for the sequence number in param 2 and all the following sequence numbers,         set to the sequence number of the final message in the range. */
+/* Information about a captured image. This is emitted every time a message is captured. It may be re-requested using MAV_CMD_REQUEST_MESSAGE, using param2 to indicate the sequence number for the missing image. */
 type CameraImageCaptured struct {
 	/* Timestamp (time since UNIX epoch) in UTC. 0 for unknown. */
 	TimeUtc uint64
@@ -18256,7 +17609,7 @@ type CameraImageCaptured struct {
 	/* Zero based index of this image (i.e. a new image will have index CAMERA_CAPTURE_STATUS.image count -1) */
 	ImageIndex int32
 
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). Field name is usually camera_device_id. */
+	/* Deprecated/unused. Component IDs are used to differentiate multiple cameras. */
 	CameraId byte
 
 	/* Image was captured successfully (MAV_BOOL_TRUE). Values not equal to 0 or 1 are invalid. */
@@ -18675,9 +18028,6 @@ type VideoStreamInformation struct {
 	/* Encoding of stream. */
 	Encoding VideoStreamEncoding `mavlink:"byte"` /*EXTENSION*/
 
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *VideoStreamInformation) ID() int        { return 269 }
@@ -18707,7 +18057,6 @@ func (m *VideoStreamInformation) MarshalV1(buf []byte) []byte {
 func (m *VideoStreamInformation) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
 	buf = marshalByte(buf, byte(m.Encoding))
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -18760,7 +18109,6 @@ func (m *VideoStreamInformation) UnmarshalV2(buf []byte) []byte {
 		buf, v = unmarshalByte(buf)
 		m.Encoding = VideoStreamEncoding(v)
 	}
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -18790,10 +18138,6 @@ type VideoStreamStatus struct {
 
 	/* Video Stream ID (1 for first, 2 for second, etc.) */
 	StreamId byte
-
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *VideoStreamStatus) ID() int        { return 270 }
@@ -18814,7 +18158,6 @@ func (m *VideoStreamStatus) MarshalV1(buf []byte) []byte {
 
 func (m *VideoStreamStatus) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -18846,7 +18189,6 @@ func (m *VideoStreamStatus) UnmarshalV1(buf []byte) []byte {
 
 func (m *VideoStreamStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -18882,10 +18224,6 @@ type CameraFovStatus struct {
 
 	/* Vertical field of view (NaN if unknown). */
 	Vfov float32
-
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraFovStatus) ID() int        { return 271 }
@@ -18910,7 +18248,6 @@ func (m *CameraFovStatus) MarshalV1(buf []byte) []byte {
 
 func (m *CameraFovStatus) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -18944,7 +18281,6 @@ func (m *CameraFovStatus) UnmarshalV1(buf []byte) []byte {
 
 func (m *CameraFovStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -18980,10 +18316,6 @@ type CameraTrackingImageStatus struct {
 
 	/* Defines location of target data */
 	TargetData CameraTrackingTargetData `mavlink:"byte,bitmask"`
-
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraTrackingImageStatus) ID() int        { return 275 }
@@ -19006,7 +18338,6 @@ func (m *CameraTrackingImageStatus) MarshalV1(buf []byte) []byte {
 
 func (m *CameraTrackingImageStatus) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -19050,7 +18381,6 @@ func (m *CameraTrackingImageStatus) UnmarshalV1(buf []byte) []byte {
 
 func (m *CameraTrackingImageStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
@@ -19095,10 +18425,6 @@ type CameraTrackingGeoStatus struct {
 
 	/* Current tracking status */
 	TrackingStatus CameraTrackingStatusFlags `mavlink:"byte,bitmask"`
-
-	/* Camera id of a non-MAVLink camera attached to an autopilot (1-6).  0 if the component is a MAVLink camera (with its own component id). */
-	CameraDeviceId byte /*EXTENSION*/
-
 }
 
 func (m *CameraTrackingGeoStatus) ID() int        { return 276 }
@@ -19124,7 +18450,6 @@ func (m *CameraTrackingGeoStatus) MarshalV1(buf []byte) []byte {
 
 func (m *CameraTrackingGeoStatus) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalByte(buf, (m.CameraDeviceId))
 
 	return buf
 }
@@ -19166,12 +18491,11 @@ func (m *CameraTrackingGeoStatus) UnmarshalV1(buf []byte) []byte {
 
 func (m *CameraTrackingGeoStatus) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
-	buf, m.CameraDeviceId = unmarshalByte(buf)
 
 	return buf
 }
 
-/* Camera absolute thermal range. This can be streamed when the associated VIDEO_STREAM_STATUS `flag` field bit VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED is set, but a GCS may choose to only request it for the current active stream. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval (param3 indicates the stream id of the current camera, or 0 for all streams, param4 indicates the target camera_device_id for autopilot-attached cameras or 0 for MAVLink cameras). */
+/* Camera absolute thermal range. This can be streamed when the associated `VIDEO_STREAM_STATUS.flag` bit `VIDEO_STREAM_STATUS_FLAGS_THERMAL_RANGE_ENABLED` is set, but a GCS may choose to only request it for the current active stream. Use MAV_CMD_SET_MESSAGE_INTERVAL to define message interval (param3 indicates the stream id of the current camera, or 0 for all streams, param4 indicates the target camera_device_id for autopilot-attached cameras or 0 for MAVLink cameras). */
 type CameraThermalRange struct {
 	/* Timestamp (time since system boot). */
 	TimeBootMs uint32
@@ -19505,10 +18829,10 @@ type GimbalDeviceInformation struct {
 	/* Timestamp (time since system boot). */
 	TimeBootMs uint32
 
-	/* Version of the gimbal firmware, encoded as: `(Dev &amp; 0xff) &lt;&lt; 24 + (Patch &amp; 0xff) &lt;&lt; 16 + (Minor &amp; 0xff) &lt;&lt; 8 + (Major &amp; 0xff)`. */
+	/* Version of the gimbal firmware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff). */
 	FirmwareVersion uint32
 
-	/* Version of the gimbal hardware, encoded as: `(Dev &amp; 0xff) &lt;&lt; 24 + (Patch &amp; 0xff) &lt;&lt; 16 + (Minor &amp; 0xff) &lt;&lt; 8 + (Major &amp; 0xff)`. */
+	/* Version of the gimbal hardware, encoded as: (Dev &amp; 0xff) &lt;&lt; 24 | (Patch &amp; 0xff) &lt;&lt; 16 | (Minor &amp; 0xff) &lt;&lt; 8 | (Major &amp; 0xff). */
 	HardwareVersion uint32
 
 	/* Minimum hardware roll angle (positive: rolling to the right, negative: rolling to the left). NAN if unknown. */
@@ -20112,178 +19436,6 @@ func (m *GimbalManagerSetManualControl) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* ESC information for lower rate streaming. Recommended streaming rate 1Hz. See ESC_STATUS for higher-rate ESC data. */
-type EscInfo struct {
-	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. */
-	TimeUsec uint64
-
-	/* Number of reported errors by each ESC since boot. */
-	ErrorCount [4]uint32
-
-	/* Counter of data packets received. */
-	Counter uint16
-
-	/* Bitmap of ESC failure flags. */
-	FailureFlags [4]EscFailureFlags `mavlink:"[4]uint16,bitmask"`
-
-	/* Temperature of each ESC. INT16_MAX: if data not supplied by ESC. */
-	Temperature [4]int16
-
-	/* Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4. */
-	Index byte
-
-	/* Total number of ESCs in all messages of this type. Message fields with an index higher than this should be ignored because they contain invalid data. */
-	Count byte
-
-	/* Connection type protocol for all ESC. */
-	ConnectionType EscConnectionType `mavlink:"byte"`
-
-	/* Information regarding online/offline status of each ESC. */
-	Info byte
-}
-
-func (m *EscInfo) ID() int        { return 290 }
-func (m *EscInfo) CRCExtra() byte { return 251 }
-
-func (m *EscInfo) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, (m.TimeUsec))
-	for _, v := range m.ErrorCount {
-		buf = marshalUint32(buf, (v))
-	}
-	buf = marshalUint16(buf, (m.Counter))
-	for _, v := range m.FailureFlags {
-		buf = marshalUint16(buf, uint16(v))
-	}
-	for _, v := range m.Temperature {
-		buf = marshalInt16(buf, (v))
-	}
-	buf = marshalByte(buf, (m.Index))
-	buf = marshalByte(buf, (m.Count))
-	buf = marshalByte(buf, byte(m.ConnectionType))
-	buf = marshalByte(buf, (m.Info))
-
-	return buf
-}
-
-func (m *EscInfo) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *EscInfo) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeUsec = unmarshalUint64(buf)
-
-	for i, _ := range m.ErrorCount {
-		buf, m.ErrorCount[i] = unmarshalUint32(buf)
-	}
-
-	buf, m.Counter = unmarshalUint16(buf)
-
-	for i, _ := range m.FailureFlags {
-		{
-			var v uint16
-			buf, v = unmarshalUint16(buf)
-			m.FailureFlags[i] = EscFailureFlags(v)
-		}
-	}
-
-	for i, _ := range m.Temperature {
-		buf, m.Temperature[i] = unmarshalInt16(buf)
-	}
-
-	buf, m.Index = unmarshalByte(buf)
-
-	buf, m.Count = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.ConnectionType = EscConnectionType(v)
-	}
-
-	buf, m.Info = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *EscInfo) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* ESC information for higher rate streaming. Recommended streaming rate is ~10 Hz. Information that changes more slowly is sent in ESC_INFO. It should typically only be streamed on high-bandwidth links (i.e. to a companion computer). */
-type EscStatus struct {
-	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude the number. */
-	TimeUsec uint64
-
-	/* Reported motor RPM from each ESC (negative for reverse rotation). */
-	Rpm [4]int32
-
-	/* Voltage measured from each ESC. */
-	Voltage [4]float32
-
-	/* Current measured from each ESC. */
-	Current [4]float32
-
-	/* Index of the first ESC in this message (ESC are indexed in motor order). minValue = 0, maxValue = 60, increment = 4. */
-	Index byte
-}
-
-func (m *EscStatus) ID() int        { return 291 }
-func (m *EscStatus) CRCExtra() byte { return 10 }
-
-func (m *EscStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, (m.TimeUsec))
-	for _, v := range m.Rpm {
-		buf = marshalInt32(buf, (v))
-	}
-	for _, v := range m.Voltage {
-		buf = marshalFloat32(buf, (v))
-	}
-	for _, v := range m.Current {
-		buf = marshalFloat32(buf, (v))
-	}
-	buf = marshalByte(buf, (m.Index))
-
-	return buf
-}
-
-func (m *EscStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *EscStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeUsec = unmarshalUint64(buf)
-
-	for i, _ := range m.Rpm {
-		buf, m.Rpm[i] = unmarshalInt32(buf)
-	}
-
-	for i, _ := range m.Voltage {
-		buf, m.Voltage[i] = unmarshalFloat32(buf)
-	}
-
-	for i, _ := range m.Current {
-		buf, m.Current[i] = unmarshalFloat32(buf)
-	}
-
-	buf, m.Index = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *EscStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
 /* Airspeed information from a sensor. */
 type Airspeed struct {
 	/* Calibrated airspeed (CAS). */
@@ -20346,120 +19498,6 @@ func (m *Airspeed) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Reports measurement/estimate from a global position sensor. Used as navigation fusion source and optionally displayed in the UI. */
-type GlobalPositionSensor struct {
-	/* Timestamp of message transmission (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. */
-	TimeUsec uint64
-
-	/* The time spent in processing the sensor data that is the basis for this position. The recipient can use this to improve time alignment of the data. This is the time between measurement (e.g. camera exposure time) and transmission of this message. Set to NaN if not known. */
-	ProcessingTime uint32
-
-	/* Latitude (WGS84) */
-	Lat int32
-
-	/* Longitude (WGS84) */
-	Lon int32
-
-	/* Altitude (WGS84 elipsoid), preferred if available */
-	AltEllipsoid float32
-
-	/* Altitude (MSL - position-system specific value) use if no alt_ellipsoid available */
-	Alt float32
-
-	/* Standard deviation of horizontal position error */
-	Eph float32
-
-	/* Standard deviation of vertical position error */
-	Epv float32
-
-	/* System ID (ID of target system, normally autopilot and ground station). */
-	TargetSystem byte
-
-	/* Component ID (normally 0 for broadcast). */
-	TargetComponent byte
-
-	/* Sensor ID */
-	Id byte
-
-	/* Source of position/estimate (such as GNSS, estimator, etc.) */
-	Source GlobalPositionSrc `mavlink:"byte"`
-
-	/* Status flags */
-	Flags GlobalPositionFlags `mavlink:"byte,bitmask"`
-}
-
-func (m *GlobalPositionSensor) ID() int        { return 296 }
-func (m *GlobalPositionSensor) CRCExtra() byte { return 158 }
-
-func (m *GlobalPositionSensor) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, (m.TimeUsec))
-	buf = marshalUint32(buf, (m.ProcessingTime))
-	buf = marshalInt32(buf, (m.Lat))
-	buf = marshalInt32(buf, (m.Lon))
-	buf = marshalFloat32(buf, (m.AltEllipsoid))
-	buf = marshalFloat32(buf, (m.Alt))
-	buf = marshalFloat32(buf, (m.Eph))
-	buf = marshalFloat32(buf, (m.Epv))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-	buf = marshalByte(buf, (m.Id))
-	buf = marshalByte(buf, byte(m.Source))
-	buf = marshalByte(buf, byte(m.Flags))
-
-	return buf
-}
-
-func (m *GlobalPositionSensor) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *GlobalPositionSensor) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeUsec = unmarshalUint64(buf)
-
-	buf, m.ProcessingTime = unmarshalUint32(buf)
-
-	buf, m.Lat = unmarshalInt32(buf)
-
-	buf, m.Lon = unmarshalInt32(buf)
-
-	buf, m.AltEllipsoid = unmarshalFloat32(buf)
-
-	buf, m.Alt = unmarshalFloat32(buf)
-
-	buf, m.Eph = unmarshalFloat32(buf)
-
-	buf, m.Epv = unmarshalFloat32(buf)
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	buf, m.Id = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Source = GlobalPositionSrc(v)
-	}
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Flags = GlobalPositionFlags(v)
-	}
-
-	return buf
-}
-
-func (m *GlobalPositionSensor) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
 /* Configure WiFi AP SSID, password, and mode. This message is re-emitted as an acknowledgement by the AP. The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE */
 type WifiConfigAp struct {
 	/* Name of Wi-Fi network (SSID). Blank to leave it unchanged when setting. Current SSID when sent back as a response. */
@@ -20467,13 +19505,6 @@ type WifiConfigAp struct {
 
 	/* Password. Blank for an open AP. MD5 hash when message is sent back as a response. */
 	Password [64]byte
-
-	/* WiFi Mode. */
-	Mode WifiConfigApMode `mavlink:"int8"` /*EXTENSION*/
-
-	/* Message acceptance response (sent back to GS). */
-	Response WifiConfigApResponse `mavlink:"int8"` /*EXTENSION*/
-
 }
 
 func (m *WifiConfigAp) ID() int        { return 299 }
@@ -20492,8 +19523,6 @@ func (m *WifiConfigAp) MarshalV1(buf []byte) []byte {
 
 func (m *WifiConfigAp) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
-	buf = marshalInt8(buf, int8(m.Mode))
-	buf = marshalInt8(buf, int8(m.Response))
 
 	return buf
 }
@@ -20512,82 +19541,6 @@ func (m *WifiConfigAp) UnmarshalV1(buf []byte) []byte {
 }
 
 func (m *WifiConfigAp) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-	{
-		var v int8
-		buf, v = unmarshalInt8(buf)
-		m.Mode = WifiConfigApMode(v)
-	}
-	{
-		var v int8
-		buf, v = unmarshalInt8(buf)
-		m.Response = WifiConfigApResponse(v)
-	}
-
-	return buf
-}
-
-/* Version and capability of protocol version. This message can be requested with MAV_CMD_REQUEST_MESSAGE and is used as part of the handshaking to establish which MAVLink version should be used on the network. Every node should respond to a request for PROTOCOL_VERSION to enable the handshaking. Library implementers should consider adding this into the default decoding state machine to allow the protocol core to respond directly. */
-type ProtocolVersion struct {
-	/* Currently active MAVLink version number * 100: v1.0 is 100, v2.0 is 200, etc. */
-	Version uint16
-
-	/* Minimum MAVLink version supported */
-	MinVersion uint16
-
-	/* Maximum MAVLink version supported (set to the same value as version by default) */
-	MaxVersion uint16
-
-	/* The first 8 bytes (not characters printed in hex!) of the git hash. */
-	SpecVersionHash [8]byte
-
-	/* The first 8 bytes (not characters printed in hex!) of the git hash. */
-	LibraryVersionHash [8]byte
-}
-
-func (m *ProtocolVersion) ID() int        { return 300 }
-func (m *ProtocolVersion) CRCExtra() byte { return 217 }
-
-func (m *ProtocolVersion) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, (m.Version))
-	buf = marshalUint16(buf, (m.MinVersion))
-	buf = marshalUint16(buf, (m.MaxVersion))
-	for _, v := range m.SpecVersionHash {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.LibraryVersionHash {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *ProtocolVersion) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *ProtocolVersion) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Version = unmarshalUint16(buf)
-
-	buf, m.MinVersion = unmarshalUint16(buf)
-
-	buf, m.MaxVersion = unmarshalUint16(buf)
-
-	for i, _ := range m.SpecVersionHash {
-		buf, m.SpecVersionHash[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.LibraryVersionHash {
-		buf, m.LibraryVersionHash[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *ProtocolVersion) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 
 	return buf
@@ -20619,7 +19572,7 @@ type AisVessel struct {
 	/* Distance from lat/lon location to stern */
 	DimensionStern uint16
 
-	/* Time since last communication from the vessel, in seconds */
+	/* Time since last communication in seconds */
 	Tslc uint16
 
 	/* Bitmask to indicate various statuses including valid data fields */
@@ -20640,10 +19593,10 @@ type AisVessel struct {
 	/* Distance from lat/lon location to starboard side */
 	DimensionStarboard byte
 
-	/* The vessel callsign. Characters are encoded as 7-bit ASCII, but only characters in the [AIS 6-bit ASCII subset](https://en.wikipedia.org/wiki/Six-bit_character_code#AIS_SixBit_ASCII) are permitted. Also set AIS_FLAGS_VALID_CALLSIGN if valid. The string is NULL-terminated if it is shorter than the array length. */
+	/* The vessel callsign */
 	Callsign [7]byte
 
-	/* The vessel name. Characters are encoded as 7-bit ASCII, but only characters in the [AIS 6-bit ASCII subset](https://en.wikipedia.org/wiki/Six-bit_character_code#AIS_SixBit_ASCII) are permitted. Also set AIS_FLAGS_VALID_NAME if valid. The string is NULL-terminated if it is shorter than the array length. */
+	/* The vessel name */
 	Name [20]byte
 }
 
@@ -20815,7 +19768,7 @@ func (m *UavcanNodeStatus) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* General information describing a particular UAVCAN node.         Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information.         This message should be emitted by the system whenever a new node appears online, or an existing node reboots.         The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE.         It is also not prohibited to emit this message unconditionally at a low frequency.         The DroneCAN specification is available at https://dronecan.github.io/Specification/1._Introduction/.        */
+/* General information describing a particular UAVCAN node. Please refer to the definition of the UAVCAN service "uavcan.protocol.GetNodeInfo" for the background information. This message should be emitted by the system whenever a new node appears online, or an existing node reboots. Additionally, it can be emitted upon request from the other end of the MAVLink channel (see MAV_CMD_UAVCAN_GET_NODE_INFO). It is also not prohibited to emit this message unconditionally at a low frequency. The UAVCAN specification is available at http://uavcan.org. */
 type UavcanNodeInfo struct {
 	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. */
 	TimeUsec uint64
@@ -21713,88 +20666,6 @@ func (m *TrajectoryRepresentationBezier) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/* Report current used cellular network status */
-type CellularStatus struct {
-	/* Mobile country code. If unknown, set to UINT16_MAX */
-	Mcc uint16
-
-	/* Mobile network code. If unknown, set to UINT16_MAX */
-	Mnc uint16
-
-	/* Location area code. If unknown, set to 0 */
-	Lac uint16
-
-	/* Cellular modem status */
-	Status CellularStatusFlag `mavlink:"byte"`
-
-	/* Failure reason when status in in CELLULAR_STATUS_FLAG_FAILED */
-	FailureReason CellularNetworkFailedReason `mavlink:"byte"`
-
-	/* Cellular network radio type: gsm, cdma, lte... */
-	Type CellularNetworkRadioType `mavlink:"byte"`
-
-	/* Signal quality in percent. If unknown, set to UINT8_MAX */
-	Quality byte
-}
-
-func (m *CellularStatus) ID() int        { return 334 }
-func (m *CellularStatus) CRCExtra() byte { return 72 }
-
-func (m *CellularStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, (m.Mcc))
-	buf = marshalUint16(buf, (m.Mnc))
-	buf = marshalUint16(buf, (m.Lac))
-	buf = marshalByte(buf, byte(m.Status))
-	buf = marshalByte(buf, byte(m.FailureReason))
-	buf = marshalByte(buf, byte(m.Type))
-	buf = marshalByte(buf, (m.Quality))
-
-	return buf
-}
-
-func (m *CellularStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *CellularStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Mcc = unmarshalUint16(buf)
-
-	buf, m.Mnc = unmarshalUint16(buf)
-
-	buf, m.Lac = unmarshalUint16(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Status = CellularStatusFlag(v)
-	}
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.FailureReason = CellularNetworkFailedReason(v)
-	}
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Type = CellularNetworkRadioType(v)
-	}
-
-	buf, m.Quality = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *CellularStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
 /* Status of the Iridium SBD link. */
 type IsbdLinkStatus struct {
 	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. */
@@ -21866,102 +20737,6 @@ func (m *IsbdLinkStatus) UnmarshalV1(buf []byte) []byte {
 }
 
 func (m *IsbdLinkStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Configure cellular modems.         This message is re-emitted as an acknowledgement by the modem.         The message may also be explicitly requested using MAV_CMD_REQUEST_MESSAGE. */
-type CellularConfig struct {
-	/* Enable/disable LTE. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response. */
-	EnableLte byte
-
-	/* Enable/disable PIN on the SIM card. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response. */
-	EnablePin byte
-
-	/* PIN sent to the SIM card. Blank when PIN is disabled. Empty when message is sent back as a response. */
-	Pin [16]byte
-
-	/* New PIN when changing the PIN. Blank to leave it unchanged. Empty when message is sent back as a response. */
-	NewPin [16]byte
-
-	/* Name of the cellular APN. Blank to leave it unchanged. Current APN when sent back as a response. */
-	Apn [32]byte
-
-	/* Required PUK code in case the user failed to authenticate 3 times with the PIN. Empty when message is sent back as a response. */
-	Puk [16]byte
-
-	/* Enable/disable roaming. 0: setting unchanged, 1: disabled, 2: enabled. Current setting when sent back as a response. */
-	Roaming byte
-
-	/* Message acceptance response (sent back to GS). */
-	Response CellularConfigResponse `mavlink:"byte"`
-}
-
-func (m *CellularConfig) ID() int        { return 336 }
-func (m *CellularConfig) CRCExtra() byte { return 245 }
-
-func (m *CellularConfig) MarshalV1(buf []byte) []byte {
-	buf = marshalByte(buf, (m.EnableLte))
-	buf = marshalByte(buf, (m.EnablePin))
-	for _, v := range m.Pin {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.NewPin {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.Apn {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.Puk {
-		buf = marshalByte(buf, (v))
-	}
-	buf = marshalByte(buf, (m.Roaming))
-	buf = marshalByte(buf, byte(m.Response))
-
-	return buf
-}
-
-func (m *CellularConfig) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *CellularConfig) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.EnableLte = unmarshalByte(buf)
-
-	buf, m.EnablePin = unmarshalByte(buf)
-
-	for i, _ := range m.Pin {
-		buf, m.Pin[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.NewPin {
-		buf, m.NewPin[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.Apn {
-		buf, m.Apn[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.Puk {
-		buf, m.Puk[i] = unmarshalByte(buf)
-	}
-
-	buf, m.Roaming = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Response = CellularConfigResponse(v)
-	}
-
-	return buf
-}
-
-func (m *CellularConfig) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 
 	return buf
@@ -22349,87 +21124,7 @@ func (m *OrbitExecutionStatus) UnmarshalV2(buf []byte) []byte {
 	return buf
 }
 
-/*          Vehicle status report that is sent out while figure eight execution is in progress (see MAV_CMD_DO_FIGURE_EIGHT).         This may typically send at low rates: of the order of 2Hz.        */
-type FigureEightExecutionStatus struct {
-	/* Timestamp (UNIX Epoch time or time since system boot). The receiving end can infer timestamp format (since 1.1.1970 or since system boot) by checking for the magnitude of the number. */
-	TimeUsec uint64
-
-	/* Major axis radius of the figure eight. Positive: orbit the north circle clockwise. Negative: orbit the north circle counter-clockwise. */
-	MajorRadius float32
-
-	/* Minor axis radius of the figure eight. Defines the radius of two circles that make up the figure. */
-	MinorRadius float32
-
-	/* Orientation of the figure eight major axis with respect to true north in [-pi,pi). */
-	Orientation float32
-
-	/* X coordinate of center point. Coordinate system depends on frame field. */
-	X int32
-
-	/* Y coordinate of center point. Coordinate system depends on frame field. */
-	Y int32
-
-	/* Altitude of center point. Coordinate system depends on frame field. */
-	Z float32
-
-	/* The coordinate system of the fields: x, y, z. */
-	Frame MavFrame `mavlink:"byte"`
-}
-
-func (m *FigureEightExecutionStatus) ID() int        { return 361 }
-func (m *FigureEightExecutionStatus) CRCExtra() byte { return 93 }
-
-func (m *FigureEightExecutionStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, (m.TimeUsec))
-	buf = marshalFloat32(buf, (m.MajorRadius))
-	buf = marshalFloat32(buf, (m.MinorRadius))
-	buf = marshalFloat32(buf, (m.Orientation))
-	buf = marshalInt32(buf, (m.X))
-	buf = marshalInt32(buf, (m.Y))
-	buf = marshalFloat32(buf, (m.Z))
-	buf = marshalByte(buf, byte(m.Frame))
-
-	return buf
-}
-
-func (m *FigureEightExecutionStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *FigureEightExecutionStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeUsec = unmarshalUint64(buf)
-
-	buf, m.MajorRadius = unmarshalFloat32(buf)
-
-	buf, m.MinorRadius = unmarshalFloat32(buf)
-
-	buf, m.Orientation = unmarshalFloat32(buf)
-
-	buf, m.X = unmarshalInt32(buf)
-
-	buf, m.Y = unmarshalInt32(buf)
-
-	buf, m.Z = unmarshalFloat32(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Frame = MavFrame(v)
-	}
-
-	return buf
-}
-
-func (m *FigureEightExecutionStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use BATTERY_STATUS for the frequent battery updates. */
+/* Smart Battery information (static/infrequent update). Use for updates from: smart battery to flight stack, flight stack to GCS. Use BATTERY_STATUS for smart battery frequent updates. */
 type SmartBatteryInfo struct {
 	/* Capacity when full according to manufacturer, -1: field not provided. */
 	CapacityFullSpecification int32
@@ -22571,254 +21266,6 @@ func (m *SmartBatteryInfo) UnmarshalV2(buf []byte) []byte {
 	for i, _ := range m.ManufactureDate {
 		buf, m.ManufactureDate[i] = unmarshalByte(buf)
 	}
-
-	return buf
-}
-
-/* Fuel status.         This message provides "generic" fuel level information for  in a GCS and for triggering failsafes in an autopilot.         The fuel type and associated units for fields in this message are defined in the enum MAV_FUEL_TYPE.          The reported `consumed_fuel` and `remaining_fuel` must only be supplied if measured: they must not be inferred from the `maximum_fuel` and the other value.         A recipient can assume that if these fields are supplied they are accurate.         If not provided, the recipient can infer `remaining_fuel` from `maximum_fuel` and `consumed_fuel` on the assumption that the fuel was initially at its maximum (this is what battery monitors assume).         Note however that this is an assumption, and the UI should prompt the user appropriately (i.e. notify user that they should fill the tank before boot).          This kind of information may also be sent in fuel-specific messages such as BATTERY_STATUS_V2.         If both messages are sent for the same fuel system, the ids and corresponding information must match.          This should be streamed (nominally at 0.1 Hz).        */
-type FuelStatus struct {
-	/* Capacity when full. Must be provided. */
-	MaximumFuel float32
-
-	/* Consumed fuel (measured). This value should not be inferred: if not measured set to NaN. NaN: field not provided. */
-	ConsumedFuel float32
-
-	/* Remaining fuel until empty (measured). The value should not be inferred: if not measured set to NaN. NaN: field not provided. */
-	RemainingFuel float32
-
-	/* Positive value when emptying/using, and negative if filling/replacing. NaN: field not provided. */
-	FlowRate float32
-
-	/* Fuel temperature. NaN: field not provided. */
-	Temperature float32
-
-	/* Fuel type. Defines units for fuel capacity and consumption fields above. */
-	FuelType MavFuelType `mavlink:"uint32"`
-
-	/* Fuel ID. Must match ID of other messages for same fuel system, such as BATTERY_STATUS_V2. */
-	Id byte
-
-	/* Percentage of remaining fuel, relative to full. Values: [0-100], UINT8_MAX: field not provided. */
-	PercentRemaining byte
-}
-
-func (m *FuelStatus) ID() int        { return 371 }
-func (m *FuelStatus) CRCExtra() byte { return 10 }
-
-func (m *FuelStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalFloat32(buf, (m.MaximumFuel))
-	buf = marshalFloat32(buf, (m.ConsumedFuel))
-	buf = marshalFloat32(buf, (m.RemainingFuel))
-	buf = marshalFloat32(buf, (m.FlowRate))
-	buf = marshalFloat32(buf, (m.Temperature))
-	buf = marshalUint32(buf, uint32(m.FuelType))
-	buf = marshalByte(buf, (m.Id))
-	buf = marshalByte(buf, (m.PercentRemaining))
-
-	return buf
-}
-
-func (m *FuelStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *FuelStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.MaximumFuel = unmarshalFloat32(buf)
-
-	buf, m.ConsumedFuel = unmarshalFloat32(buf)
-
-	buf, m.RemainingFuel = unmarshalFloat32(buf)
-
-	buf, m.FlowRate = unmarshalFloat32(buf)
-
-	buf, m.Temperature = unmarshalFloat32(buf)
-
-	{
-		var v uint32
-		buf, v = unmarshalUint32(buf)
-		m.FuelType = MavFuelType(v)
-	}
-
-	buf, m.Id = unmarshalByte(buf)
-
-	buf, m.PercentRemaining = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *FuelStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/*          Battery information that is static, or requires infrequent update.         This message should requested using MAV_CMD_REQUEST_MESSAGE and/or streamed at very low rate.         BATTERY_STATUS_V2 is used for higher-rate battery status information.        */
-type BatteryInfo struct {
-	/* Minimum per-cell voltage when discharging. 0: field not provided. */
-	DischargeMinimumVoltage float32
-
-	/* Minimum per-cell voltage when charging. 0: field not provided. */
-	ChargingMinimumVoltage float32
-
-	/* Minimum per-cell voltage when resting. 0: field not provided. */
-	RestingMinimumVoltage float32
-
-	/* Maximum per-cell voltage when charged. 0: field not provided. */
-	ChargingMaximumVoltage float32
-
-	/* Maximum pack continuous charge current. 0: field not provided. */
-	ChargingMaximumCurrent float32
-
-	/* Battery nominal voltage. Used for conversion between Wh and Ah. 0: field not provided. */
-	NominalVoltage float32
-
-	/* Maximum pack discharge current. 0: field not provided. */
-	DischargeMaximumCurrent float32
-
-	/* Maximum pack discharge burst current. 0: field not provided. */
-	DischargeMaximumBurstCurrent float32
-
-	/* Fully charged design capacity. 0: field not provided. */
-	DesignCapacity float32
-
-	/* Predicted battery capacity when fully charged (accounting for battery degradation). NAN: field not provided. */
-	FullChargeCapacity float32
-
-	/* Lifetime count of the number of charge/discharge cycles (https://en.wikipedia.org/wiki/Charge_cycle). UINT16_MAX: field not provided. */
-	CycleCount uint16
-
-	/* Battery weight. 0: field not provided. */
-	Weight uint16
-
-	/* Battery ID */
-	Id byte
-
-	/* Function of the battery. */
-	BatteryFunction MavBatteryFunction `mavlink:"byte"`
-
-	/* Type (chemistry) of the battery. */
-	Type MavBatteryType `mavlink:"byte"`
-
-	/* State of Health (SOH) estimate. Typically 100% at the time of manufacture and will decrease over time and use. -1: field not provided. */
-	StateOfHealth byte
-
-	/* Number of battery cells in series. 0: field not provided. */
-	CellsInSeries byte
-
-	/* Manufacture date (DDMMYYYY) in ASCII characters, 0 terminated. All 0: field not provided. */
-	ManufactureDate [9]byte
-
-	/* Serial number in ASCII characters, 0 terminated. All 0: field not provided. */
-	SerialNumber [32]byte
-
-	/* Battery device name. Formatted as manufacturer name then product name, separated with an underscore (in ASCII characters), 0 terminated. All 0: field not provided. */
-	Name [50]byte
-}
-
-func (m *BatteryInfo) ID() int        { return 372 }
-func (m *BatteryInfo) CRCExtra() byte { return 26 }
-
-func (m *BatteryInfo) MarshalV1(buf []byte) []byte {
-	buf = marshalFloat32(buf, (m.DischargeMinimumVoltage))
-	buf = marshalFloat32(buf, (m.ChargingMinimumVoltage))
-	buf = marshalFloat32(buf, (m.RestingMinimumVoltage))
-	buf = marshalFloat32(buf, (m.ChargingMaximumVoltage))
-	buf = marshalFloat32(buf, (m.ChargingMaximumCurrent))
-	buf = marshalFloat32(buf, (m.NominalVoltage))
-	buf = marshalFloat32(buf, (m.DischargeMaximumCurrent))
-	buf = marshalFloat32(buf, (m.DischargeMaximumBurstCurrent))
-	buf = marshalFloat32(buf, (m.DesignCapacity))
-	buf = marshalFloat32(buf, (m.FullChargeCapacity))
-	buf = marshalUint16(buf, (m.CycleCount))
-	buf = marshalUint16(buf, (m.Weight))
-	buf = marshalByte(buf, (m.Id))
-	buf = marshalByte(buf, byte(m.BatteryFunction))
-	buf = marshalByte(buf, byte(m.Type))
-	buf = marshalByte(buf, (m.StateOfHealth))
-	buf = marshalByte(buf, (m.CellsInSeries))
-	for _, v := range m.ManufactureDate {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.SerialNumber {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.Name {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *BatteryInfo) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *BatteryInfo) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.DischargeMinimumVoltage = unmarshalFloat32(buf)
-
-	buf, m.ChargingMinimumVoltage = unmarshalFloat32(buf)
-
-	buf, m.RestingMinimumVoltage = unmarshalFloat32(buf)
-
-	buf, m.ChargingMaximumVoltage = unmarshalFloat32(buf)
-
-	buf, m.ChargingMaximumCurrent = unmarshalFloat32(buf)
-
-	buf, m.NominalVoltage = unmarshalFloat32(buf)
-
-	buf, m.DischargeMaximumCurrent = unmarshalFloat32(buf)
-
-	buf, m.DischargeMaximumBurstCurrent = unmarshalFloat32(buf)
-
-	buf, m.DesignCapacity = unmarshalFloat32(buf)
-
-	buf, m.FullChargeCapacity = unmarshalFloat32(buf)
-
-	buf, m.CycleCount = unmarshalUint16(buf)
-
-	buf, m.Weight = unmarshalUint16(buf)
-
-	buf, m.Id = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.BatteryFunction = MavBatteryFunction(v)
-	}
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Type = MavBatteryType(v)
-	}
-
-	buf, m.StateOfHealth = unmarshalByte(buf)
-
-	buf, m.CellsInSeries = unmarshalByte(buf)
-
-	for i, _ := range m.ManufactureDate {
-		buf, m.ManufactureDate[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.SerialNumber {
-		buf, m.SerialNumber[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.Name {
-		buf, m.Name[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *BatteryInfo) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
 
 	return buf
 }
@@ -23012,64 +21459,6 @@ func (m *RelayStatus) UnmarshalV1(buf []byte) []byte {
 }
 
 func (m *RelayStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Time/duration estimates for various events and actions given the current vehicle state and position. */
-type TimeEstimateToTarget struct {
-	/* Estimated time to complete the vehicle's configured "safe return" action from its current position (e.g. RTL, Smart RTL, etc.). -1 indicates that the vehicle is landed, or that no time estimate available. */
-	SafeReturn int32
-
-	/* Estimated time for vehicle to complete the LAND action from its current position. -1 indicates that the vehicle is landed, or that no time estimate available. */
-	Land int32
-
-	/* Estimated time for reaching/completing the currently active mission item. -1 means no time estimate available. */
-	MissionNextItem int32
-
-	/* Estimated time for completing the current mission. -1 means no mission active and/or no estimate available. */
-	MissionEnd int32
-
-	/* Estimated time for completing the current commanded action (i.e. Go To, Takeoff, Land, etc.). -1 means no action active and/or no estimate available. */
-	CommandedAction int32
-}
-
-func (m *TimeEstimateToTarget) ID() int        { return 380 }
-func (m *TimeEstimateToTarget) CRCExtra() byte { return 232 }
-
-func (m *TimeEstimateToTarget) MarshalV1(buf []byte) []byte {
-	buf = marshalInt32(buf, (m.SafeReturn))
-	buf = marshalInt32(buf, (m.Land))
-	buf = marshalInt32(buf, (m.MissionNextItem))
-	buf = marshalInt32(buf, (m.MissionEnd))
-	buf = marshalInt32(buf, (m.CommandedAction))
-
-	return buf
-}
-
-func (m *TimeEstimateToTarget) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *TimeEstimateToTarget) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.SafeReturn = unmarshalInt32(buf)
-
-	buf, m.Land = unmarshalInt32(buf)
-
-	buf, m.MissionNextItem = unmarshalInt32(buf)
-
-	buf, m.MissionEnd = unmarshalInt32(buf)
-
-	buf, m.CommandedAction = unmarshalInt32(buf)
-
-	return buf
-}
-
-func (m *TimeEstimateToTarget) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
 
 	return buf
@@ -23559,830 +21948,6 @@ func (m *OnboardComputerStatus) UnmarshalV2(buf []byte) []byte {
 		buf, v = unmarshalUint16(buf)
 		m.StatusFlags = ComputerStatusFlags(v)
 	}
-
-	return buf
-}
-
-/*          Component information message, which may be requested using MAV_CMD_REQUEST_MESSAGE.        */
-type ComponentInformation struct {
-	/* Timestamp (time since system boot). */
-	TimeBootMs uint32
-
-	/* CRC32 of the general metadata file (general_metadata_uri). */
-	GeneralMetadataFileCrc uint32
-
-	/* CRC32 of peripherals metadata file (peripherals_metadata_uri). */
-	PeripheralsMetadataFileCrc uint32
-
-	/* MAVLink FTP URI for the general metadata file (COMP_METADATA_TYPE_GENERAL), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see COMP_METADATA_TYPE). The information is static from boot, and may be generated at compile time. The string needs to be zero terminated. */
-	GeneralMetadataUri [100]byte
-
-	/* (Optional) MAVLink FTP URI for the peripherals metadata file (COMP_METADATA_TYPE_PERIPHERALS), which may be compressed with xz. This contains data about "attached components" such as UAVCAN nodes. The peripherals are in a separate file because the information must be generated dynamically at runtime. The string needs to be zero terminated. */
-	PeripheralsMetadataUri [100]byte
-}
-
-func (m *ComponentInformation) ID() int        { return 395 }
-func (m *ComponentInformation) CRCExtra() byte { return 0 }
-
-func (m *ComponentInformation) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.TimeBootMs))
-	buf = marshalUint32(buf, (m.GeneralMetadataFileCrc))
-	buf = marshalUint32(buf, (m.PeripheralsMetadataFileCrc))
-	for _, v := range m.GeneralMetadataUri {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.PeripheralsMetadataUri {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *ComponentInformation) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *ComponentInformation) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeBootMs = unmarshalUint32(buf)
-
-	buf, m.GeneralMetadataFileCrc = unmarshalUint32(buf)
-
-	buf, m.PeripheralsMetadataFileCrc = unmarshalUint32(buf)
-
-	for i, _ := range m.GeneralMetadataUri {
-		buf, m.GeneralMetadataUri[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.PeripheralsMetadataUri {
-		buf, m.PeripheralsMetadataUri[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *ComponentInformation) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Basic component information data. Should be requested using MAV_CMD_REQUEST_MESSAGE on startup, or when required. */
-type ComponentInformationBasic struct {
-	/* Component capability flags */
-	Capabilities MavProtocolCapability `mavlink:"uint64,bitmask"`
-
-	/* Timestamp (time since system boot). */
-	TimeBootMs uint32
-
-	/* Date of manufacture as a UNIX Epoch time (since 1.1.1970) in seconds. */
-	TimeManufactureS uint32
-
-	/* Name of the component vendor. Needs to be zero terminated. The field is optional and can be empty/all zeros. */
-	VendorName [32]byte
-
-	/* Name of the component model. Needs to be zero terminated. The field is optional and can be empty/all zeros. */
-	ModelName [32]byte
-
-	/* Software version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros. */
-	SoftwareVersion [24]byte
-
-	/* Hardware version. The recommended format is SEMVER: 'major.minor.patch'  (any format may be used). The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros. */
-	HardwareVersion [24]byte
-
-	/* Hardware serial number. The field must be zero terminated if it has a value. The field is optional and can be empty/all zeros. */
-	SerialNumber [32]byte
-}
-
-func (m *ComponentInformationBasic) ID() int        { return 396 }
-func (m *ComponentInformationBasic) CRCExtra() byte { return 50 }
-
-func (m *ComponentInformationBasic) MarshalV1(buf []byte) []byte {
-	buf = marshalUint64(buf, uint64(m.Capabilities))
-	buf = marshalUint32(buf, (m.TimeBootMs))
-	buf = marshalUint32(buf, (m.TimeManufactureS))
-	for _, v := range m.VendorName {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.ModelName {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.SoftwareVersion {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.HardwareVersion {
-		buf = marshalByte(buf, (v))
-	}
-	for _, v := range m.SerialNumber {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *ComponentInformationBasic) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *ComponentInformationBasic) UnmarshalV1(buf []byte) []byte {
-
-	{
-		var v uint64
-		buf, v = unmarshalUint64(buf)
-		m.Capabilities = MavProtocolCapability(v)
-	}
-
-	buf, m.TimeBootMs = unmarshalUint32(buf)
-
-	buf, m.TimeManufactureS = unmarshalUint32(buf)
-
-	for i, _ := range m.VendorName {
-		buf, m.VendorName[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.ModelName {
-		buf, m.ModelName[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.SoftwareVersion {
-		buf, m.SoftwareVersion[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.HardwareVersion {
-		buf, m.HardwareVersion[i] = unmarshalByte(buf)
-	}
-
-	for i, _ := range m.SerialNumber {
-		buf, m.SerialNumber[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *ComponentInformationBasic) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/*          Component metadata message, which may be requested using MAV_CMD_REQUEST_MESSAGE.          This contains the MAVLink FTP URI and CRC for the component's general metadata file.         The file must be hosted on the component, and may be xz compressed.         The file CRC can be used for file caching.          The general metadata file can be read to get the locations of other metadata files (COMP_METADATA_TYPE) and translations, which may be hosted either on the vehicle or the internet.         For more information see: https://mavlink.io/en/services/component_information.html.          Note: Camera components should use CAMERA_INFORMATION instead, and autopilots may use both this message and AUTOPILOT_VERSION.        */
-type ComponentMetadata struct {
-	/* Timestamp (time since system boot). */
-	TimeBootMs uint32
-
-	/* CRC32 of the general metadata file. */
-	FileCrc uint32
-
-	/* MAVLink FTP URI for the general metadata file (COMP_METADATA_TYPE_GENERAL), which may be compressed with xz. The file contains general component metadata, and may contain URI links for additional metadata (see COMP_METADATA_TYPE). The information is static from boot, and may be generated at compile time. The string needs to be zero terminated. */
-	Uri [100]byte
-}
-
-func (m *ComponentMetadata) ID() int        { return 397 }
-func (m *ComponentMetadata) CRCExtra() byte { return 182 }
-
-func (m *ComponentMetadata) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.TimeBootMs))
-	buf = marshalUint32(buf, (m.FileCrc))
-	for _, v := range m.Uri {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *ComponentMetadata) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *ComponentMetadata) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.TimeBootMs = unmarshalUint32(buf)
-
-	buf, m.FileCrc = unmarshalUint32(buf)
-
-	for i, _ := range m.Uri {
-		buf, m.Uri[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *ComponentMetadata) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Play vehicle tone/tune (buzzer). Supersedes message PLAY_TUNE. */
-type PlayTuneV2 struct {
-	/* Tune format */
-	Format TuneFormat `mavlink:"uint32"`
-
-	/* System ID */
-	TargetSystem byte
-
-	/* Component ID */
-	TargetComponent byte
-
-	/* Tune definition as a NULL-terminated string. */
-	Tune [248]byte
-}
-
-func (m *PlayTuneV2) ID() int        { return 400 }
-func (m *PlayTuneV2) CRCExtra() byte { return 110 }
-
-func (m *PlayTuneV2) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, uint32(m.Format))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-	for _, v := range m.Tune {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *PlayTuneV2) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *PlayTuneV2) UnmarshalV1(buf []byte) []byte {
-
-	{
-		var v uint32
-		buf, v = unmarshalUint32(buf)
-		m.Format = TuneFormat(v)
-	}
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	for i, _ := range m.Tune {
-		buf, m.Tune[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *PlayTuneV2) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Tune formats supported by vehicle. This should be emitted as response to MAV_CMD_REQUEST_MESSAGE. */
-type SupportedTunes struct {
-	/* Bitfield of supported tune formats. */
-	Format TuneFormat `mavlink:"uint32"`
-
-	/* System ID */
-	TargetSystem byte
-
-	/* Component ID */
-	TargetComponent byte
-}
-
-func (m *SupportedTunes) ID() int        { return 401 }
-func (m *SupportedTunes) CRCExtra() byte { return 183 }
-
-func (m *SupportedTunes) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, uint32(m.Format))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-
-	return buf
-}
-
-func (m *SupportedTunes) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *SupportedTunes) UnmarshalV1(buf []byte) []byte {
-
-	{
-		var v uint32
-		buf, v = unmarshalUint32(buf)
-		m.Format = TuneFormat(v)
-	}
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *SupportedTunes) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Event message. Each new event from a particular component gets a new sequence number. The same message might be sent multiple times if (re-)requested. Most events are broadcast, some can be specific to a target component (as receivers keep track of the sequence for missed events, all events need to be broadcast. Thus we use destination_component instead of target_component). */
-type Event struct {
-	/* Event ID (as defined in the component metadata) */
-	Id uint32
-
-	/* Timestamp (time since system boot when the event happened). */
-	EventTimeBootMs uint32
-
-	/* Sequence number. */
-	Sequence uint16
-
-	/* Component ID */
-	DestinationComponent byte
-
-	/* System ID */
-	DestinationSystem byte
-
-	/* Log levels: 4 bits MSB: internal (for logging purposes), 4 bits LSB: external. Levels: Emergency = 0, Alert = 1, Critical = 2, Error = 3, Warning = 4, Notice = 5, Info = 6, Debug = 7, Protocol = 8, Disabled = 9 */
-	LogLevels byte
-
-	/* Arguments (depend on event ID). */
-	Arguments [40]byte
-}
-
-func (m *Event) ID() int        { return 410 }
-func (m *Event) CRCExtra() byte { return 160 }
-
-func (m *Event) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.Id))
-	buf = marshalUint32(buf, (m.EventTimeBootMs))
-	buf = marshalUint16(buf, (m.Sequence))
-	buf = marshalByte(buf, (m.DestinationComponent))
-	buf = marshalByte(buf, (m.DestinationSystem))
-	buf = marshalByte(buf, (m.LogLevels))
-	for _, v := range m.Arguments {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *Event) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *Event) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Id = unmarshalUint32(buf)
-
-	buf, m.EventTimeBootMs = unmarshalUint32(buf)
-
-	buf, m.Sequence = unmarshalUint16(buf)
-
-	buf, m.DestinationComponent = unmarshalByte(buf)
-
-	buf, m.DestinationSystem = unmarshalByte(buf)
-
-	buf, m.LogLevels = unmarshalByte(buf)
-
-	for i, _ := range m.Arguments {
-		buf, m.Arguments[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *Event) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Regular broadcast for the current latest event sequence number for a component. This is used to check for dropped events. */
-type CurrentEventSequence struct {
-	/* Sequence number. */
-	Sequence uint16
-
-	/* Flag bitset. */
-	Flags MavEventCurrentSequenceFlags `mavlink:"byte,bitmask"`
-}
-
-func (m *CurrentEventSequence) ID() int        { return 411 }
-func (m *CurrentEventSequence) CRCExtra() byte { return 106 }
-
-func (m *CurrentEventSequence) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, (m.Sequence))
-	buf = marshalByte(buf, byte(m.Flags))
-
-	return buf
-}
-
-func (m *CurrentEventSequence) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *CurrentEventSequence) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Sequence = unmarshalUint16(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Flags = MavEventCurrentSequenceFlags(v)
-	}
-
-	return buf
-}
-
-func (m *CurrentEventSequence) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Request one or more events to be (re-)sent. If first_sequence==last_sequence, only a single event is requested. Note that first_sequence can be larger than last_sequence (because the sequence number can wrap). Each sequence will trigger an EVENT or EVENT_ERROR response. */
-type RequestEvent struct {
-	/* First sequence number of the requested event. */
-	FirstSequence uint16
-
-	/* Last sequence number of the requested event. */
-	LastSequence uint16
-
-	/* System ID */
-	TargetSystem byte
-
-	/* Component ID */
-	TargetComponent byte
-}
-
-func (m *RequestEvent) ID() int        { return 412 }
-func (m *RequestEvent) CRCExtra() byte { return 33 }
-
-func (m *RequestEvent) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, (m.FirstSequence))
-	buf = marshalUint16(buf, (m.LastSequence))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-
-	return buf
-}
-
-func (m *RequestEvent) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *RequestEvent) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.FirstSequence = unmarshalUint16(buf)
-
-	buf, m.LastSequence = unmarshalUint16(buf)
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *RequestEvent) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Response to a REQUEST_EVENT in case of an error (e.g. the event is not available anymore). */
-type ResponseEventError struct {
-	/* Sequence number. */
-	Sequence uint16
-
-	/* Oldest Sequence number that is still available after the sequence set in REQUEST_EVENT. */
-	SequenceOldestAvailable uint16
-
-	/* System ID */
-	TargetSystem byte
-
-	/* Component ID */
-	TargetComponent byte
-
-	/* Error reason. */
-	Reason MavEventErrorReason `mavlink:"byte"`
-}
-
-func (m *ResponseEventError) ID() int        { return 413 }
-func (m *ResponseEventError) CRCExtra() byte { return 77 }
-
-func (m *ResponseEventError) MarshalV1(buf []byte) []byte {
-	buf = marshalUint16(buf, (m.Sequence))
-	buf = marshalUint16(buf, (m.SequenceOldestAvailable))
-	buf = marshalByte(buf, (m.TargetSystem))
-	buf = marshalByte(buf, (m.TargetComponent))
-	buf = marshalByte(buf, byte(m.Reason))
-
-	return buf
-}
-
-func (m *ResponseEventError) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *ResponseEventError) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Sequence = unmarshalUint16(buf)
-
-	buf, m.SequenceOldestAvailable = unmarshalUint16(buf)
-
-	buf, m.TargetSystem = unmarshalByte(buf)
-
-	buf, m.TargetComponent = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Reason = MavEventErrorReason(v)
-	}
-
-	return buf
-}
-
-func (m *ResponseEventError) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Information about a flight mode.          The message can be enumerated to get information for all modes, or requested for a particular mode, using MAV_CMD_REQUEST_MESSAGE.         Specify 0 in param2 to request that the message is emitted for all available modes or the specific index for just one mode.         The modes must be available/settable for the current vehicle/frame type.         Each mode should only be emitted once (even if it is both standard and custom).         Note that the current mode should be emitted in CURRENT_MODE, and that if the mode list can change then AVAILABLE_MODES_MONITOR must be emitted on first change and subsequently streamed.         See https://mavlink.io/en/services/standard_modes.html        */
-type AvailableModes struct {
-	/* A bitfield for use for autopilot-specific flags */
-	CustomMode uint32
-
-	/* Mode properties. */
-	Properties MavModeProperty `mavlink:"uint32,bitmask"`
-
-	/* The total number of available modes for the current vehicle type. */
-	NumberModes byte
-
-	/* The current mode index within number_modes, indexed from 1. The index is not guaranteed to be persistent, and may change between reboots or if the set of modes change. */
-	ModeIndex byte
-
-	/* Standard mode. */
-	StandardMode MavStandardMode `mavlink:"byte"`
-
-	/* Name of custom mode, with null termination character. Should be omitted for standard modes. */
-	ModeName [35]byte
-}
-
-func (m *AvailableModes) ID() int        { return 435 }
-func (m *AvailableModes) CRCExtra() byte { return 134 }
-
-func (m *AvailableModes) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.CustomMode))
-	buf = marshalUint32(buf, uint32(m.Properties))
-	buf = marshalByte(buf, (m.NumberModes))
-	buf = marshalByte(buf, (m.ModeIndex))
-	buf = marshalByte(buf, byte(m.StandardMode))
-	for _, v := range m.ModeName {
-		buf = marshalByte(buf, (v))
-	}
-
-	return buf
-}
-
-func (m *AvailableModes) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *AvailableModes) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.CustomMode = unmarshalUint32(buf)
-
-	{
-		var v uint32
-		buf, v = unmarshalUint32(buf)
-		m.Properties = MavModeProperty(v)
-	}
-
-	buf, m.NumberModes = unmarshalByte(buf)
-
-	buf, m.ModeIndex = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.StandardMode = MavStandardMode(v)
-	}
-
-	for i, _ := range m.ModeName {
-		buf, m.ModeName[i] = unmarshalByte(buf)
-	}
-
-	return buf
-}
-
-func (m *AvailableModes) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Get the current mode.         This should be emitted on any mode change, and broadcast at low rate (nominally 0.5 Hz).         It may be requested using MAV_CMD_REQUEST_MESSAGE.         See https://mavlink.io/en/services/standard_modes.html        */
-type CurrentMode struct {
-	/* A bitfield for use for autopilot-specific flags */
-	CustomMode uint32
-
-	/* The custom_mode of the mode that was last commanded by the user (for example, with MAV_CMD_DO_SET_STANDARD_MODE, MAV_CMD_DO_SET_MODE or via RC). This should usually be the same as custom_mode. It will be different if the vehicle is unable to enter the intended mode, or has left that mode due to a failsafe condition. 0 indicates the intended custom mode is unknown/not supplied */
-	IntendedCustomMode uint32
-
-	/* Standard mode. */
-	StandardMode MavStandardMode `mavlink:"byte"`
-}
-
-func (m *CurrentMode) ID() int        { return 436 }
-func (m *CurrentMode) CRCExtra() byte { return 193 }
-
-func (m *CurrentMode) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.CustomMode))
-	buf = marshalUint32(buf, (m.IntendedCustomMode))
-	buf = marshalByte(buf, byte(m.StandardMode))
-
-	return buf
-}
-
-func (m *CurrentMode) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *CurrentMode) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.CustomMode = unmarshalUint32(buf)
-
-	buf, m.IntendedCustomMode = unmarshalUint32(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.StandardMode = MavStandardMode(v)
-	}
-
-	return buf
-}
-
-func (m *CurrentMode) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* A change to the sequence number indicates that the set of AVAILABLE_MODES has changed, and that the receiver should re-request all available modes.          The message is optional, and is only needed when the set of modes can change dynamically after boot.         It should be emitted whenever the set of modes change.         It should be streamed at low rate (nominally 0.3 Hz).         See https://mavlink.io/en/services/standard_modes.html        */
-type AvailableModesMonitor struct {
-	/* Sequence number. The value iterates sequentially whenever AVAILABLE_MODES changes (e.g. support for a new mode is added/removed dynamically). */
-	Seq byte
-}
-
-func (m *AvailableModesMonitor) ID() int        { return 437 }
-func (m *AvailableModesMonitor) CRCExtra() byte { return 30 }
-
-func (m *AvailableModesMonitor) MarshalV1(buf []byte) []byte {
-	buf = marshalByte(buf, (m.Seq))
-
-	return buf
-}
-
-func (m *AvailableModesMonitor) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *AvailableModesMonitor) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.Seq = unmarshalByte(buf)
-
-	return buf
-}
-
-func (m *AvailableModesMonitor) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
-
-	return buf
-}
-
-/* Illuminator status */
-type IlluminatorStatus struct {
-	/* Time since the start-up of the illuminator in ms */
-	UptimeMs uint32
-
-	/* Errors */
-	ErrorStatus IlluminatorErrorFlags `mavlink:"uint32,bitmask"`
-
-	/* Illuminator brightness */
-	Brightness float32
-
-	/* Illuminator strobing period in seconds */
-	StrobePeriod float32
-
-	/* Illuminator strobing duty cycle */
-	StrobeDutyCycle float32
-
-	/* Temperature in Celsius */
-	TempC float32
-
-	/* Minimum strobing period in seconds */
-	MinStrobePeriod float32
-
-	/* Maximum strobing period in seconds */
-	MaxStrobePeriod float32
-
-	/* 0: Illuminators OFF, 1: Illuminators ON */
-	Enable byte
-
-	/* Supported illuminator modes */
-	ModeBitmask IlluminatorMode `mavlink:"byte"`
-
-	/* Illuminator mode */
-	Mode IlluminatorMode `mavlink:"byte"`
-}
-
-func (m *IlluminatorStatus) ID() int        { return 440 }
-func (m *IlluminatorStatus) CRCExtra() byte { return 66 }
-
-func (m *IlluminatorStatus) MarshalV1(buf []byte) []byte {
-	buf = marshalUint32(buf, (m.UptimeMs))
-	buf = marshalUint32(buf, uint32(m.ErrorStatus))
-	buf = marshalFloat32(buf, (m.Brightness))
-	buf = marshalFloat32(buf, (m.StrobePeriod))
-	buf = marshalFloat32(buf, (m.StrobeDutyCycle))
-	buf = marshalFloat32(buf, (m.TempC))
-	buf = marshalFloat32(buf, (m.MinStrobePeriod))
-	buf = marshalFloat32(buf, (m.MaxStrobePeriod))
-	buf = marshalByte(buf, (m.Enable))
-	buf = marshalByte(buf, byte(m.ModeBitmask))
-	buf = marshalByte(buf, byte(m.Mode))
-
-	return buf
-}
-
-func (m *IlluminatorStatus) MarshalV2(buf []byte) []byte {
-	buf = m.MarshalV1(buf)
-
-	return buf
-}
-
-func (m *IlluminatorStatus) UnmarshalV1(buf []byte) []byte {
-
-	buf, m.UptimeMs = unmarshalUint32(buf)
-
-	{
-		var v uint32
-		buf, v = unmarshalUint32(buf)
-		m.ErrorStatus = IlluminatorErrorFlags(v)
-	}
-
-	buf, m.Brightness = unmarshalFloat32(buf)
-
-	buf, m.StrobePeriod = unmarshalFloat32(buf)
-
-	buf, m.StrobeDutyCycle = unmarshalFloat32(buf)
-
-	buf, m.TempC = unmarshalFloat32(buf)
-
-	buf, m.MinStrobePeriod = unmarshalFloat32(buf)
-
-	buf, m.MaxStrobePeriod = unmarshalFloat32(buf)
-
-	buf, m.Enable = unmarshalByte(buf)
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.ModeBitmask = IlluminatorMode(v)
-	}
-
-	{
-		var v byte
-		buf, v = unmarshalByte(buf)
-		m.Mode = IlluminatorMode(v)
-	}
-
-	return buf
-}
-
-func (m *IlluminatorStatus) UnmarshalV2(buf []byte) []byte {
-	buf = m.UnmarshalV1(buf)
 
 	return buf
 }

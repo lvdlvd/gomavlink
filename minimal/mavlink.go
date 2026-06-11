@@ -140,23 +140,23 @@ const (
 	/* Onboard companion controller */
 	MAV_TYPE_ONBOARD_CONTROLLER MavType = 18
 
-	/* Two-rotor Tailsitter VTOL that additionally uses control surfaces in vertical operation. Note, value previously named MAV_TYPE_VTOL_DUOROTOR. */
-	MAV_TYPE_VTOL_TAILSITTER_DUOROTOR MavType = 19
+	/* Two-rotor VTOL using control surfaces in vertical operation in addition. Tailsitter. */
+	MAV_TYPE_VTOL_DUOROTOR MavType = 19
 
-	/* Quad-rotor Tailsitter VTOL using a V-shaped quad config in vertical operation. Note: value previously named MAV_TYPE_VTOL_QUADROTOR. */
-	MAV_TYPE_VTOL_TAILSITTER_QUADROTOR MavType = 20
+	/* Quad-rotor VTOL using a V-shaped quad config in vertical operation. Tailsitter. */
+	MAV_TYPE_VTOL_QUADROTOR MavType = 20
 
-	/* Tiltrotor VTOL. Fuselage and wings stay (nominally) horizontal in all flight phases. It able to tilt (some) rotors to provide thrust in cruise flight. */
+	/* Tiltrotor VTOL */
 	MAV_TYPE_VTOL_TILTROTOR MavType = 21
 
-	/* VTOL with separate fixed rotors for hover and cruise flight. Fuselage and wings stay (nominally) horizontal in all flight phases. */
-	MAV_TYPE_VTOL_FIXEDROTOR MavType = 22
+	/* VTOL reserved 2 */
+	MAV_TYPE_VTOL_RESERVED2 MavType = 22
 
-	/* Tailsitter VTOL. Fuselage and wings orientation changes depending on flight phase: vertical for hover, horizontal for cruise. Use more specific VTOL MAV_TYPE_VTOL_TAILSITTER_DUOROTOR or MAV_TYPE_VTOL_TAILSITTER_QUADROTOR if appropriate. */
-	MAV_TYPE_VTOL_TAILSITTER MavType = 23
+	/* VTOL reserved 3 */
+	MAV_TYPE_VTOL_RESERVED3 MavType = 23
 
-	/* Tiltwing VTOL. Fuselage stays horizontal in all flight phases. The whole wing, along with any attached engine, can tilt between vertical and horizontal mode. */
-	MAV_TYPE_VTOL_TILTWING MavType = 24
+	/* VTOL reserved 4 */
+	MAV_TYPE_VTOL_RESERVED4 MavType = 24
 
 	/* VTOL reserved 5 */
 	MAV_TYPE_VTOL_RESERVED5 MavType = 25
@@ -229,9 +229,6 @@ const (
 
 	/* Gripper */
 	MAV_TYPE_GRIPPER MavType = 48
-
-	/* Radio */
-	MAV_TYPE_RADIO MavType = 49
 )
 
 /* These flags encode the MAV mode, see MAV_MODE enum for useful combinations. */
@@ -259,7 +256,7 @@ const (
 	/* 0b00000010 system has a test mode enabled. This flag is intended for temporary system tests and should not be used for stable implementations. */
 	MAV_MODE_FLAG_TEST_ENABLED MavModeFlag = 2
 
-	/* 0b00000001 system-specific custom mode is enabled. When using this flag to enable a custom mode all other flags should be ignored. */
+	/* 0b00000001 Reserved for future use. */
 	MAV_MODE_FLAG_CUSTOM_MODE_ENABLED MavModeFlag = 1
 )
 
@@ -323,7 +320,7 @@ const (
 	MAV_STATE_FLIGHT_TERMINATION MavState = 8
 )
 
-/* Legacy component ID values for particular types of hardware/software that might make up a MAVLink system (autopilot, cameras, servos, avoidance systems etc.).                Components are not required or expected to use IDs with names that correspond to their type or function, but may choose to do so.         Using an ID that matches the type may slightly reduce the chances of component id clashes, as, for historical reasons, it is less likely to be used by some other type of component.         System integration will still need to ensure that all components have unique IDs.          Component IDs are used for addressing messages to a particular component within a system.         A component can use any unique ID between 1 and 255 (MAV_COMP_ID_ALL value is the broadcast address, used to send to all components).                  Historically component ID were also used for identifying the type of component.         New code must not use component IDs to infer the component type, but instead check the MAV_TYPE in the HEARTBEAT message!        */
+/* Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system (autopilot, cameras, servos, GPS systems, avoidance systems etc.).       Components must use the appropriate ID in their source address when sending messages. Components can also use IDs to determine if they are the intended recipient of an incoming message. The MAV_COMP_ID_ALL value is used to indicate messages that must be processed by all components.       When creating new entries, components that can have multiple instances (e.g. cameras, servos etc.) should be allocated sequential values. An appropriate number of values should be left free after these components to allow the number of instances to be expanded. */
 type MavComponent uint32
 
 const (
@@ -575,15 +572,6 @@ const (
 
 	/* Camera #6. */
 	MAV_COMP_ID_CAMERA6 MavComponent = 105
-
-	/* Radio #1. */
-	MAV_COMP_ID_RADIO MavComponent = 110
-
-	/* Radio #2. */
-	MAV_COMP_ID_RADIO2 MavComponent = 111
-
-	/* Radio #3. */
-	MAV_COMP_ID_RADIO3 MavComponent = 112
 
 	/* Servo #1. */
 	MAV_COMP_ID_SERVO1 MavComponent = 140
