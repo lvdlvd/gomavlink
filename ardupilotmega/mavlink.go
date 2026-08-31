@@ -9,7 +9,7 @@ import (
 	mavlink "github.com/lvdlvd/gomavlink"
 )
 
-//go:generate stringer -output strings.go -type=MavAutopilot,MavType,MavModeFlag,MavModeFlagDecodePosition,MavState,MavComponent,MavBool,MavProtocolCapability,FirmwareVersionType,HlFailureFlag,MavGoto,MavMode,MavSysStatusSensor,MavSysStatusSensorExtended,MavFrame,MavlinkDataStreamType,FenceBreach,FenceMitigate,FenceType,MavMountMode,GimbalDeviceCapFlags,GimbalManagerCapFlags,GimbalDeviceFlags,GimbalManagerFlags,GimbalDeviceErrorFlags,GripperActions,WinchActions,UavcanNodeHealth,UavcanNodeMode,StorageStatus,StorageType,StorageUsageFlag,OrbitYawBehaviour,ActuatorConfiguration,ActuatorOutputFunction,AutotuneAxis,PreflightStorageParameterAction,PreflightStorageMissionAction,RebootShutdownAction,RebootShutdownConditions,PreflightCalibrationMagnetometer,PreflightCalibrationAccelerometer,NavTakeoffFlags,MavCmd,MavDataStream,MavRoi,MavParamType,MavParamError,MavParamExtType,MavResult,MavMissionResult,MavSeverity,MavPowerStatus,SerialControlDev,SerialControlFlag,MavDistanceSensor,MavSensorOrientation,MavMissionType,MavEstimatorType,MavBatteryType,MavBatteryFunction,MavBatteryChargeState,MavBatteryMode,MavBatteryFault,MavGeneratorStatusFlag,MavVtolState,MavLandedState,AdsbAltitudeType,AdsbEmitterType,AdsbFlags,MavDoRepositionFlags,SpeedType,EstimatorStatusFlags,MotorTestOrder,MotorTestThrottleType,GpsInputIgnoreFlags,MavCollisionAction,MavCollisionThreatLevel,MavCollisionSrc,GpsFixType,RtkBaselineCoordinateSystem,LandingTargetType,VtolTransitionHeading,CameraCapFlags,VideoStreamStatusFlags,VideoStreamType,VideoStreamEncoding,CameraTrackingStatusFlags,CameraTrackingMode,CameraTrackingTargetData,CameraZoomType,SetFocusType,CameraSource,ParamAck,CameraMode,MavArmAuthDeniedReason,RcType,RcSubType,EngineControlOptions,PositionTargetTypemask,AttitudeTargetTypemask,UtmFlightState,UtmDataAvailFlags,PrecisionLandMode,ParachuteAction,MavTunnelPayloadType,MavOdidIdType,MavOdidUaType,MavOdidStatus,MavOdidHeightRef,MavOdidHorAcc,MavOdidVerAcc,MavOdidSpeedAcc,MavOdidTimeAcc,MavOdidAuthType,MavOdidDescType,MavOdidOperatorLocationType,MavOdidClassificationType,MavOdidCategoryEu,MavOdidClassEu,MavOdidOperatorIdType,MavOdidArmStatus,AisType,AisNavStatus,AisFlags,FailureUnit,FailureType,NavVtolLandOptions,MavWinchStatusFlag,MagCalStatus,HilSensorUpdatedFlags,HighresImuUpdatedFlags,CanFilterOp,MavFtpErr,MavFtpOpcode,MissionState,SafetySwitchState,IlluminatorMode,IlluminatorErrorFlags,MavStandardMode,HilActuatorControlsFlags,ComputerStatusFlags,AirspeedSensorFlags,UavionixAdsbOutDynamicState,UavionixAdsbOutRfSelect,UavionixAdsbOutDynamicGpsFix,UavionixAdsbRfHealth,UavionixAdsbOutCfgAircraftSize,UavionixAdsbOutCfgGpsOffsetLat,UavionixAdsbOutCfgGpsOffsetLon,UavionixAdsbEmergencyStatus,UavionixAdsbOutControlState,UavionixAdsbXbit,UavionixAdsbOutStatusState,UavionixAdsbOutStatusNicNacp,UavionixAdsbOutStatusFault,IcarousTrackBandTypes,IcarousFmsState,AirlinkAuthResponseType,PlaneMode,HdgaltCommandFlags,HdgaltStateFlags,HdgaltCaptureState,HdgaltWarning,VnavObsKind,VnavObsFlags,VnavPoseResult,AccelcalVehiclePos,HeadingType,ScriptingCmd,SecureCommandOp,LimitsState,LimitModule,RallyFlags,CameraStatusTypes,CameraFeedbackFlags,MavModeGimbal,GimbalAxis,GimbalAxisCalibrationStatus,GimbalAxisCalibrationRequired,GoproHeartbeatStatus,GoproHeartbeatFlags,GoproRequestStatus,GoproCommand,GoproCaptureMode,GoproResolution,GoproFrameRate,GoproFieldOfView,GoproVideoSettingsFlags,GoproPhotoResolution,GoproProtuneWhiteBalance,GoproProtuneColour,GoproProtuneGain,GoproProtuneSharpness,GoproProtuneExposure,GoproCharging,GoproModel,GoproBurstRate,MavCmdDoAuxFunctionSwitchLevel,LedControlPattern,EkfStatusFlags,PidTuningAxis,MavRemoteLogDataBlockCommands,MavRemoteLogDataBlockStatuses,DeviceOpBustype,DeepstallStage,CopterMode,SubMode,RoverMode,TrackerMode,OsdParamConfigType,OsdParamConfigError
+//go:generate stringer -output strings.go -type=MavAutopilot,MavType,MavModeFlag,MavModeFlagDecodePosition,MavState,MavComponent,MavBool,MavProtocolCapability,FirmwareVersionType,HlFailureFlag,MavGoto,MavMode,MavSysStatusSensor,MavSysStatusSensorExtended,MavFrame,MavlinkDataStreamType,FenceBreach,FenceMitigate,FenceType,MavMountMode,GimbalDeviceCapFlags,GimbalManagerCapFlags,GimbalDeviceFlags,GimbalManagerFlags,GimbalDeviceErrorFlags,GripperActions,WinchActions,UavcanNodeHealth,UavcanNodeMode,StorageStatus,StorageType,StorageUsageFlag,OrbitYawBehaviour,ActuatorConfiguration,ActuatorOutputFunction,AutotuneAxis,PreflightStorageParameterAction,PreflightStorageMissionAction,RebootShutdownAction,RebootShutdownConditions,PreflightCalibrationMagnetometer,PreflightCalibrationAccelerometer,NavTakeoffFlags,MavCmd,MavDataStream,MavRoi,MavParamType,MavParamError,MavParamExtType,MavResult,MavMissionResult,MavSeverity,MavPowerStatus,SerialControlDev,SerialControlFlag,MavDistanceSensor,MavSensorOrientation,MavMissionType,MavEstimatorType,MavBatteryType,MavBatteryFunction,MavBatteryChargeState,MavBatteryMode,MavBatteryFault,MavGeneratorStatusFlag,MavVtolState,MavLandedState,AdsbAltitudeType,AdsbEmitterType,AdsbFlags,MavDoRepositionFlags,SpeedType,HeadingType,EstimatorStatusFlags,MotorTestOrder,MotorTestThrottleType,GpsInputIgnoreFlags,MavCollisionAction,MavCollisionThreatLevel,MavCollisionSrc,GpsFixType,RtkBaselineCoordinateSystem,LandingTargetType,VtolTransitionHeading,CameraCapFlags,VideoStreamStatusFlags,VideoStreamType,VideoStreamEncoding,CameraTrackingStatusFlags,CameraTrackingMode,CameraTrackingTargetData,CameraZoomType,SetFocusType,CameraSource,ParamAck,CameraMode,MavArmAuthDeniedReason,RcType,RcSubType,EngineControlOptions,PositionTargetTypemask,AttitudeTargetTypemask,UtmFlightState,UtmDataAvailFlags,PrecisionLandMode,ParachuteAction,MavTunnelPayloadType,MavOdidIdType,MavOdidUaType,MavOdidStatus,MavOdidHeightRef,MavOdidHorAcc,MavOdidVerAcc,MavOdidSpeedAcc,MavOdidTimeAcc,MavOdidAuthType,MavOdidDescType,MavOdidOperatorLocationType,MavOdidClassificationType,MavOdidCategoryEu,MavOdidClassEu,MavOdidOperatorIdType,MavOdidArmStatus,AisType,AisNavStatus,AisFlags,FailureUnit,FailureType,NavVtolLandOptions,MavWinchStatusFlag,MagCalStatus,HilSensorUpdatedFlags,HighresImuUpdatedFlags,CanFilterOp,MavFtpErr,MavFtpOpcode,MissionState,SafetySwitchState,IlluminatorMode,IlluminatorErrorFlags,MavStandardMode,HilActuatorControlsFlags,ComputerStatusFlags,AirspeedSensorFlags,UavionixAdsbOutDynamicState,UavionixAdsbOutRfSelect,UavionixAdsbOutDynamicGpsFix,UavionixAdsbRfHealth,UavionixAdsbOutCfgAircraftSize,UavionixAdsbOutCfgGpsOffsetLat,UavionixAdsbOutCfgGpsOffsetLon,UavionixAdsbEmergencyStatus,UavionixAdsbOutControlState,UavionixAdsbXbit,UavionixAdsbOutStatusState,UavionixAdsbOutStatusNicNacp,UavionixAdsbOutStatusFault,IcarousTrackBandTypes,IcarousFmsState,AirlinkAuthResponseType,PlaneMode,HdgaltCommandFlags,HdgaltStateFlags,HdgaltCaptureState,HdgaltWarning,VnavObsKind,VnavObsFlags,VnavPoseResult,AccelcalVehiclePos,ScriptingCmd,SecureCommandOp,LimitsState,LimitModule,RallyFlags,CameraStatusTypes,CameraFeedbackFlags,MavModeGimbal,GimbalAxis,GimbalAxisCalibrationStatus,GimbalAxisCalibrationRequired,GoproHeartbeatStatus,GoproHeartbeatFlags,GoproRequestStatus,GoproCommand,GoproCaptureMode,GoproResolution,GoproFrameRate,GoproFieldOfView,GoproVideoSettingsFlags,GoproPhotoResolution,GoproProtuneWhiteBalance,GoproProtuneColour,GoproProtuneGain,GoproProtuneSharpness,GoproProtuneExposure,GoproCharging,GoproModel,GoproBurstRate,MavCmdDoAuxFunctionSwitchLevel,LedControlPattern,EkfStatusFlags,PidTuningAxis,MavRemoteLogDataBlockCommands,MavRemoteLogDataBlockStatuses,DeviceOpBustype,DeepstallStage,CopterMode,SubMode,RoverMode,TrackerMode,OsdParamConfigType,OsdParamConfigError
 
 /* Micro air vehicle / autopilot classes. This identifies the individual model. */
 type MavAutopilot uint32
@@ -1204,6 +1204,9 @@ const (
 
 	/* Gimbal tracks home position */
 	MAV_MOUNT_MODE_HOME_LOCATION MavMountMode = 6
+
+	/* Gimbal tracks next waypoint location with offset */
+	MAV_MOUNT_MODE_WPNEXT_OFFSET MavMountMode = 7
 )
 
 /* Gimbal device (low level) capability flags (bitmap). */
@@ -2065,7 +2068,7 @@ const (
 	/* Control vehicle engine. This is interpreted by the vehicles engine controller to change the target engine state. It is intended for vehicles with internal combustion engines */
 	MAV_CMD_DO_ENGINE_CONTROL MavCmd = 223
 
-	/* Set the mission item with sequence number seq as current item. This means that the MAV will continue to this mission item on the shortest path (not following the mission items in-between). */
+	/*            Set the mission item with sequence number seq as the current item and emit MISSION_CURRENT (whether or not the mission number changed).           If a mission is currently being executed, the system will continue to this new mission item on the shortest path, skipping any intermediate mission items.    Note that mission jump repeat counters are not reset unless param2 is set (see MAV_CMD_DO_JUMP param2).            This command may trigger a mission state-machine change on some systems: for example from MISSION_STATE_NOT_STARTED or MISSION_STATE_PAUSED to MISSION_STATE_ACTIVE.           If the system is in mission mode, on those systems this command might therefore start, restart or resume the mission.           If the system is not in mission mode this command must not trigger a switch to mission mode.            The mission may be "reset" using param2.           Resetting sets jump counters to initial values (to reset counters without changing the current mission item set the param1 to `-1`).           Resetting also explicitly changes a mission state of MISSION_STATE_COMPLETE to MISSION_STATE_PAUSED or MISSION_STATE_ACTIVE, potentially allowing it to resume when it is (next) in a mission mode.     The command will ACK with MAV_RESULT_FAILED if the sequence number is out of range (including if there is no mission item).          */
 	MAV_CMD_DO_SET_MISSION_CURRENT MavCmd = 224
 
 	/* NOP - This command is only used to mark the upper limit of the DO commands in the enumeration */
@@ -2244,7 +2247,7 @@ const (
 	/* Request VTOL transition */
 	MAV_CMD_DO_VTOL_TRANSITION MavCmd = 3000
 
-	/* Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.   If approved the COMMAND_ACK message progress field should be set with period of time that this authorization is valid in seconds.   If the authorization is denied COMMAND_ACK.result_param2 should be set with one of the reasons in ARM_AUTH_DENIED_REASON.          */
+	/* Request authorization to arm the vehicle to a external entity, the arm authorizer is responsible to request all data that is needs from the vehicle before authorize or deny the request.   If approved the COMMAND_ACK message progress field should be set with period of time that this authorization is valid in seconds.   If the authorization is denied COMMAND_ACK.result_param2 should be set with one of the reasons in MAV_ARM_AUTH_DENIED_REASON.          */
 	MAV_CMD_ARM_AUTHORIZATION_REQUEST MavCmd = 3001
 
 	/* This command sets the submode to standard guided when vehicle is in guided mode. The vehicle holds position and altitude and the user can input the desired velocities along all three axes.                    */
@@ -2295,6 +2298,15 @@ const (
 	/* Command to operate winch. */
 	MAV_CMD_DO_WINCH MavCmd = 42600
 
+	/* Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one. */
+	MAV_CMD_GUIDED_CHANGE_SPEED MavCmd = 43000
+
+	/* Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one. */
+	MAV_CMD_GUIDED_CHANGE_ALTITUDE MavCmd = 43001
+
+	/* Change to target direction at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between its previous heading and the new one. */
+	MAV_CMD_GUIDED_CHANGE_HEADING MavCmd = 43002
+
 	/* Provide an external position estimate for use when dead-reckoning. This is meant to be used for occasional position resets that may be provided by a external system such as a remote pilot using landmarks over a video link. */
 	MAV_CMD_EXTERNAL_POSITION_ESTIMATE MavCmd = 43003
 
@@ -2343,7 +2355,7 @@ const (
 	/* User defined command. Ground Station will not show the Vehicle as flying through this item. Example: MAV_CMD_DO_SET_PARAMETER item. */
 	MAV_CMD_USER_5 MavCmd = 31014
 
-	/* Request forwarding of CAN packets from the given CAN bus to this component via this mavlink channel. CAN Frames are sent using CAN_FRAME and CANFD_FRAME messages */
+	/* Request forwarding of CAN packets from the given CAN bus to this component via this MAVLink channel. CAN Frames are sent using CAN_FRAME and CANFD_FRAME messages */
 	MAV_CMD_CAN_FORWARD MavCmd = 32000
 
 	/* Set Loweheiser desired states */
@@ -2432,15 +2444,6 @@ const (
 
 	/* Maintain an attitude for a specified time. */
 	MAV_CMD_NAV_ATTITUDE_TIME MavCmd = 42703
-
-	/* Change flight speed at a given rate. This slews the vehicle at a controllable rate between it's previous speed and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.) */
-	MAV_CMD_GUIDED_CHANGE_SPEED MavCmd = 43000
-
-	/* Change target altitude at a given rate. This slews the vehicle at a controllable rate between it's previous altitude and the new one. (affects GUIDED only. Outside GUIDED, aircraft ignores these commands. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.) */
-	MAV_CMD_GUIDED_CHANGE_ALTITUDE MavCmd = 43001
-
-	/* Change to target heading at a given rate, overriding previous heading/s. This slews the vehicle at a controllable rate between it's previous heading and the new one. (affects GUIDED only. Exiting GUIDED returns aircraft to normal behaviour defined elsewhere. Designed for onboard companion-computer command-and-control, not normally operator/GCS control.) */
-	MAV_CMD_GUIDED_CHANGE_HEADING MavCmd = 43002
 
 	/* Provide a value for height above ground level. This can be used for things like fixed wing and VTOL landing. */
 	MAV_CMD_SET_HAGL MavCmd = 43005
@@ -3336,6 +3339,20 @@ const (
 	SPEED_TYPE_DESCENT_SPEED SpeedType = 3
 )
 
+/* Heading setpoint types used in MAV_CMD_GUIDED_CHANGE_HEADING */
+type HeadingType uint32
+
+const (
+	/* Course over ground. */
+	HEADING_TYPE_COURSE_OVER_GROUND HeadingType = 0
+
+	/* Raw vehicle heading. */
+	HEADING_TYPE_HEADING HeadingType = 1
+
+	/* Default heading. */
+	HEADING_TYPE_DEFAULT HeadingType = 2
+)
+
 /* Flags in ESTIMATOR_STATUS message */
 type EstimatorStatusFlags uint32
 
@@ -3801,6 +3818,7 @@ const (
 	CAMERA_MODE_IMAGE_SURVEY CameraMode = 2
 )
 
+/* Reasons for denying an authorization request made with MAV_CMD_ARM_AUTHORIZATION_REQUEST. If the COMMAND_ACK result is MAV_RESULT_DENIED, this is used to set the reason in the result_param2 field. */
 type MavArmAuthDeniedReason uint32
 
 const (
@@ -4798,9 +4816,20 @@ const (
 
 	MAG_CAL_FAILED MagCalStatus = 5
 
-	MAG_CAL_BAD_ORIENTATION MagCalStatus = 6
+	/* Compass calibration failed: the vehicle orientation is outside the required tolerance. */
+	MAG_CAL_FAILED_ORIENTATION MagCalStatus = 6
 
-	MAG_CAL_BAD_RADIUS MagCalStatus = 7
+	/* Compass calibration failed: the radius of the fitted sphere is unrealistically small or large. */
+	MAG_CAL_FAILED_RADIUS MagCalStatus = 7
+
+	/* Compass calibration failed: offset magnitude too large. */
+	MAG_CAL_FAILED_OFFSETS MagCalStatus = 8
+
+	/* Compass calibration failed: diagonal or off-diagonal scaling values out of valid range. */
+	MAG_CAL_FAILED_DIAG_SCALING MagCalStatus = 9
+
+	/* Compass calibration failed: fitness (RMS residual) exceeds tolerance. */
+	MAG_CAL_FAILED_RESIDUALS_HIGH MagCalStatus = 10
 )
 
 /* Flags in the HIL_SENSOR message indicate which fields have updated since the last message */
@@ -4904,7 +4933,7 @@ const (
 	CAN_FILTER_REMOVE CanFilterOp = 2
 )
 
-/* MAV FTP error codes (https://mavlink.io/en/services/ftp.html) */
+/* MAV FTP error codes (may be used in FILE_TRANSFER_PROTOCOL). See https://mavlink.io/en/services/ftp.html. */
 type MavFtpErr uint32
 
 const (
@@ -4942,7 +4971,7 @@ const (
 	MAV_FTP_ERR_FILENOTFOUND MavFtpErr = 10
 )
 
-/* MAV FTP opcodes: https://mavlink.io/en/services/ftp.html */
+/* MAV FTP opcodes (may be used in FILE_TRANSFER_PROTOCOL). See https://mavlink.io/en/services/ftp.html. */
 type MavFtpOpcode uint32
 
 const (
@@ -5577,6 +5606,9 @@ const (
 
 	/* DME: range_m is SLANT range; no bearing. */
 	VNAV_OBS_KIND_DME VnavObsKind = 3
+
+	/* Direct position measurement: each candidate lat/lon IS a measured aircraft position (kidnap-search posterior peak, or a verified GPS-class fix) with horizontal 1-sigma pos_sigma_m; no bearing or range. n_candidates 0 with null mass is the null report ("looked, recognized nothing"). birth_sigma_m above 0 marks peaks that may birth fresh hypotheses when they corroborate no incumbent. */
+	VNAV_OBS_KIND_POSFIX VnavObsKind = 4
 )
 
 /* Field-validity bits of a VNAV_OBSERVATION. */
@@ -5628,16 +5660,6 @@ const (
 	ACCELCAL_VEHICLE_POS_SUCCESS AccelcalVehiclePos = 16777215
 
 	ACCELCAL_VEHICLE_POS_FAILED AccelcalVehiclePos = 16777216
-)
-
-type HeadingType uint32
-
-const (
-	HEADING_TYPE_COURSE_OVER_GROUND HeadingType = 0
-
-	HEADING_TYPE_HEADING HeadingType = 1
-
-	HEADING_TYPE_DEFAULT HeadingType = 2
 )
 
 type ScriptingCmd uint32
@@ -7395,10 +7417,10 @@ type SysStatus struct {
 	/* Maximum usage in percent of the mainloop time. Values: [0-1000] - should always be below 1000 */
 	Load uint16
 
-	/* Battery voltage, UINT16_MAX: Voltage not sent by autopilot */
+	/* Battery voltage, UINT16_MAX: Voltage not sent by autopilot. Value is ambiguous on multi-battery systems. BATTERY_STATUS is a recommended alternative. */
 	VoltageBattery uint16
 
-	/* Battery current, -1: Current not sent by autopilot */
+	/* Battery current, -1: Current not sent by autopilot. Value may overflow/rollover for very high currents (&gt; 327.67A). Value is ambiguous on multi-battery systems. BATTERY_STATUS is a recommended alternative. */
 	CurrentBattery int16
 
 	/* Communication drop rate, (UART, I2C, SPI, CAN), dropped packets on all links (packets that were corrupted on reception on the MAV) */
@@ -7419,7 +7441,7 @@ type SysStatus struct {
 	/* Autopilot-specific errors */
 	ErrorsCount4 uint16
 
-	/* Battery energy remaining, -1: Battery remaining energy not sent by autopilot */
+	/* Battery energy remaining, -1: Battery remaining energy not sent by autopilot. Value is ambiguous on multi-battery systems. BATTERY_STATUS is a recommended alternative. */
 	BatteryRemaining int8
 
 	/* Bitmap showing which onboard controllers and sensors are present. Value of 0: not present. Value of 1: present. */
@@ -16469,7 +16491,7 @@ type BatteryStatus struct {
 	/* Battery voltage of cells 1 to 10 (see voltages_ext for cells 11-14). Cells in this field above the valid cell count for this battery should have the UINT16_MAX value. If individual cell voltages are unknown or not measured for this battery, then the overall battery voltage should be filled in cell 0, with all others set to UINT16_MAX. If the voltage of the battery is greater than (UINT16_MAX - 1), then cell 0 should be set to (UINT16_MAX - 1), and cell 1 to the remaining voltage. This can be extended to multiple cells if the total voltage is greater than 2 * (UINT16_MAX - 1). */
 	Voltages [10]uint16
 
-	/* Battery current, -1: autopilot does not measure the current */
+	/* Battery current, -1: autopilot does not measure the current. Value may overflow/rollover for very high currents (&gt; 327.67A) */
 	CurrentBattery int16
 
 	/* Battery ID */
@@ -17878,7 +17900,7 @@ type Radio struct {
 	/* Remote signal strength. */
 	Remrssi byte
 
-	/* How full the tx buffer is. */
+	/* Remaining free transmitter buffer space. */
 	Txbuf byte
 
 	/* Background noise level. */
@@ -31434,6 +31456,13 @@ type VnavObservation struct {
 
 	/* Candidate weights, 0..255 scale, ranked descending. */
 	CandScore [5]byte
+
+	/* POSFIX kind: horizontal 1-sigma of each candidate-as-position, metres; 0 = not a position measurement. */
+	PosSigmaM float32 /*EXTENSION*/
+
+	/* POSFIX kind: position sigma for hypotheses birthed from unfused peaks; 0 = peaks never birth. */
+	BirthSigmaM float32 /*EXTENSION*/
+
 }
 
 func (m *VnavObservation) ID() int        { return 52110 }
@@ -31468,6 +31497,8 @@ func (m *VnavObservation) MarshalV1(buf []byte) []byte {
 
 func (m *VnavObservation) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
+	buf = marshalFloat32(buf, (m.PosSigmaM))
+	buf = marshalFloat32(buf, (m.BirthSigmaM))
 
 	return buf
 }
@@ -31523,6 +31554,8 @@ func (m *VnavObservation) UnmarshalV1(buf []byte) []byte {
 
 func (m *VnavObservation) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
+	buf, m.PosSigmaM = unmarshalFloat32(buf)
+	buf, m.BirthSigmaM = unmarshalFloat32(buf)
 
 	return buf
 }
@@ -31595,6 +31628,10 @@ type VnavPose struct {
 
 	/* Lost-track indicator, 0..255 scale; high means recent sightings corroborated nothing - widen everything. */
 	NullEma byte
+
+	/* LOST declaration (0/1): the navigator's widening is capped with null mass still high; dead reckoning alone drives the estimate and an external kidnap search should engage. */
+	Lost byte /*EXTENSION*/
+
 }
 
 func (m *VnavPose) ID() int        { return 52112 }
@@ -31618,6 +31655,7 @@ func (m *VnavPose) MarshalV1(buf []byte) []byte {
 
 func (m *VnavPose) MarshalV2(buf []byte) []byte {
 	buf = m.MarshalV1(buf)
+	buf = marshalByte(buf, (m.Lost))
 
 	return buf
 }
@@ -31655,6 +31693,7 @@ func (m *VnavPose) UnmarshalV1(buf []byte) []byte {
 
 func (m *VnavPose) UnmarshalV2(buf []byte) []byte {
 	buf = m.UnmarshalV1(buf)
+	buf, m.Lost = unmarshalByte(buf)
 
 	return buf
 }
